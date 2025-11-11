@@ -59,8 +59,33 @@ CREATE TABLE Evento_cultural (
     fecha_evento DATE,
     descripcion_evento TEXT,
     ubicacion_evento VARCHAR(150),
-    tipo_evento VARCHAR(50),
+    tipo_evento ENUM(),
     estado_evento VARCHAR(50),
     id_entidad_cultural INT,
     id_administrador INT
+);
+
+/*----------TABLAS RELACIONADAS LIBROS------*/
+CREATE TABLE Libro (
+    id_libro INT AUTO_INCREMENT PRIMARY KEY,
+    titulo_libro VARCHAR(150) NOT NULL,
+    autor_libro VARCHAR(150) NOT NULL,
+    ISBN VARCHAR(255) NOT NULL,
+    estado_libro ENUM('nuevo','seminuevo','usado'),
+    genero_libro ENUM(),
+    fecha_publicacion_libro DATE,
+    fecha_alta_libro DATE,
+    id_catalogo INT,
+    id_user_comun INT
+);
+
+CREATE TABLE Catalogo_libro ( 
+    id_catalogo INT AUTO_INCREMENT PRIMARY KEY,
+    tipo_catalogo VARCHAR(100),
+    id_user_comun INT
+);
+
+CREATE TABLE lIBRO_Catalogo ( 
+    id_catalogo INT  PRIMARY KEY,
+    id_libro INT PRIMARY KEY
 );
