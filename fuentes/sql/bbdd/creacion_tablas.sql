@@ -59,7 +59,7 @@ CREATE TABLE Evento_cultural (
     fecha_evento DATE,
     descripcion_evento TEXT,
     ubicacion_evento VARCHAR(150),
-    tipo_evento ENUM(),
+    tipo_evento ENUM('encuentro con el autor', 'club de lectura', 'feria del libro'),
     estado_evento VARCHAR(50),
     id_entidad_cultural INT,
     id_administrador INT
@@ -72,7 +72,7 @@ CREATE TABLE Libro (
     autor_libro VARCHAR(150) NOT NULL,
     ISBN VARCHAR(255) NOT NULL,
     estado_libro ENUM('nuevo','seminuevo','usado'),
-    genero_libro ENUM(),
+    genero_libro ENUM('fantasia', 'romance', 'thriller', 'ensayo'),
     fecha_publicacion_libro DATE,
     fecha_alta_libro DATE,
     id_catalogo INT,
