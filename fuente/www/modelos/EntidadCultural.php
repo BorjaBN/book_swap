@@ -16,7 +16,9 @@
                 return $this->id;
     
             } catch (Throwable $excepcion) {
-               header('HTTP/2 500 Internal Server Error');
+                
+               http_response_code(500); 
+
                if ($config['debug']){
                     echo "Error en modelos/EntidadCultural.php:".$excepcion;
                 }

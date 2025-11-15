@@ -17,7 +17,7 @@
         protected $idAdmin;
         protected $baseDatos;
 
-        public function __construct(string $nombre, string $email, string $pass, ?string $telefono, ?string $ciudad){
+        public function __construct(string $nombre, string $email, string $pass, string $telefono, string $ciudad){
 
             $this->id = null;
             $this->nombre = $nombre;

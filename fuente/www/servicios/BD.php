@@ -8,7 +8,7 @@ class BD{
        
          try {
 
-            $config = require('../../config.php');
+            $config = require('./config.php');
             $host = $config['bd_host'];
             $nombre = $config['bd_nombre'];
             $usuario = $config['bd_usuario'];

@@ -2,6 +2,8 @@
 
     class UsuarioComun extends Usuario {
 
+        private $apellidos;
+
         public function __construct (string $nombre, string $apellidos, string $email, string $pass, string $telefono, string $ciudad){
             parent::__construct(string $nombre, string $email, string $pass, string $telefono, string $ciudad);
             $this->apellidos = $apellidos;
@@ -16,7 +18,9 @@
                 return $this->id;
     
             } catch (Throwable $excepcion) {
-               header('HTTP/2 500 Internal Server Error');
+               
+               http_response_code(500); 
+
                if ($config['debug']){
                     echo "Error en modelos/UsuarioComun.php:".$excepcion;
                 }
