@@ -1,5 +1,5 @@
 <?php
-      class UsuarioVerRegistro{
+      class UsuarioComunVerRegistro{
         private $config;
 
         public function __construct($config){
@@ -7,7 +7,7 @@
         }
 
         public function mostrar($mensaje = null){
-            require_once($this->config['dir_html'].'registro_usuario.html');
+            require_once($this->config['dir_html'].'registro_usuario_comun.html');
         }
 
     }

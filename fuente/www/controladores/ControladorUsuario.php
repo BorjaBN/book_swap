@@ -1,14 +1,14 @@
 <?php
 
     /**
-     * Controlador
+     * ControladorUsuario
      *      Responsabilidad:
      *      - Recibir los datos de usuario
      *      - Aplicar las reglas de negocio
      *      - Navegación entre vistas
      */
 
-    class ControladorUsuario {
+    abstract class ControladorUsuario {
 
         private $config;
 
@@ -16,11 +16,8 @@
             $this->config = $config;
         }
 
-        public function verRegistro($mensaje = null) {
-    
-            $vista = new UsuarioVerAlta($this->config);
-            $vista->mostrar($mensaje);
-        }
+        public function verRegistro() {}
 
+        public function registrar(){}
       
     }

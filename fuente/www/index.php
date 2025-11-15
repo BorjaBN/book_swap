@@ -59,7 +59,7 @@
         http_response_code(500); //Para indicar el tipo de error y no preocuparnos por la versión del protocolo HTTP
 
         if ($config['debug']){
-            echo "Error en index.php:". $exception; //Para indicar donde ha sido el error
+            echo "Error en index.php: ". $exception; //Para indicar donde ha sido el error
         }
 
     }
