@@ -60,8 +60,8 @@ CREATE TABLE `entidad_cultural` (
   `nombre_entidad_cultural` varchar(100) NOT NULL,
   `email_entidad_cultural` varchar(100) NOT NULL,
   `pass_entidad_cultural` varchar(255) NOT NULL,
-  `telefono_entidad_cultural` varchar(100) DEFAULT NULL,
-  `ciudad_entidad_cultural` varchar(100) DEFAULT NULL,
+  `telefono_entidad_cultural` varchar(100) NOT NULL,
+  `ciudad_entidad_cultural` varchar(100) NOT NULL,
   `id_admin` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
@@ -126,8 +126,8 @@ CREATE TABLE `user_comun` (
   `apellidos_user_comun` varchar(100) NOT NULL,
   `email_user_comun` varchar(100) NOT NULL,
   `pass_user_comun` varchar(255) NOT NULL,
-  `telefono_user_comun` varchar(100) DEFAULT NULL,
-  `ciudad_user_comun` varchar(100) DEFAULT NULL,
+  `telefono_user_comun` varchar(100) NOT NULL,
+  `ciudad_user_comun` varchar(100) NOT NULL,
   `id_admin` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
