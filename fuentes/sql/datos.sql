@@ -70,11 +70,11 @@ INSERT INTO `evento_cultural` (`id_evento`, `nombre_evento`, `fecha_evento`, `de
 --
 
 INSERT INTO `libro` (`id_libro`, `titulo_libro`, `autor_libro`, `ISBN`, `estado_libro`, `genero_libro`, `fecha_publicacion_libro`, `id_user_comun`) VALUES
-(1, 'El Quijote', 'Miguel de Cervantes', 'ISBN001', 'nuevo', 'romance', '1605-01-01', 1),
-(2, 'Cien años de soledad', 'Gabriel García Márquez', 'ISBN002', 'seminuevo', 'thriller', '1967-05-30', 1),
-(3, 'La sombra del viento', 'Carlos Ruiz Zafón', 'ISBN003', 'usado', 'thriller', '2001-04-01', 1),
-(4, 'Donde los árboles cantan', 'Laura Gallego', 'ISBN004', 'nuevo', 'fantasia', '2011-10-01', 2),
-(5, 'El principito', 'Antoine de Saint-Exupéry', 'ISBN005', 'usado', 'romance', '1943-04-06', 2);
+(1, 'El Quijote', 'Miguel de Cervantes', '1234567899876', 'nuevo', 'romance', '1605-01-01', 1),
+(2, 'Cien años de soledad', 'Gabriel García Márquez', '9876543211234', 'seminuevo', 'thriller', '1967-05-30', 1),
+(3, 'La sombra del viento', 'Carlos Ruiz Zafón', '1357924680123', 'usado', 'thriller', '2001-04-01', 1),
+(4, 'Donde los árboles cantan', 'Laura Gallego', '2468013579123', 'nuevo', 'fantasia', '2011-10-01', 2),
+(5, 'El principito', 'Antoine de Saint-Exupéry', '1234509876109', 'usado', 'romance', '1943-04-06', 2);
 
 -- --------------------------------------------------------
 
