@@ -1,12 +1,12 @@
 <?php
-      class UsuarioComunVerRegistro{
-        private $config;
+      class UsuarioComunVerRegistro extends VerRegistro{
+        
 
         public function __construct($config){
-            $this->config = $config;
+            parent::__construct($config);
         }
 
-        public function mostrar($mensaje = null){
+        public function mostrarFormulario(){
             require_once($this->config['dir_html'].'registro_usuario_comun.html');
         }
 

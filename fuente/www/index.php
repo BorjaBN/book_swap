@@ -13,6 +13,7 @@
     
         //Cargar configuración inicial   
         $config = require_once('config.php'); 
+        session_start(); 
 
         //Autoload: Permite cargar automáticamente la clase (si no está disponible) en el momento en el que se instancie 
         spl_autoload_register(function($clase) use ($config){
@@ -21,7 +22,7 @@
                 $config['dir_controladores'],
                 $config['dir_modelos'],
                 $config['dir_vistas'],
-                $config['dir_servicios'], //Aquí
+                $config['dir_servicios'],
             ];
 
             foreach ($directorios as $dir) {
