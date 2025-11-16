@@ -21,7 +21,8 @@ Este documento describe la arquitectura tecnológica utilizada en el desarrollo 
 | **Apache**     | 2.4.58           | 
 | **HTML**       | HTML5            |   
 | **CSS**        | CSS3 y algunos módulos de nivel 4|
-| **JS**         | ECMAScript 6  |
+|**Bootstrap**   | v5.3             |
+| **JS**         | ECMAScript 6     |
 
 
 
