@@ -14,10 +14,10 @@
         protected $pass;
         protected $telefono;
         protected $ciudad;
-        protected $idAdmin;
+        protected $id_admin;
         protected $baseDatos;
 
-        public function __construct(string $nombre, string $email, string $pass, string $telefono, string $ciudad){
+        public function __construct(string $nombre, string $email, string $pass, string $telefono, string $ciudad, int $id_admin){
 
             $this->id = null;
             $this->nombre = $nombre;
@@ -25,11 +25,11 @@
             $this->pass = $pass;
             $this->telefono = $telefono;
             $this->ciudad = $ciudad;
-            $this->idAdmin = null;
+            $this->id_admin = $id_admin;
             $this->baseDatos = new BD();
 
         }
 
-        abstract public function guardar(){}
+        abstract public function guardar(); //Aquí
 
     }

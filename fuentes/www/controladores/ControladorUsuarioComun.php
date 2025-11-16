@@ -33,18 +33,19 @@
                
 
                 require_once($this->config['dir_modelos'].'UsuarioComun.php');
-                $usuario = new UsuarioComun($nombre, $apellidos, $email, $pass, $telefono, $ciudad);
+                $usuario = new UsuarioComun($nombre, $apellidos, $email, $pass, $telefono, $ciudad, 1);
                 $id = $usuario->guardar();
                 $mensaje= "Usuario ($id) registrado correctamente";
-                $this->verAlta($mensaje); //Se va a la siguiente alta
+                $this->verRegistro($mensaje); //Se va a la siguiente alta
 
-            } catch (Throwable $excepcion){
-               //require_once($this->config['dir_vistas'].'vista_error.html');  
-               header('HTTP/2 500 Internal Server Error');
-               if ($this->config['debug']){
-                echo "Error en ControladorUsuarioComun.php: ".$excepcion;
-               }
-              
+            } catch (Throwable $excepcion){ //Así es el controlador quien decide si mostrar o no el error (siendo específico)
+                http_response_code(500);
+                if ($this->config['debug']) {
+                    echo "Error en registrar usuario: ".$excepcion->getMessage();
+                } else {
+                    // mostrar vista genérica de error
+                    $this->verRegistro("Ha ocurrido un error al registrar el usuario.");
+                }
             }
         }
       

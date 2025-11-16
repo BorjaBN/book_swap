@@ -10,7 +10,7 @@
 
     abstract class ControladorUsuario {
 
-        private $config;
+        protected $config; //Aquí
 
         public function __construct ($config){
             $this->config = $config;

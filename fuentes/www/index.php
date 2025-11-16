@@ -21,6 +21,7 @@
                 $config['dir_controladores'],
                 $config['dir_modelos'],
                 $config['dir_vistas'],
+                $config['dir_servicios'], //Aquí
             ];
 
             foreach ($directorios as $dir) {
