@@ -16,6 +16,8 @@
             $this->config = $config;
         }
 
+        
+
         public abstract function verRegistro();
 
         public abstract function registrar();
