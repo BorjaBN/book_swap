@@ -1,5 +1,5 @@
 <?php
-    class UsuarioComunVerRegistro extends VerRegistro{
+    class EntidadCulturalVerRegistro extends VerRegistro{
         
 
         public function __construct($config){
@@ -7,7 +7,7 @@
         }
 
         public function mostrarFormulario(){
-            require_once($this->config['dir_html'].'registro_usuario_comun.html');
+            require_once($this->config['dir_html'].'registro_entidad_cultural.html');
         }
 
     }

@@ -3,7 +3,7 @@
     /**Modelo Usuario
      *   Responsabilidad:
      *  -Representa a un usuario 
-     *  - Sirve como plantilla
+     *  -Sirve como plantilla
      *  -Gestiona la persistencia
      */
 
@@ -14,10 +14,11 @@
         protected $pass;
         protected $telefono;
         protected $ciudad;
-        protected $id_admin;
+        protected $idAdmin;
         protected $baseDatos;
+    
 
-        public function __construct(string $nombre, string $email, string $pass, string $telefono, string $ciudad, int $id_admin){
+        public function __construct(string $nombre, string $email, string $pass, string $telefono, string $ciudad){
 
             $this->id = null;
             $this->nombre = $nombre;
@@ -25,11 +26,12 @@
             $this->pass = $pass;
             $this->telefono = $telefono;
             $this->ciudad = $ciudad;
-            $this->id_admin = $id_admin;
+            $this->idAdmin = 1;
             $this->baseDatos = new BD();
 
         }
 
-        abstract public function guardar(); //Aquí
+        public abstract function guardar();
 
     }
+

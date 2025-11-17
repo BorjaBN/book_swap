@@ -10,14 +10,18 @@
 
     abstract class ControladorUsuario {
 
-        protected $config; //Aquí
+        protected $config;
 
         public function __construct ($config){
             $this->config = $config;
         }
 
-        public function verRegistro() {}
+        
 
-        public function registrar(){}
+        public abstract function verRegistro();
+
+        public abstract function registrar();
+
+        public abstract function verPerfil();
       
     }

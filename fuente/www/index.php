@@ -13,6 +13,7 @@
     
         //Cargar configuración inicial   
         $config = require_once('config.php'); 
+        session_start(); 
 
         //Autoload: Permite cargar automáticamente la clase (si no está disponible) en el momento en el que se instancie 
         spl_autoload_register(function($clase) use ($config){
@@ -21,7 +22,7 @@
                 $config['dir_controladores'],
                 $config['dir_modelos'],
                 $config['dir_vistas'],
-                $config['dir_servicios'], //Aquí
+                $config['dir_servicios'],
             ];
 
             foreach ($directorios as $dir) {
@@ -49,8 +50,8 @@
             }
         
         //Routing: procesamiento de la petición
-        $controlador = $_GET['controlador'];
-        $metodo = $_GET['metodo'];
+        $controlador = $_GET['controlador'] ?? 'ControladorVistas'; // de esta manera si no se le apsan parametros se usa por defecto el ControladorVistas
+        $metodo = $_GET['metodo'] ?? 'verInicio'; //Así se manda a ver el index.html al poner la url sin parametros
 
         $controlador = new $controlador($config); //Acceso a los parámetros de la configuración 
         $controlador->$metodo();
@@ -64,3 +65,4 @@
         }
 
     }
+    
