@@ -40,19 +40,14 @@
                     'apellidos' => $apellidos,
                     'email' => $email,
                     'telefono' => $telefono,
-                    'ciudad' => $ciudad,
-                    'tipo' => 'comun'
+                    'ciudad' => $ciudad
                 ];
 
-                $_SESSION['mensaje'] = "Registro completado con éxito.";
+                
 
                 $this->verPerfil();
 
-            } catch (Throwable $excepcion){ 
-
-                
-                $_SESSION['mensaje'] = "Registro fallido, prueba de nuevo.";
-                $_SESSION['exito']   = false;
+            } catch (Throwable $excepcion){
 
                 if ($this->config['debug']) {
                     http_response_code(500);

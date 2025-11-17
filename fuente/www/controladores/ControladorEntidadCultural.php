@@ -38,11 +38,10 @@
                     'nombre' => $nombre,
                     'email' => $email,
                     'telefono' => $telefono,
-                    'ciudad' => $ciudad,
-                    'tipo' => 'comun'
+                    'ciudad' => $ciudad
                 ];
 
-                $_SESSION['mensaje'] = "Registro de entidad completado con éxito.";
+                
 
                 $this->verPerfil();
 
