@@ -1,5 +1,5 @@
 <?php
-      class UsuarioComunVerRegistro extends VerRegistro{
+    class UsuarioComunVerRegistro extends VerRegistro{
         
 
         public function __construct($config){

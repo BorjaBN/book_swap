@@ -11,7 +11,7 @@
     class ControladorUsuarioComun extends ControladorUsuario {
 
         public function __construct ($config){
-              parent::__construct($config);
+            parent::__construct($config);
         }
 
         public function verRegistro() {
@@ -31,25 +31,23 @@
 
                 //TODO: SANITIZAR Y VALIDAR
                
-
                 $usuario = new UsuarioComun($nombre, $apellidos, $email, $pass, $telefono, $ciudad);
                 $usuario->guardar();
 
-               
-                $_SESSION['mensaje'] = "Registro completado con éxito.";
+                // Guardar datos en sesión para mostrarlos en el perfil
+                $_SESSION['usuario'] = [
+                    'nombre' => $nombre,
+                    'apellidos' => $apellidos,
+                    'email' => $email,
+                    'telefono' => $telefono,
+                    'ciudad' => $ciudad
+                ];
+
+                
 
                 $this->verPerfil();
 
-            } catch (Throwable $excepcion){ 
-
-                
-                $_SESSION['mensaje'] = "Registro fallido, prueba de nuevo.";
-                $_SESSION['exito']   = false;
-
-                // Volver al formulario de registro
-                //header("Location: " .  $this->config['dir_html'] . "registro_usuario_comun.html");
-                //exit;
-
+            } catch (Throwable $excepcion){
 
                 if ($this->config['debug']) {
                     http_response_code(500);
@@ -59,7 +57,7 @@
         }
 
         public function verPerfil(){
-            $vista = new VerPerfil($this->config);
+            $vista = new VerPerfil($this->config, 'PerfilUsuarioComun.php');
             $vista->mostrar();
         }
     

@@ -8,7 +8,14 @@ BookSwap es una aplicación de intercambio de libros que busca transmitir altrui
 
 ## Paleta de colores
 
+La gama de colores escogida para BookSwap está formada por seis colores seleccionados con cuidado y que equilibran la naturaleza y la cultura. Esta diversidad posibilita la creación de una interfaz que sea consistente, accesible y que esté alineada desde el punto de vista emocional con los valores de la aplicación.
+
+BookSwap es una aplicación de intercambio de libros que busca transmitir altruismo, cercanía y pasión por la lectura. Su identidad visual se basa en valores como la sostenibilidad y la cultura.
+
+## Paleta de colores
+
 La gama de colores escogida para BookSwap está formada por seis colores que equilibran la naturaleza (tono verdes) y la cultura (tonos morados). Esta diversidad posibilita la creación de una interfaz que sea consistente, accesible y que esté alineada desde el punto de vista emocional con los valores de la aplicación.
+
 
 ![Paleta de colores](img/GE-paleta.png)
 

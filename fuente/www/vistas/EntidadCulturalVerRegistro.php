@@ -1,5 +1,5 @@
 <?php
-      class EntidadCulturalVerRegistro extends VerRegistro{
+    class EntidadCulturalVerRegistro extends VerRegistro{
         
 
         public function __construct($config){

@@ -1,56 +1,37 @@
-<<<<<<< HEAD
 <?php
 // registro.php
 // Vista intermedia para elegir tipo de registro
 ?>
 
-=======
->>>>>>> origin/sprint2
 <!DOCTYPE html>
 <html lang="es">
 <head>
     <meta charset="UTF-8">
     <title>Opciones de Registro</title>
-<<<<<<< HEAD
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="../css/estilos.css">
-=======
-    <base href="/book_swap/fuente/www/">
-    <link href="https://fonts.googleapis.com/css2?family=Open+Sans&family=Playfair+Display&display=swap" rel="stylesheet"> <!--Tipografia-->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="css/estilos.css">
->>>>>>> origin/sprint2
     
 </head>
 <body>
 
     <main class="d-flex justify-content-center align-items-center" style="height: 100vh;">
         <div class="opcion-registro-box text-center p-4">
-<<<<<<< HEAD
             <h2 class="mb-4">¿Cómo te quieres registrar?</h2>
 
             <div class="d-flex flex-column flex-md-row justify-content-center">
                 <!-- Botón Usuario Común -->
-                <form action="?controlador=ControladorUsuarioComun&metodo=verRegistro" method="post" class="m-2">
+                <form action="../index.php" method="get" class="m-2">
+                    <input type="hidden" name="controlador" value="ControladorUsuarioComun">
+                    <input type="hidden" name="metodo" value="verRegistro">
                     <button type="submit" class="btn-usuario">Usuario</button>
                 </form>
 
                 <!-- Botón Entidad Cultural -->
-                <form action="../index.php" method="post" class="m-2">
+                <form action="../index.php" method="get" class="m-2">
                     <input type="hidden" name="controlador" value="ControladorEntidadCultural">
                     <input type="hidden" name="metodo" value="verRegistro">
                     <button type="submit" class="btn-entidad">Entidad Cultural</button>
                 </form>
-=======
-            <h2 class="mb-4" style="font-family: 'Playfair Display', serif;">¿Cómo te quieres registrar?</h2>
-
-            <div class="d-flex flex-column flex-md-row justify-content-center">
-                
-                <a href="index.php?controlador=ControladorUsuarioComun&metodo=verRegistro" class="btn btn-usuario">Usuario</a>
-
-                
-                <a href="index.php?controlador=ControladorEntidadCultural&metodo=verRegistro" class="btn btn-entidad">Entidad Cultural</a>
->>>>>>> origin/sprint2
             </div>
         </div>
     </main>

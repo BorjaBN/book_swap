@@ -29,13 +29,21 @@
                 $ciudad = $_POST['ciudad'];
 
                 //TODO: SANITIZAR Y VALIDAR
-               
-
-        
+    
                 $usuario = new EntidadCultural($nombre, $email, $pass, $telefono, $ciudad);
                 $usuario->guardar();
-                //$mensaje= "Usuario ($id) registrado correctamente";
-                //$this->verRegistro($mensaje); //AQUÍ TENDRÍA QUE IR A INICIO
+                
+                // Guardar datos en sesión para mostrarlos en el perfil
+                 $_SESSION['usuario'] = [
+                    'nombre' => $nombre,
+                    'email' => $email,
+                    'telefono' => $telefono,
+                    'ciudad' => $ciudad
+                ];
+
+                
+
+                $this->verPerfil();
 
             } catch (Throwable $excepcion){ 
                 http_response_code(500);
@@ -43,6 +51,11 @@
                     echo "Error en registrar usuario: ".$excepcion->getMessage();
                 } 
             }
+        }
+
+        public function verPerfil(){
+            $vista = new VerPerfil($this->config, 'PerfilEntidadCultural.php');
+            $vista->mostrar();
         }
       
     }
