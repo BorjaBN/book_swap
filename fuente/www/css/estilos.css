@@ -1,45 +1,4 @@
 html, body {
-<<<<<<< HEAD
-    height: 100%;
-    margin: 0;
-    padding: 0;
-    background-color: #FFF4EE;
-}
-
-/*---------------PARA INDEX--------------------*/
-
-.btn-registrarse {
-    background-color: #3f4e2c; 
-    color: white;
-    border: none;
-    padding: 10px 18px;
-    border-radius: 5px;
-    font-size: 16px;
-    transition: background-color 0.3s ease;
-}
-
-.btn-registrarse:hover {
-    background-color: #505e3f;
-    color: #fff;
-}
-
-/*-----------------------PARA OPCION REGISTRO----------------------*/
-
-/* Caja tipo etiqueta */
-.opcion-registro-box {
-    background-color: #f6e7df;
-    border-radius: 8px;
-    padding: 30px;
-    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-    max-width: 400px;     /* Limita el ancho */
-    width: 100%;          /* Se adapta en móvil */
-}
-
-.opcion-registro-box h2 {
-    color: #000;
-    margin-bottom: 20px;
-    font-size: 22px;
-=======
   height: 100%;
   margin: 0;
   padding: 0;
@@ -80,23 +39,10 @@ html, body {
   color: #000;
   margin-bottom: 20px;
   font-size: 22px;
->>>>>>> origin/sprint2
 }
 
 /* Botón Usuario Común */
 .btn-usuario {
-<<<<<<< HEAD
-    background-color: #3f4e2c;
-    color: #fff;
-    border: none;
-    padding: 12px 20px;
-    border-radius: 5px;
-    font-size: 16px;
-    margin: 10px;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-    display: inline-block;
-=======
   background-color: #3f4e2c;
   color: #fff;
   border: none;
@@ -107,34 +53,16 @@ html, body {
   cursor: pointer;
   transition: background-color 0.3s ease;
   display: inline-block;
->>>>>>> origin/sprint2
     
 }
 
 .btn-usuario:hover {
-<<<<<<< HEAD
-    background-color: #505e3f;
-    color: #fff;
-=======
   background-color: #505e3f;
   color: #fff;
->>>>>>> origin/sprint2
 }
 
 /* Botón Entidad Cultural */
 .btn-entidad {
-<<<<<<< HEAD
-    background-color: #3f4e2c; 
-    color: #fff;
-    border: none;
-    padding: 12px 20px;
-    border-radius: 5px;
-    font-size: 16px;
-    margin: 10px;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-    display: inline-block;
-=======
   background-color: #3f4e2c; 
   color: #fff;
   border: none;
@@ -145,24 +73,15 @@ html, body {
   cursor: pointer;
   transition: background-color 0.3s ease;
   display: inline-block;
->>>>>>> origin/sprint2
     
 }
 
 .btn-entidad:hover {
-<<<<<<< HEAD
-    background-color: #505e3f; 
-    color: #fff;
-}
-
-/*-----------------------PARA FORMULARIOS----------------------*/
-=======
   background-color: #505e3f; 
   color: #fff;
 }
 
 /*----------------------- PARA FORMULARIOS -----------------------*/
->>>>>>> origin/sprint2
 
 /* Tarjeta del formulario */
 .form-card {
@@ -173,19 +92,11 @@ html, body {
   width: 100%;
 }
 
-<<<<<<< HEAD
-/* Título */
-=======
->>>>>>> origin/sprint2
 .form-card h2 {
   color: #000;
   font-size: 22px;
 }
 
-<<<<<<< HEAD
-/* Mensaje */
-=======
->>>>>>> origin/sprint2
 .form-message {
   color: #333;
   font-size: 14px;
@@ -206,9 +117,6 @@ html, body {
 .btn-form-primary:hover {
   background-color: #505e3f;
   color: #fff;
-<<<<<<< HEAD
-}
-=======
 }
 
 /*----------------------- PARA PERFILES -----------------------*/
@@ -257,4 +165,3 @@ h5.fw-bold {
   background-color: #fff4ee !important;
   border-top: 1px solid #d9c2b4;
 }
->>>>>>> origin/sprint2
