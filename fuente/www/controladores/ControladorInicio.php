@@ -15,6 +15,7 @@ class ControladorInicio {
     }
 
     public function verInicio(){
+        
         require_once($this->config['dir_html'].'inicio.html');
     }
 

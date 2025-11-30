@@ -1,50 +1,228 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Pantalla Inicial</title>
-    <base href="/book_swap/fuente/www/">
-      <link href="https://fonts.googleapis.com/css2?family=Open+Sans&family=Playfair+Display&display=swap" rel="stylesheet"> <!--Tipografia-->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="css/estilos.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>BookSwap - Inicio</title>
+  <link href="https://fonts.googleapis.com/css2?family=Open+Sans&family=Playfair+Display&display=swap" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  <style>
+    /* ===== Reset básico ===== */
+    html, body {
+      height: 100%;
+      margin: 0;
+      padding: 0;
+      font-family: 'Open Sans', sans-serif;
+      background: #FFF4EE;
+    }
+
+    h1 {
+      font-family: 'Playfair Display', serif;
+    }
+
+    /* Logo en el header */
+    .logo-header {
+      max-width: 60px;
+      height: auto;
+    }
+
+    /* ===== Botones ===== */
+    .btn-custom {
+      padding: 12px 28px;
+      border-radius: 8px;
+      font-size: 15px;
+      font-weight: 600;
+      text-decoration: none;
+      display: inline-block;
+      transition: background-color 0.3s ease, color 0.3s ease, transform 0.2s ease;
+    }
+
+    .btn-registrarse {
+      background-color: #3f4e2c;
+      color: #FFF4EE;
+      border: none;
+    }
+
+    .btn-registrarse:hover {
+      background-color: #4f6240;
+      color: #FFF4EE;
+      transform: translateY(-2px);
+    }
+
+    .btn-login {
+      background-color: #FFF4EE;
+      color: #3f4e2c;
+      border: 1px solid #3f4e2c;
+      margin-left: 15px;
+    }
+
+    .btn-login:hover {
+      background-color: #e6e0d8;
+      color: #3f4e2c;
+      transform: translateY(-2px);
+    }
+
+    /* ===== Hero Section ===== */
+    .hero {
+      position: relative;
+      background: url('img/bg_libros.jpg') center/cover no-repeat;
+      height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      color: #3f4e2c;
+    }
+
+    .hero::before {
+      content: "";
+      position: absolute;
+      top: 0; left: 0; right: 0; bottom: 0;
+      background: rgba(255, 244, 238, 0.85);
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 1;
+      background: rgba(255, 244, 238, 0.9);
+      box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+      padding: 30px;
+      border-radius: 12px;
+      max-width: 600px;
+    }
+
+    .hero-title {
+      font-size: 2.5rem;
+      font-weight: bold;
+      margin-top: 20px;
+    }
+
+    .hero-subtitle {
+      font-size: 1.2rem;
+      margin-bottom: 20px;
+      color: #505e3f;
+    }
+
+    /* ===== Animación logo ===== */
+    .logo {
+      animation: fadeInZoom 1.2s ease forwards;
+      max-width: 20%;
+    }
+
+    @keyframes fadeInZoom {
+      from { opacity: 0; transform: scale(0.9); }
+      to { opacity: 1; transform: scale(1); }
+    }
+
+    /* ===== Footer ===== */
+    footer {
+      background-color: #fff4ee;
+      border-top: 1px solid #d9c2b4;
+      color: #505e3f;
+      font-size: 14px;
+      text-align: center;
+      padding: 20px;
+    }
+
+    footer a {
+      color: #3f4e2c;
+      text-decoration: none;
+      margin: 0 5px;
+    }
+
+    footer a:hover {
+      text-decoration: underline;
+    }
+
+    /* ===== Responsive ===== */
+    @media (max-width: 768px) {
+      /* Header en columna */
+      header {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+      }
+
+      header nav {
+        margin-top: 10px;
+      }
+
+      header nav a {
+        display: inline-block;
+        margin: 5px;
+      }
+
+      /* Hero más compacto */
+      .hero-title {
+        font-size: 1.8rem;
+      }
+      .hero-subtitle {
+        font-size: 1rem;
+      }
+      .logo {
+        max-width: 40%;
+      }
+      .hero-content {
+        padding: 20px;
+        max-width: 90%;
+      }
+
+      /* Footer en columna */
+      footer nav {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        margin-top: 10px;
+      }
+
+      footer nav a {
+        margin: 5px 0;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .hero-title {
+        font-size: 1.5rem;
+      }
+      .hero-subtitle {
+        font-size: 0.9rem;
+      }
+      .btn-custom {
+        padding: 10px 20px;
+        font-size: 14px;
+      }
+      .logo-header {
+        max-width: 50px;
+      }
+    }
+  </style>
 </head>
 <body>
-    
-    <main class="container-fluid">
-    
-        <div class="row">
-            <div class="col-12 d-flex justify-content-end p-3">
-                <a href="index.php?controlador=ControladorInicio&metodo=verOpcionRegistro" class="btn btn-registrarse">Registrarse</a>
-            </div>
-        </div>
 
-        
-        <div class="row vh-100">
-            <div class="col-12 d-flex justify-content-center align-items-center">
-                <img src="img/logo.png" class="img-fluid" style="max-width: 80%;">
-            </div>
-        </div>
-  </main>
-    <footer class="bg-light text-center text-muted p-4">
-        <p>
-            <strong>¿Quiénes somos?</strong><br>
-            Somos <em>Book Swap</em>, un equipo de dos desarrolladores web que busca hacer el mundo más sostenible 
-            y crear una comunidad donde los lectores puedan tener más a mano una mayor cantidad de libros 
-            con los que entretenerse.
-        </p>
-        
-        <p>
-            <strong>Contacto</strong><br>
-            Laura: linfantesc01@gmail.com
-            <br>
-            Borja: fbdelacruzl01@gmail.com
-        </p>
-        
-        <p class="fst-italic">
-            "Un lector vive mil vidas antes de morir. Aquel que nunca lee vive solo una." - George R. R. Martin
-        </p>
-    </footer>
-    
+  <header class="d-flex align-items-center justify-content-between p-3">
+    <img src="img/logo.png" class="logo-header" alt="Logo BookSwap">
+    <nav>
+      <a href="?controlador=ControladorInicio&metodo=verOpcionRegistro" class="btn btn-custom btn-registrarse">Registrarse</a>
+      <a href="?controlador=ControladorInicio&metodo=verLogin" class="btn btn-custom btn-login">Iniciar sesión</a>
+    </nav>
+  </header>
+
+  <section class="hero">
+    <div class="hero-content d-flex flex-column align-items-center">
+      <img src="img/logo.png" class="img-fluid logo" alt="Logo BookSwap">
+      <h1 class="hero-title">Bienvenido a BookSwap</h1>
+      <p class="hero-subtitle">Intercambia libros y descubre nuevas historias</p>
+      <a href="?controlador=ControladorInicio&metodo=verOpcionRegistro" class="btn btn-custom btn-registrarse mt-3">Comienza ahora</a>
+    </div>
+  </section>
+
+  <footer>
+    <p>© 2025 BookSwap · Todos los derechos reservados</p>
+    <nav>
+      <a href="#">Aviso legal</a>
+      <a href="#">Política de privacidad</a>
+      <a href="#">Contacto</a>
+    </nav>
+  </footer>
 </body>
 </html>

@@ -43,7 +43,7 @@
     </div>
 
     <div class="text-center mt-3">
-      <button class="btn btn-registrarse ">Eliminar perfil</button>
+      <button class="btn btn-registrarse">Eliminar perfil</button>
     </div>
   </div>
 
