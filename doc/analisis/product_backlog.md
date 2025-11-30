@@ -3,7 +3,7 @@
 Este product backlog recoge los requerimientos funcionales clave para el desarrollo de BookSwap.
 
 1.  Registro de usuarios comunes
-2.  Registro de entidades comunes
+2.  Registro de entidades culturales
 3.  Inicio/cierre de sesión
 4.  Edición del perfil de usuario
 5.  Eliminación del perfil de usuario
