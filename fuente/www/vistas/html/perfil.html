@@ -73,15 +73,25 @@
     footer a:hover {
       text-decoration: underline;
     }
+
+    #nav-principal{
+      background-color: #3f4e2c;
+    }
   </style>
 </head>
 
 <body class="d-flex flex-column min-vh-100">
 
-  <!-- Header -->
-  <header>
-    <img src="img/logo_claro.png" alt="Logo BookSwap">
-  </header>
+<!-- Header -->
+<nav class="navbar navbar-expand-lg" id="nav-principal">
+  <div class="container-fluid">
+    <!-- Logo y texto -->
+    <a class="navbar-brand d-flex align-items-center" href="#">
+      <img src="img/logo_claro.png" alt="Logo BookSwap" width="100" height="100" class="d-inline-block align-text-top me-2">
+    </a>
+  </div>
+</nav>
+
 
   <!-- Nav responsive debajo del header -->
   <nav class="navbar navbar-expand-md bg-white border-top">
@@ -92,13 +102,13 @@
         </li>
         <?php if ($_SESSION['usuario']['tipo'] === 'comun'): ?>
           <li class="nav-item">
-            <a class="nav-link text-success" href="#"><i class="bi bi-book"></i> Catálogo</a>
+            <a class="nav-link text-success" href="#"><i class="bi bi-book"></i> Mi Catálogo</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link text-success" href="#"><i class="bi bi-envelope"></i> Solicitudes</a>
+            <a class="nav-link text-success" href="#"><i class="bi bi-envelope"></i> Mis solicitudes</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link text-success" href="#"><i class="bi bi-star"></i> Valoraciones</a>
+            <a class="nav-link text-success" href="#"><i class="bi bi-star"></i> Mis valoraciones</a>
           </li>
         <?php else: ?>
           <li class="nav-item">

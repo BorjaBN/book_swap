@@ -16,4 +16,8 @@ class VerInicio {
         require_once($this->config['dir_html'].'opcion_registro.html');
     }
 
+    public function mostrarLogin(){
+        require_once($this->config['dir_html'].'login.html')
+    }
+
 }

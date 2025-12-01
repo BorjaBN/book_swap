@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>BookSwap - Login</title>
+  <link href="https://fonts.googleapis.com/css2?family=Open+Sans&family=Playfair+Display&display=swap" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  <style>
+    body {
+      background-color: #FFF4EE;
+      font-family: 'Open Sans', sans-serif;
+    }
+
+    .login-card {
+      background: #fff;
+      border-radius: 12px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+      padding: 30px;
+      max-width: 400px;   /* límite de ancho */
+      width: 100%;        /* ocupa todo el ancho disponible hasta el límite */
+    }
+
+    .login-title {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.8rem;
+      font-weight: bold;
+      color: #3f4e2c;
+      text-align: center;
+      margin-bottom: 20px;
+    }
+
+    .btn-login {
+      background-color: #3f4e2c;
+      color: #FFF4EE;
+      border: none;
+      border-radius: 8px;
+      padding: 10px;
+      font-weight: 600;
+      transition: background-color 0.3s ease, transform 0.2s ease;
+    }
+
+    .btn-login:hover {
+      background-color: #4f6240;
+      transform: translateY(-2px);
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container d-flex justify-content-center align-items-center" style="min-height: 100vh;">
+    <div class="login-card">
+      <h1 class="login-title">Iniciar Sesión</h1>
+
+      <form method="POST" action="index.php?accion=controladorAutenticacion.login">
+        <input type="hidden" name="accion" value="login">
+
+        <div class="mb-3">
+          <label for="nombre" class="form-label">Usuario</label>
+          <input type="text" id="nombre" name="nombre" class="form-control" minlength="4" maxlength="50" required>
+        </div>
+
+        <div class="mb-3">
+          <label for="clave" class="form-label">Contraseña</label>
+          <input type="password" id="clave" name="clave" class="form-control" minlength="4" required>
+        </div>
+
+        <div class="d-grid">
+          <button type="submit" class="btn btn-login">Iniciar Sesión</button>
+        </div>
+      </form>
+
+      <p class="text-center mt-3">
+        ¿No tienes cuenta? 
+        <a href="?controlador=ControladorInicio&metodo=verOpcionRegistro" style="color:#3f4e2c; text-decoration:none;">Regístrate aquí</a>
+      </p>
+    </div>
+  </div>
+
+</body>
+</html>
