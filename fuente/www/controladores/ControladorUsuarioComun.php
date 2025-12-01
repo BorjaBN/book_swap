@@ -14,38 +14,55 @@
             parent::__construct($config);
         }
 
-        public function verRegistro() {
-            $vista = new UsuarioComunVerRegistro($this->config);
-            $vista->mostrarFormulario();
+        public function verRegistro($datos = null, $mensaje = null) {
+            $_SESSION['tipo_registro'] = 'comun';
+            $vista = new VerRegistro($this->config);
+            $vista->mostrarFormulario($datos, $mensaje);
         }
 
         public function registrar(){
              try{
 
-                $nombre = $_POST['nombre'];
-                $apellidos = $_POST['apellidos'];
-                $email = $_POST['email'];
-                $pass =  $_POST['pass'];
-                $telefono = $_POST['telefono'];
-                $ciudad = $_POST['ciudad'];
+                //Sanitización
+                $nombre = trim(strip_tags($_POST['nombre']));
+                $apellidos = trim(strip_tags($_POST['apellidos']));
+                $email = filter_var(trim($_POST['email']), FILTER_SANITIZE_EMAIL);
+                $pass =  trim($_POST['pass']);
+                $telefono = trim(filter_var($_POST['telefono'], FILTER_SANITIZE_NUMBER_INT));
+                $ciudad = trim(strip_tags($_POST['ciudad']));
 
-                //TODO: SANITIZAR Y VALIDAR
-               
-                $usuario = new UsuarioComun($nombre, $apellidos, $email, $pass, $telefono, $ciudad);
-                $usuario->guardar();
 
-                // Guardar datos en sesión para mostrarlos en el perfil
-                $_SESSION['usuario'] = [
-                    'nombre' => $nombre,
-                    'apellidos' => $apellidos,
-                    'email' => $email,
-                    'telefono' => $telefono,
-                    'ciudad' => $ciudad
+                //Persistencia de datos en caso de error
+                $datos = [
+                    'nombre'        => $nombre,
+                    'apellidos'     => $apellidos,
+                    'email'         => $email,
+                    'telefono'      => $telefono,
+                    'ciudad'        => $ciudad
                 ];
 
-                
+               
+                $usuario = new UsuarioComun($nombre, $apellidos, $email, $pass, $telefono, $ciudad);
 
-                $this->verPerfil();
+                //Validación
+                if ($usuario->emailRegistrado()) {
+                    $mensaje = "El email ya está registrado.";
+                    $this->verRegistro($datos, $mensaje);
+                } else {
+                    $usuario->guardar();
+
+                     // Guardar datos en sesión para mostrarlos en el perfil
+                    $_SESSION['usuario'] = [
+                        'tipo' => 'comun',
+                        'nombre' => $nombre,
+                        'apellidos' => $apellidos,
+                        'email' => $email,
+                        'telefono' => $telefono,
+                        'ciudad' => $ciudad
+                    ];
+
+                    $this->verPerfil();
+                }
 
             } catch (Throwable $excepcion){
 
@@ -57,7 +74,7 @@
         }
 
         public function verPerfil(){
-            $vista = new VerPerfil($this->config, 'PerfilUsuarioComun.php');
+            $vista = new VerPerfil($this->config);
             $vista->mostrar();
         }
     

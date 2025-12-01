@@ -20,17 +20,7 @@ SET time_zone = "+00:00";
 --
 -- Base de datos: `book_swap`
 --
-
--- --------------------------------------------------------
-
---
--- Volcado de datos para la tabla `administrador`
---
-
-INSERT INTO `administrador` (`id_admin`, `nombre_admin`, `apellidos_admin`, `email_admin`, `pass_admin`, `telefono_admin`, `ciudad_admin`) VALUES
-(1, 'Borja', 'De La Cruz Lucio', 'fbdelacruzl01@gmail.com', 'pass1234', '123456789', 'Badajoz'),
-(2, 'Laura', 'Infantes Corrales', 'linfantesc01@gmail.com', 'pass1234', '987654321', 'Sevilla'),
-(3, 'Miguel', 'Jaque Barbero', 'mjaqueb01@gmail.com', 'pass1234', '135798642', 'Madrid');
+USE book_swap;
 
 -- --------------------------------------------------------
 
@@ -49,7 +39,7 @@ INSERT INTO `cartera_creditos` (`id_cartera`, `saldo_total`, `id_user_comun`) VA
 -- Volcado de datos para la tabla `entidad_cultural`
 --
 
-INSERT INTO `entidad_cultural` (`id_entidad_cultural`, `nombre_entidad_cultural`, `email_entidad_cultural`, `pass_entidad_cultural`, `telefono_entidad_cultural`, `ciudad_entidad_cultural`, `id_admin`) VALUES
+INSERT INTO `entidad_cultural` (`id_entidad_cultural`, `nombre_entidad_cultural`, `email_entidad_cultural`, `pass_entidad_cultural`, `telefono_entidad_cultural`, `ciudad_entidad_cultural`) VALUES
 (1, 'La casa del libro', 'casalibro@educarex.es', 'pass4321', '910000111', NULL, 1),
 (2, 'Asociación Lectores', 'asoclectores@gmail.es', 'pass4321', NULL, NULL, 2);
 

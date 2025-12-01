@@ -1,14 +1,16 @@
 <?php
-    abstract class VerRegistro {
+     class VerRegistro {
 
-        protected $config;
+        private $config;
 
         public function __construct($config){
             $this->config = $config;
         }
 
-       public abstract function mostrarFormulario();
 
+        public function mostrarFormulario($datos = null, $mensaje = null){
+            require_once($this->config['dir_html'].'registro.html');
+        }
 
     }
 

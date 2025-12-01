@@ -1,16 +1,14 @@
 <?php
     class VerPerfil {
 
-      protected $config;
-      protected $archivo_perfil;
+      private $config;
 
-      public function __construct($config, $archivo_perfil){
+      public function __construct($config){
           $this->config = $config;
-          $this->archivo_perfil = $archivo_perfil;
       }
 
       public function mostrar(){
-          require_once($this->config['dir_vistas'] . $this->archivo_perfil);
+          require_once($this->config['dir_html'] . 'perfil.html');
       }
     }
 

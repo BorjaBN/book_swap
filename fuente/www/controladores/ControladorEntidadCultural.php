@@ -14,36 +14,52 @@
               parent::__construct($config);
         }
 
-        public function verRegistro() {
-            $vista = new EntidadCulturalVerRegistro($this->config);
-            $vista->mostrarFormulario();
+        public function verRegistro($datos = null, $mensaje = null) {
+            $_SESSION['tipo_registro'] = 'cultural';
+            $vista = new VerRegistro($this->config);
+            $vista->mostrarFormulario($datos, $mensaje);
         }
 
         public function registrar(){
-             try{
+            try{
 
-                $nombre = $_POST['nombre'];
-                $email = $_POST['email'];
-                $pass =  $_POST['pass'];
-                $telefono = $_POST['telefono'];
-                $ciudad = $_POST['ciudad'];
+                //Sanitización
+                $nombre = trim(strip_tags($_POST['nombre']));
+                $email = filter_var(trim($_POST['email']), FILTER_SANITIZE_EMAIL);
+                $pass =  trim($_POST['pass']);
+                $telefono = trim(filter_var($_POST['telefono'], FILTER_SANITIZE_NUMBER_INT));
+                $ciudad = trim(strip_tags($_POST['ciudad']));
 
-                //TODO: SANITIZAR Y VALIDAR
-    
-                $usuario = new EntidadCultural($nombre, $email, $pass, $telefono, $ciudad);
-                $usuario->guardar();
-                
-                // Guardar datos en sesión para mostrarlos en el perfil
-                 $_SESSION['usuario'] = [
-                    'nombre' => $nombre,
-                    'email' => $email,
-                    'telefono' => $telefono,
-                    'ciudad' => $ciudad
+
+                //Persistencia de datos en caso de error
+                $datos = [
+                    'nombre'        => $nombre,
+                    'email'         => $email,
+                    'telefono'      => $telefono,
+                    'ciudad'        => $ciudad
                 ];
 
-                
+    
+                $usuario = new EntidadCultural($nombre, $email, $pass, $telefono, $ciudad);
 
-                $this->verPerfil();
+                //Validación
+                if ($usuario->emailRegistrado()) {
+                    $mensaje = "El email ya está registrado.";
+                    $this->verRegistro($datos, $mensaje);
+                } else {
+                    $usuario->guardar();
+
+                     // Guardar datos en sesión para mostrarlos en el perfil
+                    $_SESSION['usuario'] = [
+                        'tipo' => 'cultural',
+                        'nombre' => $nombre,
+                        'email' => $email,
+                        'telefono' => $telefono,
+                        'ciudad' => $ciudad
+                    ];
+
+                    $this->verPerfil();
+                }
 
             } catch (Throwable $excepcion){ 
                 http_response_code(500);
@@ -54,7 +70,7 @@
         }
 
         public function verPerfil(){
-            $vista = new VerPerfil($this->config, 'PerfilEntidadCultural.php');
+            $vista = new VerPerfil($this->config);
             $vista->mostrar();
         }
       

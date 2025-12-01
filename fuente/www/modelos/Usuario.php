@@ -14,7 +14,6 @@
         protected $pass;
         protected $telefono;
         protected $ciudad;
-        protected $idAdmin;
         protected $baseDatos;
     
 
@@ -26,12 +25,13 @@
             $this->pass = $pass;
             $this->telefono = $telefono;
             $this->ciudad = $ciudad;
-            $this->idAdmin = 1;
             $this->baseDatos = new BD();
 
         }
 
         public abstract function guardar();
+
+        public abstract function emailRegistrado();
 
     }
 

@@ -15,12 +15,14 @@ class ControladorInicio {
     }
 
     public function verInicio(){
-        
-        require_once($this->config['dir_html'].'inicio.html');
+        $vista = new VerInicio($this->config);
+        $vista->mostrar();
+
     }
 
     public function verOpcionRegistro(){
-        require_once($this->config['dir_html'].'opcion_registro.html');
+        $vista = new VerInicio($this->config);
+        $vista->mostrarOpcion();
     }
 
     
