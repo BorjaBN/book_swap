@@ -25,5 +25,10 @@ class ControladorInicio {
         $vista->mostrarOpcion();
     }
 
+    public function verLogin(){
+            $vista = new VerInicio($this->config);
+            $vista->mostrarLogin();
+    }
+
     
 }

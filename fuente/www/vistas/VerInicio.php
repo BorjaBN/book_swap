@@ -17,7 +17,7 @@ class VerInicio {
     }
 
     public function mostrarLogin(){
-        require_once($this->config['dir_html'].'login.html')
+        require_once($this->config['dir_html'].'login.html');
     }
 
 }

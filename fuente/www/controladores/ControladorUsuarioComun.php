@@ -78,9 +78,6 @@
             $vista->mostrar();
         }
     
-        public function verLogin(){
-            $vista = new VerInicio($this->config);
-            $vista->mostrarLogin();
-        }
+
       
     }
