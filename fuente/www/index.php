@@ -50,8 +50,8 @@
             }
         
         //Routing: procesamiento de la petición
-        $controlador = $_GET['controlador'] ?? 'ControladorInicio'; // de esta manera si no se le apsan parametros se usa por defecto el ControladorInicio
-        $metodo = $_GET['metodo'] ?? 'verInicio'; //Así se manda a ver el index.html al poner la url sin parametros
+        $controlador = $_GET['controlador'] ?? 'ControladorRecibidor'; // de esta manera si no se le apsan parametros se usa por defecto el ControladorRecibidor
+        $metodo = $_GET['metodo'] ?? 'verRecibidor'; //Así se manda a ver el index.html al poner la url sin parametros
 
         $controlador = new $controlador($config); //Acceso a los parámetros de la configuración 
         $controlador->$metodo();

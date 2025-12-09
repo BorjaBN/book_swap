@@ -1,6 +1,6 @@
 <?php
 
-class VerInicio {
+class VerRecibidor {
 
     private $config;
 
@@ -9,7 +9,7 @@ class VerInicio {
     }
 
     public function mostrar(){
-        require_once($this->config['dir_html'].'inicio.html');
+        require_once($this->config['dir_html'].'recibidor.html');
     }
 
     public function mostrarOpcion(){

@@ -1,33 +1,37 @@
 <?php
 /**
- * ControladorInicio
+ * ControladorRecibidor
  *  Responsabilidad:
  *  - Gestionar la navegación entre vistas
  *  - Mostrar las pantallas principales (HTML Y/O PHP)
  */
 
-class ControladorInicio {
+class ControladorRecibidor {
 
-    protected $config;
+    private $config;
 
     public function __construct($config){
         $this->config = $config;
     }
 
-    public function verInicio(){
-        $vista = new VerInicio($this->config);
+    public function verRecibidor(){
+        $vista = new verRecibidor($this->config);
         $vista->mostrar();
 
     }
 
     public function verOpcionRegistro(){
-        $vista = new VerInicio($this->config);
+        $vista = new verRecibidor($this->config);
         $vista->mostrarOpcion();
     }
 
     public function verLogin(){
-            $vista = new VerInicio($this->config);
+            $vista = new verRecibidor($this->config);
             $vista->mostrarLogin();
+    }
+
+    public function login(){
+        
     }
 
     

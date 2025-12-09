@@ -143,7 +143,7 @@
     
       <h2 class="mb-4">Inicia sesión</h2>
       
-      <form method="POST" action="index.php?accion=controladorAutenticacion.login" class="text-start" id="formulario">
+      <form method="POST" action="index.php?controlador=controladorAutenticacion&metodo=login" class="text-start" id="formulario">
       <input type="hidden" name="accion" value="login">
 
         <div class="mb-3">
@@ -163,7 +163,7 @@
 
       <p class="text-center mt-3">
         ¿No tienes cuenta? 
-        <a href="?controlador=ControladorInicio&metodo=verOpcionRegistro" style="color:#3f4e2c; text-decoration:none;">Regístrate aquí</a>
+        <a href="?controlador=ControladorRecibidor&metodo=verOpcionRegistro" style="color:#3f4e2c; text-decoration:none;">Regístrate aquí</a>
       </p>
     </div>
   </main>
