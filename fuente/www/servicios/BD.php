@@ -39,7 +39,7 @@ class BD{
 
     }
 
-    public function seleccionar($sql, $parametros = null){
+    public function seleccionarTodos($sql, $parametros = null){
         $sentencia = $this->conexion->prepare($sql);
         $sentencia->execute($parametros);
         return $sentencia->fetchAll(PDO::FETCH_ASSOC);

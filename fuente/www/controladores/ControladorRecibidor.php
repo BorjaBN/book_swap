@@ -24,15 +24,5 @@ class ControladorRecibidor {
         $vista = new verRecibidor($this->config);
         $vista->mostrarOpcion();
     }
-
-    public function verLogin(){
-            $vista = new verRecibidor($this->config);
-            $vista->mostrarLogin();
-    }
-
-    public function login(){
-        
-    }
-
     
 }
