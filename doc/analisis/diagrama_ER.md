@@ -1,4 +1,4 @@
-# DiAGRAMA DE ENTIDAD - RELACION
+# DIAGRAMA DE ENTIDAD - RELACIÓN
 
 En el siguiente apartado se presenta el modelo de entidad-relación de la plataforma BookSwap, donde se representan las entidades como rectángulos y las relaciones como rombos. 
 
