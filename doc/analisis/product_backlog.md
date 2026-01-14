@@ -4,31 +4,32 @@ Este product backlog recoge los requerimientos funcionales clave para el desarro
 
 1.  Registro de usuarios comunes
 2.  Registro de entidades culturales
-3.  Inicio/cierre de sesión
-4.  Edición del perfil de usuario
-5.  Eliminación del perfil de usuario
-6.  Consulta de datos de usuario
-7.  Consulta del muro de valoraciones
-8.  Consulta de solicitudes
-9.  Moderación del contenido de perfiles
-10.  Alta de libros
-11.  Edición de datos del libro
-12.  Eliminación de libros
-13.  Consulta de ficha de un libro
-14.  Consulta del catálogo completo
-15.  Búsqueda dentro del catálogo
-16.  Moderación del contenido de libros
-17.  Envío de solicitudes de intercambio
-18.  Recepción de solicitudes de intercambio
-19.  Aceptación/rechazo de solicitudes de intercambio
-20.  Recepción de créditos
-21.  Gasto de créditos
-22.  Consulta de créditos
-23.  Publicación o recepción de valoraciones
-24.  Moderación de los intercambios
-25.  Creación de evento cultural
-26.  Edición de datos del evento cultural
-27.  Eliminación de evento cultural
-28.  Consulta de eventos culturales
-29.  Eliminación de asistencia al evento
-30.  Moderación de eventos culturales
+3.  Inicio de sesión
+4.  Cierre de sesión
+5.  Edición del perfil de usuario
+6.  Eliminación del perfil de usuario
+7.  Consulta de datos de usuario
+8.  Consulta del muro de valoraciones
+9.  Consulta de solicitudes
+10.  Moderación del contenido de perfiles
+11.  Alta de libros
+12.  Edición de datos del libro
+13.  Eliminación de libros
+14.  Consulta de ficha de un libro
+15.  Consulta del catálogo completo
+16.  Búsqueda dentro del catálogo
+17.  Moderación del contenido de libros
+18.  Envío de solicitudes de intercambio
+19.  Recepción de solicitudes de intercambio
+20.  Aceptación/rechazo de solicitudes de intercambio
+21.  Recepción de créditos
+22.  Gasto de créditos
+23.  Consulta de créditos
+24.  Publicación o recepción de valoraciones
+25.  Moderación de los intercambios
+26.  Creación de evento cultural
+27.  Edición de datos del evento cultural
+28.  Eliminación de evento cultural
+29.  Consulta de eventos culturales
+30.  Eliminación de asistencia al evento
+31.  Moderación de eventos culturales
