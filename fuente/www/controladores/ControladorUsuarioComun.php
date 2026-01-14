@@ -43,7 +43,6 @@
                     'ciudad' => $ciudad
                 ];
 
-                
 
                 $this->verPerfil();
 
