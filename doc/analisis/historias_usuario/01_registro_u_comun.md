@@ -8,6 +8,6 @@ Criterios de aceptación:
 
     El correo electrónico no debe existir previamente en la base de datos.
 
-    Si el registro es exitoso, el sistema debe crear la cuenta y redirigir al perfil de usuario.
+    Si el registro es exitoso, el sistema debe crear la cuenta y redirigir al inicio.
 
     Si hay errores (campos que no cumplen las validaciones, correo electrónico duplicado), el sistema debe mostrar mensajes claros indicando el problema.
