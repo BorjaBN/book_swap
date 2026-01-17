@@ -5,7 +5,7 @@ Este documento describe la arquitectura tecnológica utilizada en el desarrollo 
 ### Entorno de desarrollo
 
 - **Sistema operativo:** Windows 11 Home 25H2  
-- **Servidor local:** XAMPP (Apache + MariaDB)  
+- **Servidor local:** MariaDB  
 - **Editor de código:** Visual Studio Code  
 - **Control de versiones:** Git + GitHub  
 - **Base de datos:** `bookswap` con tablas normalizadas según el modelo entidad-relación definido en el análisis del sistema
@@ -15,9 +15,11 @@ Este documento describe la arquitectura tecnológica utilizada en el desarrollo 
 
 |Tecnología      | Versión instalada|
 |:-------------- |:---------------- |
-| **PHP**        | 8.0.30           | 
+| **Laravel**    |  5.24.0          | 
+| **PHP**        | 8.4.0            | 
 | **MariaDB**    | 10.4.32          | 
-| **phpMyAdmin** | 5.2.1            | 
+| **phpMyAdmin** | 5.2.1            |
+| **MySQLWorkbench** | 8.0.45           |  
 | **Apache**     | 2.4.58           | 
 | **HTML**       | HTML5            |   
 | **CSS**        | CSS3 y algunos módulos de nivel 4|
