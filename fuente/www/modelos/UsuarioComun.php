@@ -32,7 +32,7 @@
          */
         public function emailRegistrado(){
             $sql = "SELECT COUNT(*) FROM user_comun WHERE email_user_comun = ?";
-            $resultado = $this->baseDatos->seleccionar($sql, [$this->email]);
+            $resultado = $this->baseDatos->seleccionarTodos($sql, [$this->email]);
             return $resultado[0]["COUNT(*)"] > 0;
         }
 

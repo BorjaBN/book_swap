@@ -52,8 +52,8 @@ class ControladorAutenticacion{
                 $_SESSION['usuario_id'] = $id;
 
             
-                $controlador = new ControladorMenu($this->config);
-                $controlador->verMenu();
+                $controlador = new ControladorInicio($this->config);
+                $controlador->verInicio();
 
             } else {
 
