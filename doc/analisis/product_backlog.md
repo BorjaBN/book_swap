@@ -2,33 +2,38 @@
 
 Este product backlog recoge los requerimientos funcionales clave para el desarrollo de BookSwap.
 
-1.  Registro de usuarios comunes
-2.  Registro de entidades comunes
-3.  Inicio/cierre de sesión
-4.  Edición del perfil de usuario
-5.  Eliminación del perfil de usuario
-6.  Consulta de datos de usuario
-7.  Consulta del muro de valoraciones
-8.  Consulta de solicitudes
-9.  Moderación del contenido de perfiles
-10.  Alta de libros
-11.  Edición de datos del libro
-12.  Eliminación de libros
-13.  Consulta de ficha de un libro
-14.  Consulta del catálogo completo
-15.  Búsqueda dentro del catálogo
-16.  Moderación del contenido de libros
-17.  Envío de solicitudes de intercambio
-18.  Recepción de solicitudes de intercambio
-19.  Aceptación/rechazo de solicitudes de intercambio
-20.  Recepción de créditos
-21.  Gasto de créditos
-22.  Consulta de créditos
-23.  Publicación o recepción de valoraciones
-24.  Moderación de los intercambios
-25.  Creación de evento cultural
-26.  Edición de datos del evento cultural
-27.  Eliminación de evento cultural
-28.  Consulta de eventos culturales
-29.  Eliminación de asistencia al evento
-30.  Moderación de eventos culturales
+## ÉPICA 1 - Autenticación y gestión de cuentas
+
+HU1.  Registro de usuarios comunes
+HU2.  Registro de entidades comunes
+HU3.  Inicio de sesión
+HU4.  Cierre de sesión
+HU5.  Consulta de datos de usuario
+HU6.  Edición del perfil de usuario 
+HU7.  Eliminación del perfil de usuario
+
+## ÉPICA 2 - Gestión de libros
+
+HU8.  Alta de libros
+HU9.  Edición de datos del libro
+HU10.  Eliminación de libros
+HU11.  Consulta de libros propios publicados
+HU12.  Consulta de ficha de un libro
+HU13.  Consulta del catálogo completo
+HU14.  Búsqueda dentro del catálogo
+HU15.  Envío de solicitudes de intercambios
+
+## ÉPICA 3 - Sistema de créditos
+
+HU16.  Recepción de créditos
+HU17.  Gasto de créditos
+HU18.  Consulta de créditos
+HU19.  Consulta de movimiento de créditos
+
+## ÉPICA 4 - Gestión de eventos culturales
+
+HU20.  Creación de evento cultural
+HU21.  Consulta de listado de eventos culturales
+HU22.  Consulta de eventos propios publicados
+HU23.  Edición de datos del evento cultural
+HU24.  Eliminación de evento cultural
