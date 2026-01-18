@@ -10,7 +10,7 @@ Criterios de aceptación:
 
     Se muestran los datos actuales del libro (título, autor, ISBN, estado, genero (opcional), fecha de publicación y foto).
 
-    Puede modificar todos los campos.
+    El usuario puede modificar todos los campos.
 
     Los cambios se validan antes de guardar y, en caso de error, se muestra en el formulario impidiendo que se guarden los cambios.
 
