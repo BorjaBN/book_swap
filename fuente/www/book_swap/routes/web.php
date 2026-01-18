@@ -3,17 +3,20 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Auth\LoginControlador;
 use App\Http\Controllers\Auth\RegistroControlador;
-use App\Http\Controllers\LibroControlador; 
-use App\Http\Controllers\EventoControlador;
+use App\Http\Controllers\LibroController;
+use App\Http\Controllers\EventoController;
 
 
-// Rutas públicas
+// -------------------------------------------------------------
+// RUTAS PÚBLICAS
+// -------------------------------------------------------------
+
 Route::get('/', function () {
     return view('welcome');
 })->name('home');
 
 // -------------------------------------------------------------
-// A PARTIR DE AQUÍ login, registro y logout
+// LOGIN, REGISTRO Y LOGOUT
 // -------------------------------------------------------------
 
 // Login
@@ -27,42 +30,17 @@ Route::post('/register', [RegistroControlador::class, 'register']);
 // Logout
 Route::post('/logout', [LoginControlador::class, 'logout'])->name('logout');
 
-// Dashboard (protegido)
+// -------------------------------------------------------------
+// RUTAS PROTEGIDAS
+// -------------------------------------------------------------
+
+// Dashboard
 Route::get('/dashboard', function () {
     return view('dashboard');
-})->middleware('auth')->name('dashboard');
+})->middleware('auth:web')->name('dashboard');
 
+// Libros (solo usuarios comunes)
+Route::resource('libros', LibroController::class)->middleware('auth:web');
 
-// -------------------------------------------------------------
-// A PARTIR DE AQUÍ libros y eventos
-// -------------------------------------------------------------
-
-// Libros (público)
-Route::get('/libros', [LibroControlador::class, 'listarLibros'])->name('libros.index');
-Route::get('/libros/{libro}', [LibroControlador::class, 'verLibro'])->name('libros.show');
-
-// Eventos (público)
-Route::get('/eventos', [EventoControlador::class, 'listarEventos'])->name('eventos.index');
-Route::get('/eventos/{evento}', [EventoControlador::class, 'verEvento'])->name('eventos.show');
-
-// RUTAS PROTEGIDAS (solo usuarios comunes)
-Route::middleware('auth:web')->group(function () {
-
-    // Gestión de libros
-    Route::get('/mis-libros/crear', [LibroControlador::class, 'formularioCrearLibro'])->name('libros.create');
-    Route::post('/mis-libros', [LibroControlador::class, 'guardarLibro'])->name('libros.store');
-    Route::get('/mis-libros/{libro}/editar', [LibroControlador::class, 'formularioEditarLibro'])->name('libros.edit');
-    Route::put('/mis-libros/{libro}', [LibroControlador::class, 'actualizarLibro'])->name('libros.update');
-    Route::delete('/mis-libros/{libro}', [LibroControlador::class, 'eliminarLibro'])->name('libros.destroy');
-});
-
-// RUTAS PROTEGIDAS (solo entidades culturales)
-Route::middleware('auth:entidad')->group(function () {
-
-    // Gestión de eventos
-    Route::get('/mis-eventos/crear', [EventoControlador::class, 'formularioCrearEvento'])->name('eventos.create');
-    Route::post('/mis-eventos', [EventoControlador::class, 'guardarEvento'])->name('eventos.store');
-    Route::get('/mis-eventos/{evento}/editar', [EventoControlador::class, 'formularioEditarEvento'])->name('eventos.edit');
-    Route::put('/mis-eventos/{evento}', [EventoControlador::class, 'actualizarEvento'])->name('eventos.update');
-    Route::delete('/mis-eventos/{evento}', [EventoControlador::class, 'eliminarEvento'])->name('eventos.destroy');
-});
+// Eventos (solo entidades culturales)
+Route::resource('eventos', EventoController::class)->middleware('auth:entidad');

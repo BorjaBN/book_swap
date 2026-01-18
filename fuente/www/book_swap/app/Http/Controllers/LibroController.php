@@ -5,8 +5,9 @@ namespace App\Http\Controllers;
 use App\Models\Libro;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Storage;
 
-class LibroControlador extends Controller
+class LibroController extends Controller
 {
     /**
      * Muestra todos los libros publicados, con su propietario, ordenados por fecha, y los muestra en un listado paginado
@@ -15,8 +16,8 @@ class LibroControlador extends Controller
      * - Ordena los libros de más recientes a más antiguos.
      * - Divide el resultado en páginas de 12 libros.
      * - Saca los libros por la vista
-     */ 
-    public function listarLibros()
+     */
+    public function index()
     {
         
         $libros = Libro::with('propietario')
@@ -29,7 +30,7 @@ class LibroControlador extends Controller
     /**
      * Muestra el formulario para crear un libro (crea el libro)
      */ 
-    public function formularioCrearLibro()
+    public function create()
     {
         return view('libros.create');
     }
@@ -41,7 +42,7 @@ class LibroControlador extends Controller
      * - Obtiene al usuario autenticado que está creando el libro.
      * - Guarda la iamgen en el servidor.
      */
-    public function guardarLibro(Request $request)
+    public function store(Request $request)
     {
         $validated = $request->validate([
             'titulo_libro' => 'required|max:150',
@@ -68,14 +69,13 @@ class LibroControlador extends Controller
             ->with('success', 'Libro registrado correctamente.');
     }
 
-
     /**
      * VER detalle de un libro
      * - Recibe un libro.
      * - Carga la relación con el propietario.
      * - Envía el libro a la vista.
      */
-    public function verLibro(Libro $libro)
+    public function show(Libro $libro)
     {
         
         $libro->load('propietario');
@@ -89,8 +89,8 @@ class LibroControlador extends Controller
      * - Obtiene el usuario autenticado también.
      * - Comprueba que el libro pertenece al usuario.
      * - Muestra la vista de edición (el formulario).
-     */ 
-    public function formularioEditarLibro(Libro $libro)
+     */
+    public function edit(Libro $libro)
     {
         $user = Auth::guard('web')->user();
 
@@ -107,9 +107,9 @@ class LibroControlador extends Controller
      * - Valida que los datos sean correctos.
      * - Obtiene al usuario autenticado.
      * - Si se cambia la imagen, la guarda en el servidor.
-     * - Crea el libro en la base de datos.
-     */  
-    public function actualizarLibro(Request $request, Libro $libro)
+     * - Actualiza el libro en la base de datos.
+     */ 
+    public function update(Request $request, Libro $libro)
     {
         $user = Auth::guard('web')->user();
  
@@ -143,7 +143,6 @@ class LibroControlador extends Controller
             ->route('libros.index')
             ->with('success', 'Libro actualizado correctamente.');
     }
-    
 
     /**
      * ELIMINAR el libro
@@ -151,7 +150,7 @@ class LibroControlador extends Controller
      * - Elimina la imagen del servidor.
      * - Elimina el libro de la base de datos.
      */
-    public function eliminarLibro(Libro $libro)
+    public function destroy(Libro $libro)
     {
         $user = Auth::guard('web')->user();
  
@@ -167,8 +166,6 @@ class LibroControlador extends Controller
 
         return redirect()
             ->route('libros.index')
-            ->with('success', 'Libro eliminado corréctamente.');
+            ->with('success', 'Libro eliminado correctamente.');
     }
-
-   
 }

@@ -2,9 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\EventoCultural;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
-class EventoControlador extends Controller
+class EventoController extends Controller
 {
     /**
      * Muestra todos los eventos publicados, con su propietario, ordenados por fecha, y los muestra en un listado paginado
@@ -14,7 +16,7 @@ class EventoControlador extends Controller
      * - Divide el resultado en páginas de 9 eventos.
      * - Saca los eventos por la vista
      */ 
-    public function listarEventos()
+    public function index()
     {
         $eventos = EventoCultural::with('entidad')
             ->where('fecha_evento', '>=', now()->toDateString())
@@ -24,11 +26,10 @@ class EventoControlador extends Controller
         return view('eventos.index', compact('eventos'));
     }
 
-
     /**
      * Muestra el formulario para crear un evento (crea el evento)
      */
-    public function formularioCrearEvento()
+    public function create()
     {
         return view('eventos.create');
     }
@@ -40,11 +41,11 @@ class EventoControlador extends Controller
      * - Obtiene al entidad cultural autenticada que está creando el evento.
      * - Crea el evento asociandolo a la entidad.
      */
-    public function guardarEvento(Request $request)
+    public function store(Request $request)
     {
         $validated = $request->validate([
             'nombre_evento' => 'required|max:150',
-            'fecha_evento' => 'required|date|after: today',
+            'fecha_evento' => 'required|date|after:today',
             'descripcion_evento' => 'required',
             'ubicacion_evento' => 'required|max:150',
             'tipo_evento' => 'required|in:encuentro con autor/a,club de lectura,feria del libro',
@@ -65,7 +66,7 @@ class EventoControlador extends Controller
      * - Carga la relación con entidad que lo "organiza".
      * - Envía el evento a la vista.
      */
-    public function verEvento(EventoCultural $evento)
+    public function show(EventoCultural $evento)
     {
         $evento->load('entidad');
 
@@ -78,8 +79,8 @@ class EventoControlador extends Controller
      * - Obtiene la entidad cultural autenticada también.
      * - Comprueba que el evento pertenece a la entidad cultural.
      * - Muestra la vista de edición (el formulario).
-     */ 
-    public function formularioEditarEvento(EventoCultural $evento)
+     */
+    public function edit(EventoCultural $evento)
     {
         $entidad = Auth::guard('entidad')->user();
 
@@ -96,9 +97,9 @@ class EventoControlador extends Controller
      * - Obtiene a la entidad cultural autenticada.
      * - Verific que el evento pertenece a esa entidad.
      * - Valida que los datos sean correctos.
-     * - Crea el evento en la base de datos.
-     */ 
-    public function actualizarEvento(Request $request, EventoCultural $evento)
+     * - Actualiza el evento en la base de datos.
+     */
+    public function update(Request $request, EventoCultural $evento)
     {
         $entidad = Auth::guard('entidad')->user();
 
@@ -127,7 +128,7 @@ class EventoControlador extends Controller
      * - Comprueba que el evento pertenece a la entidad cultural creadora de dicho evento.
      * - Elimina el evento de la base de datos.
      */
-    public function eliminarEvento(EventoCultural $evento)
+    public function destroy(EventoCultural $evento)
     {
         $entidad = Auth::guard('entidad')->user();
 
@@ -142,3 +143,4 @@ class EventoControlador extends Controller
             ->with('success', 'Evento eliminado');
     }
 }
+
