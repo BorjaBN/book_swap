@@ -1,34 +1,27 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\Auth\LoginController;
+use App\Http\Controllers\Auth\RegisterController;
 
-// Pantalla de bienvenida
+
+// Rutas públicas
 Route::get('/', function () {
-    return view('bienvenida');
-})->name('bienvenida');
+    return view('welcome');
+})->name('home');
 
-// Pantalla de selección de tipo de registro
-Route::get('/register', function () {
-   return view('decision-registro');
-})->name('decisionRegistro');
+// Login
+Route::get('/login', [LoginController::class, 'showLoginForm'])->name('login');
+Route::post('/login', [LoginController::class, 'login']);
 
-// Registro como usuario común
-Route::get('/register/usuario', function () {
-    return view('registro-u-comun');
-})->name('registroUComun');
+// Registro
+Route:: get('/register', [RegisterController:: class, 'showRegistrationForm'])->name('register');
+Route::post('/register', [RegisterController::class, 'register']);
 
-// Registro como usuario común
-Route::post('/registro-ucomun', function () {
-    return 'Ruta provisional funcionando';
-})->name('registroUComun.store');
+// Logout
+Route::post('/logout', [LoginController::class, 'logout'])->name('logout');
 
-
-// Registro como entidad cultural
-Route::get('/register/entidad', function () {
-    return 'registro entidad cultural';
-})->name('registroECultural');
-
-// Registro como entidad cultural
-Route::get('/login', function () {
-    return 'Inicio sesión';
-})->name('inicioSesion');
+// Dashboard (protegido)
+Route::get('/dashboard', function () {
+    return view('dashboard');
+})->middleware('auth')->name('dashboard');
