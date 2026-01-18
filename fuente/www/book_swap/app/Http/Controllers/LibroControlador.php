@@ -6,7 +6,7 @@ use App\Models\Libro;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
-class LibroController extends Controller
+class LibroControlador extends Controller
 {
     /**
      * Muestra todos los libros publicados, con su propietario, ordenados por fecha, y los muestra en un listado paginado

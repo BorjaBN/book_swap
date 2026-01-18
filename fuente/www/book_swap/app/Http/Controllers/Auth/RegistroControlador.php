@@ -9,7 +9,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 
-class RegisterController extends Controller
+class RegistroControlador extends Controller
 {
     // Mostrar formulario de registro
     public function showRegistrationForm()
