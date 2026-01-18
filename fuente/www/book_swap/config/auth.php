@@ -15,7 +15,7 @@ return [
 
     'defaults' => [
         'guard' => env('AUTH_GUARD', 'web'),
-        'passwords' => env('AUTH_PASSWORD_BROKER', 'users'),
+        'passwords' => env('AUTH_PASSWORD_BROKER', 'usuario_comun'),
     ],
 
     /*
@@ -36,9 +36,16 @@ return [
     */
 
     'guards' => [
+        // Guard para usuarios comunes
         'web' => [
             'driver' => 'session',
-            'provider' => 'users',
+            'provider' => 'usuario_comun',
+        ],
+
+        // Guard para entidades culturales
+        'entidad' => [
+            'driver' => 'session',
+            'provider' => 'entidad_cultural',
         ],
     ],
 
@@ -59,17 +66,25 @@ return [
     |
     */
 
-    'providers' => [
-        'users' => [
+     'providers' => [
+        // Provider para usuario común
+        'usuario_comun' => [
             'driver' => 'eloquent',
-            'model' => env('AUTH_MODEL', App\Models\User::class),
+            'model' => App\Models\UsuarioComun::class,
+        ],
+
+        // Provider para entidad cultural
+        'entidad_cultural' => [
+            'driver' => 'eloquent',
+            'model' => App\Models\EntidadCultural::class,
+        ],
         ],
 
         // 'users' => [
         //     'driver' => 'database',
         //     'table' => 'users',
         // ],
-    ],
+
 
     /*
     |--------------------------------------------------------------------------

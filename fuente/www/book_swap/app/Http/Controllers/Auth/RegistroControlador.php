@@ -40,7 +40,7 @@ class RegistroControlador extends Controller
                 'nombre_usuario_comun' => $peticion->nombre,
                 'apellidos_usuario_comun' => $peticion->apellidos,
                 'email_usuario_comun' => $peticion->email,
-                'pass_usuario_comun' => Hash::make($peticion->clave),
+                'password' => Hash::make($peticion->password),
                 'telefono_usuario_comun' => $peticion->telefono,
                 'ciudad_usuario_comun' => $peticion->ciudad,
             ]);
@@ -53,7 +53,7 @@ class RegistroControlador extends Controller
             $entidad = EntidadCultural::create([
                 'nombre_entidad_cultural' => $peticion->nombre_entidad,
                 'email_entidad_cultural' => $peticion->email,
-                'pass_entidad_cultural' => Hash::make($peticion->clave),
+                'password' => Hash::make($peticion->password),
                 'telefono_entidad_cultural' => $peticion->telefono,
                 'ciudad_entidad_cultural' => $peticion->ciudad,
                 'nif_entidad_cultural' => $peticion->nif,
@@ -64,7 +64,7 @@ class RegistroControlador extends Controller
             Auth::guard('entidad')->login($entidad);
         }
 
-        return redirect('/inicio');
+        return redirect('inicio');
     }
 
 }

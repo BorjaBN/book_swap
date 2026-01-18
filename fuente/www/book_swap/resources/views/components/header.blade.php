@@ -7,7 +7,7 @@
                 Registrarse
             </x-button>
 
-            <x-button href="{{ route('inicioSesion') }}" variant="btn-custom btn-login">
+            <x-button href="{{ route('formularioInicioSesion') }}" variant="btn-custom btn-login">
                 Iniciar sesión
             </x-button>
 

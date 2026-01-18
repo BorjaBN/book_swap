@@ -21,7 +21,7 @@
                 <x-input label="Nombre" name="nombre" required />
                 <x-input label="Apellidos" name="apellidos" required />
                 <x-input label="Correo electrónico" name="email" type="email" required />
-                <x-input label="Contraseña" name="clave" type="password" required />
+                <x-input label="Contraseña" name="password" type="password" required />
                 <x-input label="Teléfono" name="telefono" required />
                 <x-input label="Ciudad" name="ciudad" required />
             @endif
@@ -33,7 +33,7 @@
                 <x-input label="Teléfono" name="telefono" required />
                 <x-input label="Sitio web" name="web" type="url" />
                 <x-input label="Correo electrónico" name="email" type="email" required />
-                <x-input label="Contraseña" name="clave" type="password" required />
+                <x-input label="Contraseña" name="password" type="password" required />
                 <x-input label="Dirección" name="direccion" required />
                 <x-input label="Ciudad" name="ciudad" required />
             @endif

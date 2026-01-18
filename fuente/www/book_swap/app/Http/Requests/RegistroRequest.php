@@ -17,7 +17,7 @@ class RegistroRequest extends FormRequest
         $rules = [
             'tipo_usuario' => 'required|in:comun,entidad',
             'email' => 'required|email',
-            'clave' => 'required|min:6',
+            'password' => 'required|min:6',
             'telefono' => 'required',
             'ciudad' => 'required',
         ];
