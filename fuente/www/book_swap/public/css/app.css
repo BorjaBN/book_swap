@@ -1,0 +1,234 @@
+/* =========================================================
+   RESET Y TIPOGRAFÍA
+========================================================= */
+html, body {
+  margin: 0;
+  padding: 0;
+  font-family: 'Open Sans', sans-serif;
+
+  /* Fondo general */
+  background: url('/img/bg_libros.jpg') center/cover no-repeat fixed;
+  background-color: #FFF4EE;
+  color: #3f4e2c;
+}
+
+/* Suavizar la foto del fondo */
+body::before {
+  content: "";
+  position: fixed;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background: rgba(255, 244, 238, 0.55); /* controla transparencia */
+  pointer-events: none;
+  z-index: -1;
+}
+
+h1, h2, h3 {
+  font-family: 'Playfair Display', serif;
+  font-weight: 700;
+  color: #3f4e2c;
+}
+
+/* =========================================================
+   HEADER
+========================================================= */
+header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  padding: 15px 30px;
+  background-color: rgba(255, 244, 238, 0.95);
+  backdrop-filter: blur(6px);
+
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+  z-index: 100;
+}
+
+.logo-header {
+  max-width: 100px;
+  height: auto;
+}
+
+/* =========================================================
+   HERO
+========================================================= */
+.hero {
+  padding: 110px 20px 40px; /* espacio para header y menos hueco */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+
+.hero-content {
+  background: rgba(255, 255, 255, 0.92);
+  border-radius: 14px;
+  padding: 40px 35px;
+  max-width: 650px;
+  width: 100%;
+
+  box-shadow: 0 6px 18px rgba(0,0,0,0.15);
+  backdrop-filter: blur(4px);
+}
+
+.hero-title {
+  font-size: 2.4rem;
+  margin-bottom: 15px;
+}
+
+.hero-subtitle {
+  font-size: 1.15rem;
+  color: #505e3f;
+  margin-bottom: 25px;
+}
+
+.hero .logo {
+  width: 110px;
+  opacity: 0.9;
+}
+
+/* =========================================================
+   FORM CARD
+========================================================= */
+.formulario-tarjeta {
+  background: rgba(255, 255, 255, 0.95);
+  border-radius: 14px;
+  padding: 35px;
+  max-width: 500px;
+  width: 100%;
+  margin: 20px auto; /* menos espacio entre hero y tarjeta */
+
+  box-shadow: 0 6px 18px rgba(0,0,0,0.15);
+  backdrop-filter: blur(4px);
+}
+
+/* =========================================================
+   INPUTS
+========================================================= */
+.form-control {
+  width: 100%;
+  padding: 12px 14px;
+  border-radius: 8px;
+  border: 1px solid #c7b8a8;
+  background: #fff;
+  font-size: 15px;
+  transition: all 0.2s ease;
+}
+
+.form-control:focus {
+  border-color: #3f4e2c;
+  box-shadow: 0 0 0 3px rgba(63, 78, 44, 0.25);
+  outline: none;
+}
+
+/* =========================================================
+   BOTONES
+========================================================= */
+.btn-custom {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  padding: 12px 28px;
+  border-radius: 8px;
+  font-size: 15px;
+  font-weight: 600;
+  text-decoration: none;
+
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.btn-registrarse {
+  background-color: #3f4e2c;
+  color: #FFF4EE;
+}
+
+.btn-registrarse:hover {
+  background-color: #718d5c;
+  transform: translateY(-2px);
+}
+
+.btn-login {
+  background-color: #FFF4EE;
+  color: #3f4e2c;
+  border: 1px solid #3f4e2c;
+}
+
+.btn-login:hover {
+  background-color: #e6e0d8;
+  transform: translateY(-2px);
+}
+
+.btn-form-primary {
+  background-color: #3f4e2c;
+  color: #FFF4EE;
+  padding: 12px;
+  border-radius: 8px;
+  font-weight: 600;
+}
+
+.btn-form-primary:hover {
+  background-color: #4f6240;
+  transform: translateY(-2px);
+}
+
+/* =========================================================
+   FOOTER
+========================================================= */
+footer {
+  background-color: rgba(255, 244, 238, 0.95);
+  padding: 20px;
+  text-align: center;
+  font-size: 14px;
+  color: #505e3f;
+  margin-top: 40px;
+  backdrop-filter: blur(4px);
+}
+
+footer nav {
+  display: flex;
+  justify-content: center;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+footer a {
+  color: #3f4e2c;
+  text-decoration: none;
+}
+
+footer a:hover {
+  text-decoration: underline;
+}
+
+/* =========================================================
+   RESPONSIVE
+========================================================= */
+@media (max-width: 768px) {
+  .hero-title {
+    font-size: 2rem;
+  }
+
+  .hero-content {
+    padding: 30px 25px;
+  }
+
+  .form-card {
+    max-width: 90%;
+  }
+}
+
+@media (max-width: 480px) {
+  .hero-title {
+    font-size: 1.7rem;
+  }
+
+  .btn-custom {
+    padding: 10px 20px;
+    font-size: 14px;
+  }
+
+  .hero {
+    padding: 90px 20px 30px;
+  }
+}
