@@ -2,9 +2,12 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Model;
+use Illuminate\Foundation\Auth\User as Authenticatable;
+use Illuminate\Notifications\Notifiable;
 
-class UsuarioComun extends Model
+
+
+class UsuarioComun extends Authenticatable
 {
     // Tabla usa este modelo
     protected $table = 'usuario_comun';
@@ -21,6 +24,18 @@ class UsuarioComun extends Model
         'telefono_usuario_comun',
         'ciudad_usuario_comun',
     ];
+
+    // Laravel busca "password" pero nosotros usamos "pass_usuario_comun"
+    public function getAuthPassword()
+    {
+        return $this->pass_usuario_comun;
+    }
+
+    // Para reset de contraseña
+    public function getEmailForPasswordReset()
+    {
+        return $this->email_usuario_comun;
+    }
     
     // Relación:  Un usuario tiene UNA cartera
     public function cartera()

@@ -2,9 +2,10 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Model;
+use Illuminate\Foundation\Auth\User as Authenticatable;
+use Illuminate\Notifications\Notifiable;
 
-class EntidadCultural extends Model
+class EntidadCultural extends Authenticatable
 {
     // Tabla que usa 
     protected $table = 'entidad_cultural';
@@ -27,6 +28,16 @@ class EntidadCultural extends Model
     
     // Ocultar contraseña al convertir a JSON
     protected $hidden = ['pass_entidad_cultural'];
+    
+    public function getAuthPassword()
+    {
+        return $this->pass_entidad_cultural;
+    }
+
+    public function getEmailForPasswordReset()
+    {
+        return $this->email_entidad_cultural;
+    }
     
     // RELACIÓN: Una entidad tiene muchos eventos
     public function eventos()
