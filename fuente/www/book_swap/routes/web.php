@@ -1,27 +1,37 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\Auth\LoginController;
-use App\Http\Controllers\Auth\RegisterController;
+use App\Http\Controllers\Auth\RegistroControlador;
 
 
-// Rutas públicas
+//-----------------------------
+//PARA USUARIOS NO REGISTRADOS
+//-----------------------------
+
+// Pantalla de bienvenida
 Route::get('/', function () {
-    return view('welcome');
-})->name('home');
+    return view('bienvenida');
+})->name('bienvenida');
 
-// Login
-Route::get('/login', [LoginController::class, 'showLoginForm'])->name('login');
-Route::post('/login', [LoginController::class, 'login']);
+// Pantalla de selección de tipo de registro
+Route::get('/registro',[RegistroControlador::class, 'mostrardecisionRegistro'])->name('decisionRegistro');
 
-// Registro
-Route:: get('/register', [RegisterController:: class, 'showRegistrationForm'])->name('register');
-Route::post('/register', [RegisterController::class, 'register']);
+// Formulario de registro
+Route::get('/registro/{tipo}',[RegistroControlador::class, 'mostrarFormulario'])->name('formularioRegistro');
 
-// Logout
-Route::post('/logout', [LoginController::class, 'logout'])->name('logout');
+//Hacer el registro en la BD
+Route::post('/registro/{tipo}/registrar',[RegistroControlador::class, 'registrar'])->name('registrar');
 
-// Dashboard (protegido)
-Route::get('/dashboard', function () {
-    return view('dashboard');
-})->middleware('auth')->name('dashboard');
+
+
+
+
+// Registro como entidad cultural
+Route::get('/inicio', function () {
+    return 'Inicio sesión';
+})->name('inicio');
+
+// Registro como entidad cultural
+Route::get('/login', function () {
+    return 'Inicio sesión';
+})->name('inicioSesion');

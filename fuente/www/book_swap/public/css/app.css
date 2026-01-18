@@ -6,21 +6,19 @@ html, body {
   padding: 0;
   font-family: 'Open Sans', sans-serif;
 
-  /* Fondo general */
   background: url('/img/bg_libros.jpg') center/cover no-repeat fixed;
   background-color: #FFF4EE;
   color: #3f4e2c;
 }
 
-/* Suavizar la foto del fondo */
-body::before {
+  body::before {
   content: "";
   position: fixed;
   top: 0; left: 0; right: 0; bottom: 0;
-  background: rgba(255, 244, 238, 0.55); /* controla transparencia */
+  background: rgba(255, 244, 238, 0.85); /* misma atmósfera que header/footer */
   pointer-events: none;
-  z-index: -1;
 }
+
 
 h1, h2, h3 {
   font-family: 'Playfair Display', serif;
