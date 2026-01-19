@@ -49,6 +49,7 @@ class UsuarioComun extends Authenticatable
         return $this->hasMany(Libro::class, 'id_usuario_comun', 'id_usuario_comun');
     }
 
+
     // Cuando se crea un usuario crea una cartera de creditos nuevita
     protected static function boot()
     {

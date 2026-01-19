@@ -2,6 +2,11 @@
 
 @section('titulo')
 
+@push('estilos')
+    {{-- Carga el CSS público con fondo de imagen --}}
+    <link rel="stylesheet" href="{{ asset('css/app-publico.css') }}">
+@endpush
+
 @section('header')
  <x-header :mostrarNav="true"/>
 @endsection

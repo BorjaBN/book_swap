@@ -16,7 +16,7 @@ class InicioController extends Controller
             $eventos = EventoCultural::latest()->take(5)->get();
             $libros = Libro::latest()->take(5)->get();
 
-            return "hola";
+            return view('inicio-u-comun', compact('libros', 'eventos'));
         }
 
         // Entidad cultural

@@ -32,3 +32,11 @@ Route::post('/inicioSesion/entrar',[InicioSesionControlador::class, 'iniciarSesi
 
 // Pantalla de Inicio
 Route::get('/inicio', [InicioController::class, 'index'])->name('inicio');
+
+Route::get('/intercambio', function () {
+    return 'intercambio';
+})->name('intercambio');
+
+Route::get('/logout', function () {
+    return 'logout';
+})->name('logout');

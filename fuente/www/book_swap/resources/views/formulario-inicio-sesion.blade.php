@@ -1,6 +1,11 @@
 @extends('layouts.app')
 
-@section('titulo', 'Iniciar sesión')
+@section('titulo', 'Inicio de sesión')
+
+@push('estilos')
+    {{-- Carga el CSS público con fondo de imagen --}}
+    <link rel="stylesheet" href="{{ asset('css/app-publico.css') }}">
+@endpush
 
 @section('header')
     <x-header :mostrarNav="false" />
