@@ -8,7 +8,7 @@ Criterios de aceptación:
 
     Se puede acceder a la ficha de cualquier libro publicado haciendo clic en el botón "Mas detalles".
 
-    La ficha muestra título, autor, ISBN, estado, genero (opcional), fecha de publicación, foto y el usuario al que pertenece el libro.
+    La ficha muestra título, autor, ISBN, estado, genero (opcional), fecha de publicación y el usuario al que pertenece el libro.
 
     La información es clara y legible.
 
