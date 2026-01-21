@@ -8,7 +8,7 @@
 @endpush
 
 @section('header')
-    <x-header :mostrarNav="false" />
+    <x-header :mostrarBienvenida="false" :mostrarCreditos="false" :mostrarCerrarSesion="false"/>
 @endsection
 
 @section('main')
@@ -46,7 +46,7 @@
 
             <x-button 
                 type="submit"
-                variant="btn-custom btn-registrarse mt-3"
+                variant="btn-primary mt-3"
             >
                 Registrarse en BookSwap
             </x-button>

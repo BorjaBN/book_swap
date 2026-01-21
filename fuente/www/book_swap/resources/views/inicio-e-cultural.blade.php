@@ -5,6 +5,10 @@
     <link rel="stylesheet" href="{{ asset('css/app-autenticado. css') }}">
 @endpush
 
+@section('header')
+    <x-header :mostrarBienvenida="false" :mostrarCreditos="true" :mostrarCerrarSesion="true"/>
+@endsection
+
 @section('main')
 <div class="container py-4">
     <h2>Panel de {{ Auth::guard('entidad')->user()->nombre_entidad_cultural }}</h2>

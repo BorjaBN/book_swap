@@ -8,7 +8,7 @@
 @endpush
 
 @section('header')
- <x-header :mostrarNav="false"/>
+ <x-header :mostrarBienvenida="false" :mostrarCreditos="false" :mostrarCerrarSesion="false"/>
 @endsection
 
 @section('main')

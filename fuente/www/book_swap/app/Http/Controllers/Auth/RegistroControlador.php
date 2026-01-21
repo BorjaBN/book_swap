@@ -14,7 +14,7 @@ class RegistroControlador extends Controller
     // Mostrar formulario de registro
     public function mostrarFormulario($tipo)
     {
-        $titulo = $tipo === 'común'
+        $titulo = $tipo === 'comun'
         ? 'Registro de usuario común'
         : 'Registro de entidad cultural';
 

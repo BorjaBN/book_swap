@@ -18,7 +18,7 @@
         @if($textoBoton && $hrefBoton)
             <x-button 
                 href="{{ $hrefBoton }}" 
-                variant="btn-custom btn-registrarse mt-3"
+                variant="btn-primary mt-3"
             >
                 {{ $textoBoton }}
             </x-button>

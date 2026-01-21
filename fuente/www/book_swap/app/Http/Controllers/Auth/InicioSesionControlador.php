@@ -46,8 +46,6 @@ class InicioSesionControlador extends Controller
 
 
 
-
-
     // Cerrar sesión
     public function cerrarSesion(Request $request)
     {

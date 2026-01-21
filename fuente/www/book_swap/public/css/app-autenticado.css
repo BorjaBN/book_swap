@@ -5,19 +5,21 @@ html, body {
   margin: 0;
   padding: 0;
   font-family: 'Open Sans', sans-serif;
-  background-color: #ffffff;
+  background-color: #FFF4EE;
   color: #3f4e2c;
-
-  /* Layout para footer abajo */
-  height: 100%;
-  display: flex;
-  flex-direction: column;
+  height: auto;
 }
 
 body {
-  min-height: 100vh;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    padding-bottom: 70px;
 }
 
+.page-wrapper {
+    flex: 1;
+}
 
 h1, h2, h3 {
   font-family: 'Playfair Display', serif;
@@ -32,11 +34,8 @@ header {
   display: flex;
   align-items: center;
   justify-content: space-between;
-
   padding: 15px 30px;
-  background-color: rgba(255, 244, 238, 0.95);
-  backdrop-filter: blur(6px);
-
+  background-color: #F5EDE7;
   box-shadow: 0 2px 8px rgba(0,0,0,0.1);
   z-index: 100;
 }
@@ -63,7 +62,6 @@ header {
   padding: 40px 35px;
   max-width: 650px;
   width: 100%;
-
   box-shadow: 0 6px 18px rgba(0,0,0,0.15);
   backdrop-filter: blur(4px);
 }
@@ -94,7 +92,6 @@ header {
   max-width: 500px;
   width: 100%;
   margin: 20px auto;
-
   box-shadow: 0 6px 18px rgba(0,0,0,0.15);
   backdrop-filter: blur(4px);
 }
@@ -119,68 +116,124 @@ header {
 }
 
 /* =========================================================
-   BOTONES
+   BOTONES PERSONALIZADOS
 ========================================================= */
-.btn-custom {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
 
-  padding: 12px 28px;
-  border-radius: 8px;
-  font-size: 15px;
-  font-weight: 600;
-  text-decoration: none;
-
-  transition: background-color 0.3s ease, transform 0.2s ease;
+/* Asegurar que los <a> botón queden por encima del overlay */
+a.btn,
+a[class*="btn-"] {
+  position: relative;
+  z-index: 300;
 }
 
-.btn-registrarse {
+/* Botón principal (verde) */
+.btn-primary {
   background-color: #3f4e2c;
   color: #FFF4EE;
-}
-
-.btn-registrarse:hover {
-  background-color: #718d5c;
-  transform: translateY(-2px);
-}
-
-.btn-login {
-  background-color: #FFF4EE;
-  color: #3f4e2c;
   border: 1px solid #3f4e2c;
-}
-
-.btn-login:hover {
-  background-color: #e6e0d8;
-  transform: translateY(-2px);
-}
-
-.btn-form-primary {
-  background-color: #3f4e2c;
-  color: #FFF4EE;
-  padding: 12px;
+  padding: 10px 20px;
   border-radius: 8px;
   font-weight: 600;
+  transition: background-color .2s ease, transform .2s ease;
 }
 
-.btn-form-primary:hover {
+.btn-primary:hover {
   background-color: #4f6240;
   transform: translateY(-2px);
 }
 
+/* Botón secundario */
+.btn-secondary {
+  background-color: #e6e0d8;
+  color: #3f4e2c;
+  border: 1px solid #c7b8a8;
+  padding: 10px 20px;
+  border-radius: 8px;
+  font-weight: 600;
+  transition: background-color .2s ease, transform .2s ease;
+}
+
+.btn-secondary:hover {
+  background-color: #cdd8c2;
+  border-color: #3f4e2c;
+  transform: translateY(-2px);
+}
+
+/* Botón ghost verde */
+.btn-primary-ghost {
+  background-color: transparent;
+  color: #3f4e2c;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 8px;
+  font-weight: 600;
+  transition: color .2s ease, background-color .2s ease, transform .2s ease;
+}
+
+.btn-primary-ghost:hover {
+  background-color: rgba(63, 78, 44, 0.1);
+  transform: translateY(-2px);
+}
+
+/* Botón ghost morado */
+.btn-tertiary-ghost {
+  background-color: transparent;
+  color: #896275;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 8px;
+  font-weight: 600;
+  transition: color .2s ease, background-color .2s ease, transform .2s ease;
+}
+
+.btn-tertiary-ghost:hover {
+  background-color: rgba(137, 98, 117, 0.12);
+  transform: translateY(-2px);
+}
+
 /* =========================================================
-   FOOTER
+   BOTTOM NAV (INTACTO)
+========================================================= */
+.bottom-nav {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    background: #ffffff;
+    border-top: 1px solid #ddd;
+    display: flex;
+    justify-content: space-around;
+    padding: 10px 0;
+    z-index: 999;
+}
+
+.bottom-nav a {
+    text-decoration: none;
+    color: #333;
+    font-weight: 600;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.8rem;
+}
+
+.bottom-nav a i {
+    font-size: 1.6rem;
+    margin-bottom: 3px;
+}
+
+/* =========================================================
+   FOOTER (INTACTO)
 ========================================================= */
 footer {
-  background-color: rgba(255, 244, 238, 0.95);
+  background-color: #F5EDE7;
   padding: 20px;
   text-align: center;
   font-size: 14px;
   color: #505e3f;
   backdrop-filter: blur(4px);
-
-  margin-top: auto; /* clave para fijarlo abajo */
+  margin-top: auto;
 }
 
 footer nav {
@@ -200,33 +253,107 @@ footer a:hover {
 }
 
 /* =========================================================
-   RESPONSIVE
+   ICONOS
 ========================================================= */
+i {
+  font-size: 2rem;
+}
+
+/* =========================================================
+   TARJETAS
+========================================================= */
+
+.tarjeta-wrapper {
+    width: 600px;
+    height: 600px;
+    perspective: 1000px;
+    position: relative;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.tarjeta-inner {
+    width: 100%;
+    height: 100%;
+    position: relative;
+    transition: transform .6s;
+    transform-style: preserve-3d;
+}
+
+.tarjeta-inner.flipped {
+    transform: rotateY(180deg);
+}
+
+.tarjeta-front,
+.tarjeta-back {
+    position: absolute;
+    inset: 0;
+    backface-visibility: hidden;
+    border-radius: .5rem;
+    overflow: hidden;
+}
+
+.tarjeta-back {
+    transform: rotateY(180deg);
+}
+
+.tarjeta-img-wrapper {
+    width: 100%;
+    aspect-ratio: 3 / 4;
+    overflow: hidden;
+    position: relative;
+    border-radius: .5rem;
+}
+
+.tarjeta-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    image-rendering: auto;
+    -webkit-backface-visibility: hidden;
+    backface-visibility: hidden;
+    transform: translateZ(0);
+}
+
+.placeholder {
+    background: linear-gradient(135deg, #6c757d, #495057);
+    height: 100%;
+    border-radius: .5rem;
+}
+
+.titulo-usuario {
+    font-family: 'Open Sans', sans-serif;
+    font-weight: 600;
+    color: #3f4e2c;
+}
+
+.titulo-libro {
+    font-family: 'Playfair Display', serif;
+    font-weight: 700;
+    color: #3f4e2c;
+}
+
+/* =========================================================
+   RESPONSIVE TARJETAS
+========================================================= */
+
+@media (max-width: 992px) {
+  .tarjeta-wrapper {
+      width: 450px;
+      height: 520px;
+  }
+}
+
 @media (max-width: 768px) {
-  .hero-title {
-    font-size: 2rem;
-  }
-
-  .hero-content {
-    padding: 30px 25px;
-  }
-
-  .form-card {
-    max-width: 90%;
+  .tarjeta-wrapper {
+      width: 350px;
+      height: 450px;
   }
 }
 
 @media (max-width: 480px) {
-  .hero-title {
-    font-size: 1.7rem;
-  }
-
-  .btn-custom {
-    padding: 10px 20px;
-    font-size: 14px;
-  }
-
-  .hero {
-    padding: 90px 20px 30px;
+  .tarjeta-wrapper {
+      width: 300px;
+      height: 400px;
   }
 }

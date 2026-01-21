@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Libro;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Storage;
 
 class LibroController extends Controller
 {
@@ -16,7 +17,7 @@ class LibroController extends Controller
      * - Divide el resultado en páginas de 12 libros.
      * - Saca los libros por la vista
      */ 
-    public function listarLibros()
+    public function index()
     {
         
         $libros = Libro::with('propietario')
@@ -29,9 +30,9 @@ class LibroController extends Controller
     /**
      * Muestra el formulario para crear un libro (crea el libro)
      */ 
-    public function formularioCrearLibro()
+    public function create()
     {
-        return view('libros.create');
+        return view('formulario-alta-libro');
     }
 
     /**
@@ -41,7 +42,7 @@ class LibroController extends Controller
      * - Obtiene al usuario autenticado que está creando el libro.
      * - Guarda la iamgen en el servidor.
      */
-    public function guardarLibro(Request $request)
+    public function store(Request $request)
     {
         $validated = $request->validate([
             'titulo_libro' => 'required|max:150',
@@ -75,7 +76,7 @@ class LibroController extends Controller
      * - Carga la relación con el propietario.
      * - Envía el libro a la vista.
      */
-    public function verLibro(Libro $libro)
+    public function show(Libro $libro)
     {
         
         $libro->load('propietario');
@@ -90,7 +91,7 @@ class LibroController extends Controller
      * - Comprueba que el libro pertenece al usuario.
      * - Muestra la vista de edición (el formulario).
      */ 
-    public function formularioEditarLibro(Libro $libro)
+    public function edit(Libro $libro)
     {
         $user = Auth::guard('web')->user();
 
@@ -109,7 +110,7 @@ class LibroController extends Controller
      * - Si se cambia la imagen, la guarda en el servidor.
      * - Crea el libro en la base de datos.
      */  
-    public function actualizarLibro(Request $request, Libro $libro)
+    public function update(Request $request, Libro $libro)
     {
         $user = Auth::guard('web')->user();
  
@@ -151,7 +152,7 @@ class LibroController extends Controller
      * - Elimina la imagen del servidor.
      * - Elimina el libro de la base de datos.
      */
-    public function eliminarLibro(Libro $libro)
+    public function destroy(Libro $libro)
     {
         $user = Auth::guard('web')->user();
  

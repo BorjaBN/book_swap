@@ -11,9 +11,11 @@
     
   {{-- Aquí podrías añadir tu CSS propio --}}
   @stack('estilos')
-  @stack('scripts')
+
 </head>
 <body>
+
+<div class="page-wrapper">
 
   {{-- Header (luego lo convertiremos en componente) --}}
   @yield('header')
@@ -21,9 +23,16 @@
   <main>
     @yield('main')
   </main>
-
-  {{-- Footer (luego lo convertiremos en componente) --}}
+</div>
+  {{-- Footer --}}
   @yield('footer')
+
+{{-- Scripts globales--}}
+@stack('scripts')
+
+{{-- JS global para modales --}}
+<script src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js" defer></script>
+
 
 </body>
 </html>
