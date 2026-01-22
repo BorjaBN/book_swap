@@ -81,6 +81,16 @@
             </div>
 
             <div>
+
+                {{-- Botón adicional: Solicitar intercambio --}}
+                <x-button 
+                    href="{{ route('intercambio', $elem->id_libro) }}"
+                    variant="btn-primary w-100 mb-2"
+                >
+                    Solicitar intercambio
+                </x-button>
+
+                {{-- Slot para botones extra --}}
                 {{ $slot }}
 
                 <x-button 

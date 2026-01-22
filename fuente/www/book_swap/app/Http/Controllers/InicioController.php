@@ -13,8 +13,8 @@ class InicioController extends Controller
 
         // Usuario común
         if (Auth::guard('web')->check()) {
-            $eventos = EventoCultural::latest()->take(5)->get();
-            $libros = Libro::latest()->take(5)->get();
+            $eventos = EventoCultural::latest()->take(3)->get();
+            $libros = Libro::latest()->take(3)->get();
 
             return view('inicio', compact('libros', 'eventos'));
         }
@@ -23,7 +23,7 @@ class InicioController extends Controller
         if (Auth::guard('entidad')->check()) {
             $eventos = EventoCultural::where('id_entidad_cultural', Auth::id())
                 ->latest()
-                ->take(5)
+                ->take(3)
                 ->get();
 
             return view('inicio', compact('eventos'));

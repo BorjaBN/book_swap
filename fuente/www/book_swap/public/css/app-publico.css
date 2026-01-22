@@ -102,7 +102,7 @@ header {
   border-radius: 14px;
   padding: 35px;
   max-width: 500px;
-  width: 100%;
+  width: 90%;
   margin: 20px auto;
 
   box-shadow: 0 6px 18px rgba(0,0,0,0.15);
@@ -187,7 +187,7 @@ button{
   transform: translateY(-2px);
 }
 
-/* Botón secundario (discreto pero hover verde) */
+/* Botón secundario */
 .btn-secondary {
   background-color: #e6e0d8;
   color: #3f4e2c;
@@ -203,7 +203,8 @@ button{
   border-color: #3f4e2c;
   transform: translateY(-2px);
 }
-  /* Botón ghost (sin fondo) para VOLVER */
+
+/* Botón ghost (volver) */
 .btn-primary-ghost {
   background-color: transparent;
   color: #3f4e2c;
@@ -215,15 +216,15 @@ button{
 }
 
 .btn-primary-ghost:hover {
-  background-color: rgba(63, 78, 44, 0.1); /* verde muy suave */
+  background-color: rgba(63, 78, 44, 0.1);
   color: #3f4e2c;
   transform: translateY(-2px);
 }
 
-/* Botón ghost morado (para acciones terciarias como "Ver más") */
+/* Botón ghost morado */
 .btn-tertiary-ghost {
   background-color: transparent;
-  color: #896275; /* morado de tu paleta */
+  color: #896275;
   border: none;
   padding: 10px 20px;
   border-radius: 8px;
@@ -232,22 +233,19 @@ button{
 }
 
 .btn-tertiary-ghost:hover {
-  background-color: rgba(137, 98, 117, 0.12); /* morado muy suave */
+  background-color: rgba(137, 98, 117, 0.12);
   color: #896275;
   transform: translateY(-2px);
 }
-
 
 .x-button, a.btn, .btn {
   position: relative;
   z-index: 300;
 }
 
-
 /* =========================================================
    ICONOS
 ========================================================= */
-
 i {
   font-size: 2rem;
 }
@@ -261,7 +259,7 @@ footer {
   text-align: center;
   font-size: 14px;
   color: #505e3f;
-  margin-top: auto; /* clave para fijarlo abajo */
+  margin-top: auto;
   z-index: 10;
 }
 
@@ -293,8 +291,10 @@ footer a:hover {
     padding: 30px 25px;
   }
 
-  .form-card {
-    max-width: 90%;
+  .formulario-tarjeta {
+    padding: 25px;
+    width: 92%;
+    max-width: 420px;
   }
 }
 
@@ -310,6 +310,13 @@ footer a:hover {
 
   .hero {
     padding: 90px 20px 30px;
+  }
+
+  .formulario-tarjeta {
+    padding: 20px;
+    width: 94%;
+    max-width: 360px;
+    border-radius: 12px;
   }
 }
 

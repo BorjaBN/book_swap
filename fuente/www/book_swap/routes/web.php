@@ -54,9 +54,7 @@ Route::middleware('auth:web')->group(function () {
     Route::get('/inicio', [InicioController::class, 'index'])
         ->name('inicio');
 
-    Route::get('/libros', function () {
-        return 'Listado de libros (dummy)';
-    })->name('libros.index');
+    Route::get('/libros', [LibroController::class, 'index'])->name('libros.index');
 
     Route::get('/libros/formularioAlta', [LibroController::class, 'create'])->name('formularioAltaLibro');
 

@@ -25,25 +25,17 @@
     <section class="mb-12">
         <h3 class="text-2xl font-bold text-gray-800 mb-4">Novedades en Libros</h3>
         
-        @if($libros->count() > 0)
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
-                @foreach($libros as $libro)
-                    <x-tarjeta-mostrar :elem="$libro" tipo="libro" :dobleTarjeta="true">
-                        {{-- Botones adicionales en la parte trasera del libro --}}
-                        <x-button 
-                            href="{{ route('intercambio', $libro->id_libro) }}"
-                            variant="btn-primary w-100 mb-2"
-                        >
-                            Solicitar intercambio
-                        </x-button>
-                    </x-tarjeta-mostrar>
-                @endforeach
-            </div>
-        @else
-            <div class="bg-gray-50 rounded-lg p-8 text-center">
-                <p class="text-gray-500">Aún no hay libros publicados. </p>
-            </div>
-        @endif
+        <div class="row row-cols-1 row-cols-sm-2 row-cols-lg-2 row-cols-xl-3 g-4">
+            @foreach($libros as $libro)
+                <div class="col">
+                    <x-tarjeta-mostrar 
+                        :elem="$libro"
+                        tipo="libro"
+                        :dobleTarjeta="true"
+                    />
+                </div>
+            @endforeach
+        </div>
     </section>
 
     {{-- Sección de Novedades en Eventos --}}

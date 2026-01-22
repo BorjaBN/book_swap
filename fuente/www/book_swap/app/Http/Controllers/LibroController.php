@@ -24,7 +24,7 @@ class LibroController extends Controller
             ->latest()
             ->paginate(12); 
 
-        return view('libros.index', compact('libros'));
+        return view('libros', compact('libros'));
     }
 
     /**
