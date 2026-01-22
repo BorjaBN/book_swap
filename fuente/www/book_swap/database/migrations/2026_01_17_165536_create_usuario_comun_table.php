@@ -16,7 +16,7 @@ return new class extends Migration
             $table->string('nombre_usuario_comun', 100);
             $table->string('apellidos_usuario_comun', 100);
             $table->string('email_usuario_comun', 100)->unique();
-            $table->string('pass_usuario_comun', 255);
+            $table->string('password', 255);
             $table->string('telefono_usuario_comun', 100);
             $table->string('ciudad_usuario_comun', 100);
             $table->rememberToken();

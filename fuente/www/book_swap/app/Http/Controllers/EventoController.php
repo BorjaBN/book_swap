@@ -8,6 +8,7 @@ use Illuminate\Support\Facades\Auth;
 
 class EventoController extends Controller
 {
+    
     /**
      * Muestra todos los eventos publicados, con su propietario, ordenados por fecha, y los muestra en un listado paginado
      * - Consulta todos los eventos de la base de datos.
@@ -143,4 +144,3 @@ class EventoController extends Controller
             ->with('success', 'Evento eliminado');
     }
 }
-

@@ -20,22 +20,22 @@ class UsuarioComun extends Authenticatable
         'nombre_usuario_comun',
         'apellidos_usuario_comun',
         'email_usuario_comun',
-        'pass_usuario_comun',
+        'password',
         'telefono_usuario_comun',
         'ciudad_usuario_comun',
     ];
 
+
+    // Ocultar contraseña al convertir a JSON
+    protected $hidden = ['password'];
+
+
     // Laravel busca "password" pero nosotros usamos "pass_usuario_comun"
     public function getAuthPassword()
     {
-        return $this->pass_usuario_comun;
+        return $this->password;
     }
 
-    // Para reset de contraseña
-    public function getEmailForPasswordReset()
-    {
-        return $this->email_usuario_comun;
-    }
     
     // Relación:  Un usuario tiene UNA cartera
     public function cartera()
@@ -48,6 +48,7 @@ class UsuarioComun extends Authenticatable
     {
         return $this->hasMany(Libro::class, 'id_usuario_comun', 'id_usuario_comun');
     }
+
 
     // Cuando se crea un usuario crea una cartera de creditos nuevita
     protected static function boot()

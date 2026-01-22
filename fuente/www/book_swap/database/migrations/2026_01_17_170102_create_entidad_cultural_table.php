@@ -15,7 +15,7 @@ return new class extends Migration
             $table->id('id_entidad_cultural');
             $table->string('nombre_entidad_cultural', 100);
             $table->string('email_entidad_cultural', 100)->unique();
-            $table->string('pass_entidad_cultural', 255);
+            $table->string('password', 255);
             $table->string('telefono_entidad_cultural', 100);
             $table->string('ciudad_entidad_cultural', 100);
 

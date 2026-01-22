@@ -17,7 +17,7 @@ class EntidadCultural extends Authenticatable
     protected $fillable = [
         'nombre_entidad_cultural',
         'email_entidad_cultural',
-        'pass_entidad_cultural',
+        'password',
         'telefono_entidad_cultural',
         'ciudad_entidad_cultural',
         'nif_entidad_cultural',
@@ -25,19 +25,16 @@ class EntidadCultural extends Authenticatable
         'web_entidad_cultural',
     ];
 
-    
+
     // Ocultar contraseña al convertir a JSON
-    protected $hidden = ['pass_entidad_cultural'];
+    protected $hidden = ['password'];
     
     public function getAuthPassword()
     {
-        return $this->pass_entidad_cultural;
+        return $this->password;
     }
 
-    public function getEmailForPasswordReset()
-    {
-        return $this->email_entidad_cultural;
-    }
+
     
     // RELACIÓN: Una entidad tiene muchos eventos
     public function eventos()

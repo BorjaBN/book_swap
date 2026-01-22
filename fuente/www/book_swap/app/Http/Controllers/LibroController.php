@@ -16,7 +16,7 @@ class LibroController extends Controller
      * - Ordena los libros de más recientes a más antiguos.
      * - Divide el resultado en páginas de 12 libros.
      * - Saca los libros por la vista
-     */
+     */ 
     public function index()
     {
         
@@ -24,7 +24,7 @@ class LibroController extends Controller
             ->latest()
             ->paginate(12); 
 
-        return view('libros.index', compact('libros'));
+        return view('libros', compact('libros'));
     }
 
     /**
@@ -32,7 +32,7 @@ class LibroController extends Controller
      */ 
     public function create()
     {
-        return view('libros.create');
+        return view('formulario-alta-libro');
     }
 
     /**
@@ -69,6 +69,7 @@ class LibroController extends Controller
             ->with('success', 'Libro registrado correctamente.');
     }
 
+
     /**
      * VER detalle de un libro
      * - Recibe un libro.
@@ -89,7 +90,7 @@ class LibroController extends Controller
      * - Obtiene el usuario autenticado también.
      * - Comprueba que el libro pertenece al usuario.
      * - Muestra la vista de edición (el formulario).
-     */
+     */ 
     public function edit(Libro $libro)
     {
         $user = Auth::guard('web')->user();
@@ -107,8 +108,8 @@ class LibroController extends Controller
      * - Valida que los datos sean correctos.
      * - Obtiene al usuario autenticado.
      * - Si se cambia la imagen, la guarda en el servidor.
-     * - Actualiza el libro en la base de datos.
-     */ 
+     * - Crea el libro en la base de datos.
+     */  
     public function update(Request $request, Libro $libro)
     {
         $user = Auth::guard('web')->user();
@@ -143,6 +144,7 @@ class LibroController extends Controller
             ->route('libros.index')
             ->with('success', 'Libro actualizado correctamente.');
     }
+    
 
     /**
      * ELIMINAR el libro
@@ -166,6 +168,8 @@ class LibroController extends Controller
 
         return redirect()
             ->route('libros.index')
-            ->with('success', 'Libro eliminado correctamente.');
+            ->with('success', 'Libro eliminado corréctamente.');
     }
+
+   
 }

@@ -1,46 +1,102 @@
 <?php
 
+use App\Http\Controllers\Auth\InicioSesionControlador;
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\Auth\LoginControlador;
 use App\Http\Controllers\Auth\RegistroControlador;
+use App\Http\Controllers\InicioController;
 use App\Http\Controllers\LibroController;
-use App\Http\Controllers\EventoController;
 
 
-// -------------------------------------------------------------
-// RUTAS PÚBLICAS
-// -------------------------------------------------------------
+//------------------------------------
+// RUTAS PÚBLICAS (NO AUTENTICADOS)
+//------------------------------------
 
+// Pantalla de bienvenida
 Route::get('/', function () {
-    return view('welcome');
-})->name('home');
+    return view('bienvenida');
+})->name('bienvenida');
 
-// -------------------------------------------------------------
-// LOGIN, REGISTRO Y LOGOUT
-// -------------------------------------------------------------
+// Ruta que Laravel usa por defecto para redirigir cuando falla auth
+Route::get('/login', function () {
+    return redirect()->route('formularioInicioSesion');
+})->name('login');
 
-// Login
-Route::get('/login', [LoginControlador::class, 'showLoginForm'])->name('login');
-Route::post('/login', [LoginControlador::class, 'login']);
+//------------------------------------
+// REGISTRO
+//------------------------------------
 
-// Registro
-Route::get('/register', [RegistroControlador::class, 'showRegistrationForm'])->name('register');
-Route::post('/register', [RegistroControlador::class, 'register']);
+Route::get('/registro', [RegistroControlador::class, 'mostrardecisionRegistro'])
+    ->name('decisionRegistro');
 
-// Logout
-Route::post('/logout', [LoginControlador::class, 'logout'])->name('logout');
+Route::get('/registro/{tipo}', [RegistroControlador::class, 'mostrarFormulario'])
+    ->name('formularioRegistro');
 
-// -------------------------------------------------------------
-// RUTAS PROTEGIDAS
-// -------------------------------------------------------------
+Route::post('/registro/{tipo}/registrar', [RegistroControlador::class, 'registrar'])
+    ->name('registrar');
 
-// Dashboard
-Route::get('/dashboard', function () {
-    return view('dashboard');
-})->middleware('auth:web')->name('dashboard');
+//------------------------------------
+// INICIO DE SESIÓN
+//------------------------------------
 
-// Libros (solo usuarios comunes)
-Route::resource('libros', LibroController::class)->middleware('auth:web');
+Route::get('/inicioSesion', [InicioSesionControlador::class, 'mostrarFormulario'])
+    ->name('formularioInicioSesion');
 
-// Eventos (solo entidades culturales)
-Route::resource('eventos', EventoController::class)->middleware('auth:entidad');
+Route::post('/inicioSesion/entrar', [InicioSesionControlador::class, 'iniciarSesion'])
+    ->name('iniciarSesion');
+
+//------------------------------------
+// USUARIO COMÚN (auth:web)
+//------------------------------------
+
+Route::middleware('auth:web')->group(function () {
+
+    // Inicio del usuario común
+    Route::get('/inicio', [InicioController::class, 'index'])
+        ->name('inicio');
+
+    Route::get('/libros', [LibroController::class, 'index'])->name('libros.index');
+
+    Route::get('/libros/formularioAlta', [LibroController::class, 'create'])->name('formularioAltaLibro');
+
+    Route::post('/libros/formularioAlta/darAlta', [LibroController::class, 'store'])->name('darAltaLibro');
+
+    Route::get('/eventos/comun', function () {
+        return 'Listado de eventos (dummy)';
+    })->name('eventos.index');
+
+    Route::get('/perfil', function () {
+        return 'Perfil (dummy)';
+    })->name('comun.index');
+});
+
+//------------------------------------
+// ENTIDAD CULTURAL (auth:entidad)
+//------------------------------------
+
+Route::middleware('auth:entidad')->group(function () {
+
+    // Inicio de entidad cultural
+    Route::get('/inicio-entidad', function () {
+        return view('inicio-e-cultural');
+    })->name('inicio.entidad');
+
+    Route::get('/eventos/crear', function () {
+        return 'Crear evento (dummy)';
+    })->name('entidad.eventos.create');
+
+    Route::get('/eventos', function () {
+        return 'Perfil entidad / eventos (dummy)';
+    })->name('eventos.index');
+});
+
+//------------------------------------
+// CIERRE DE SESIÓN
+//------------------------------------
+
+Route::post('/cierreSesion', [InicioSesionControlador::class, 'cerrarSesion'])
+    ->name('cerrarSesion');
+
+
+    Route::get('/prueba', function () {
+    return 'Ruta de prueba funcionando correctamente';
+})->name('intercambio');
