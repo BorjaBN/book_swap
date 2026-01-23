@@ -25,17 +25,25 @@
     <section class="mb-12">
         <h3 class="text-2xl font-bold text-gray-800 mb-4">Novedades en Libros</h3>
         
-        <div class="row row-cols-1 row-cols-sm-2 row-cols-lg-2 row-cols-xl-3 g-4">
-            @foreach($libros as $libro)
-                <div class="col">
-                    <x-tarjeta-mostrar 
-                        :elem="$libro"
-                        tipo="libro"
-                        :dobleTarjeta="true"
-                    />
-                </div>
-            @endforeach
-        </div>
+        
+        @if($libros->count() > 0)
+            <div class="row row-cols-1 row-cols-sm-2 row-cols-lg-2 row-cols-xl-3 g-4">
+                @foreach($libros as $libro)
+                    <div class="col">
+                        <x-tarjeta-mostrar 
+                            :elem="$libro"
+                            tipo="libro"
+                            :dobleTarjeta="true"
+                        />
+                    </div>
+                @endforeach
+            </div>
+        @else
+            <div class="bg-gray-50 rounded-lg p-8 text-center">
+                <p class="text-gray-500">Aún no hay libros publicados.</p>
+            </div>
+        @endif
+        
     </section>
 
     {{-- Sección de Novedades en Eventos --}}
