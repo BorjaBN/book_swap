@@ -25,6 +25,7 @@
     <section class="mb-12">
         <h3 class="text-2xl font-bold text-gray-800 mb-4">Novedades en Libros</h3>
         
+        @if($libros->count() > 0)
         <div class="row row-cols-1 row-cols-sm-2 row-cols-lg-2 row-cols-xl-3 g-4">
             @foreach($libros as $libro)
                 <div class="col">
@@ -36,6 +37,11 @@
                 </div>
             @endforeach
         </div>
+        @else
+            <div class="bg-gray-50 rounded-lg p-8 text-center">
+                <p class="text-gray-500">Aún no hay libros publicados.</p>
+            </div>
+        @endif
     </section>
 
     {{-- Sección de Novedades en Eventos --}}
@@ -45,7 +51,7 @@
         @if($eventos->count() > 0)
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
                 @foreach($eventos as $evento)
-                    <x-tarjeta-mostrar :elem="$evento" tipo="evento" : dobleTarjeta="false" />
+                    <x-tarjeta-mostrar :elem="$evento" tipo="evento" :dobleTarjeta="false" />
                 @endforeach
             </div>
         @else

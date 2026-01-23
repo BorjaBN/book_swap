@@ -5,35 +5,52 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>BookSwap - @yield('titulo', 'Hola')</title>
+
+    {{-- Tipografías --}}
     <link href="https://fonts.googleapis.com/css2?family=Open+Sans&family=Playfair+Display&display=swap" rel="stylesheet">
+
+    {{-- Bootstrap Icons --}}
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.13.1/font/bootstrap-icons.min.css">
+
+    {{-- Bootstrap 5 --}}
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
-    
-  {{-- Aquí podrías añadir tu CSS propio --}}
-  @stack('estilos')
-  @livewireStyles
+
+    {{-- CSS propio --}}
+    @stack('estilos')
+    @livewireStyles
 
 </head>
 <body>
 
+  
+<x-toast />
 <div class="page-wrapper">
 
-  {{-- Header (luego lo convertiremos en componente) --}}
-  @yield('header')
+    {{-- Header --}}
+    @yield('header')
 
-  <main>
-    @yield('main')
-  </main>
+    <main>
+        @yield('main')
+    </main>
+
 </div>
-  {{-- Footer --}}
-  @yield('footer')
 
-{{-- Scripts globales--}}
+{{-- Footer --}}
+@yield('footer')
+
+{{-- Scripts globales --}}
 @stack('scripts')
-
-{{-- JS global para modales --}}
-<script src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js" defer></script>
 @livewireScripts
+
+<script>
+function abrirModal(id) {
+    document.getElementById(id).classList.remove('hidden');
+}
+
+function cerrarModal(id) {
+    document.getElementById(id).classList.add('hidden');
+}
+</script>
 
 </body>
 </html>

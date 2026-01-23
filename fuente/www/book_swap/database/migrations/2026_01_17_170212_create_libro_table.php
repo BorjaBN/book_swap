@@ -22,7 +22,7 @@ return new class extends Migration
             
             $table->string('imagen_libro');
             
-            $table->unsignedBigInteger('id_usuario_comun')->nullable();
+            $table->unsignedBigInteger('id_usuario_comun');
             $table->timestamps();
 
             $table->foreign('id_usuario_comun')

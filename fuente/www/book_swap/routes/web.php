@@ -54,11 +54,8 @@ Route::middleware('auth:web')->group(function () {
     Route::get('/inicio', [InicioController::class, 'index'])
         ->name('inicio');
 
-    Route::get('/libros', [LibroController::class, 'index'])->name('libros.index');
-
-    Route::get('/libros/formularioAlta', [LibroController::class, 'create'])->name('formularioAltaLibro');
-
-    Route::post('/libros/formularioAlta/darAlta', [LibroController::class, 'store'])->name('darAltaLibro');
+    // Rutas REST completas para libros 
+    Route::resource('libros', LibroController::class);
 
     Route::get('/eventos/comun', function () {
         return 'Listado de eventos (dummy)';

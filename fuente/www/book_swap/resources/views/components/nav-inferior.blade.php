@@ -12,7 +12,7 @@
             <span>Libros</span>
         </a>
 
-        <a href="{{ route('formularioAltaLibro') }}">
+        <a href="{{ route('libros.create') }}">
             <i class="bi bi-plus-circle-fill"></i>
             <span>Añadir</span>
         </a>

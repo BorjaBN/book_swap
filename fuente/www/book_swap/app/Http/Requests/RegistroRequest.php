@@ -16,9 +16,13 @@ class RegistroRequest extends FormRequest
         // Reglas comunes
         $rules = [
             'tipo_usuario' => 'required|in:comun,entidad',
+
             'email' => 'required|email',
+
             'password' => 'required|min:6',
-            'telefono' => 'required',
+
+            'telefono' => ['required', 'regex:/^(6|7|8|9)[0-9]{8}$/'],
+
             'ciudad' => 'required',
         ];
 
@@ -47,25 +51,45 @@ class RegistroRequest extends FormRequest
     public function messages()
     {
         return [
-            // Comunes
+
+            /* -------------------------
+             * VALIDACIONES COMUNES
+             * ------------------------- */
+
+            'tipo_usuario.required' => 'Debe seleccionar un tipo de usuario.',
+            'tipo_usuario.in' => 'El tipo de usuario seleccionado no es válido.',
+
             'email.required' => 'El correo electrónico es obligatorio.',
             'email.email' => 'Debe introducir un correo electrónico válido.',
-            'email.unique' => 'Este correo ya está registrado.',
+            'email.unique' => 'Este correo electrónico ya está registrado.',
 
-            'clave.required' => 'La contraseña es obligatoria.',
-            'clave.min' => 'La contraseña debe tener al menos 6 caracteres.',
+            'password.required' => 'La contraseña es obligatoria.',
+            'password.min' => 'La contraseña debe tener al menos 6 caracteres.',
 
             'telefono.required' => 'El teléfono es obligatorio.',
+            'telefono.regex' => 'El teléfono debe tener 9 dígitos y comenzar por 6, 7, 8 o 9.',
+
             'ciudad.required' => 'La ciudad es obligatoria.',
 
-            // Usuario común
+
+            /* -------------------------
+             * USUARIO COMÚN
+             * ------------------------- */
+
             'nombre.required' => 'El nombre es obligatorio.',
             'apellidos.required' => 'Los apellidos son obligatorios.',
+            'email.unique' => 'Este correo ya está registrado como usuario común.',
 
-            // Entidad cultural
+
+            /* -------------------------
+             * ENTIDAD CULTURAL
+             * ------------------------- */
+
             'nombre_entidad.required' => 'El nombre de la entidad es obligatorio.',
+
             'nif.required' => 'El NIF es obligatorio.',
             'nif.unique' => 'Este NIF ya está registrado.',
+
             'direccion.required' => 'La dirección es obligatoria.',
         ];
     }

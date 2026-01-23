@@ -83,12 +83,53 @@
             <div>
 
                 {{-- Botón adicional: Solicitar intercambio --}}
-                <x-button 
-                    href="{{ route('intercambio', $elem->id_libro) }}"
-                    variant="btn-primary w-100 mb-2"
-                >
-                    Solicitar intercambio
-                </x-button>
+                @cannot('update', $elem)
+                    <x-button 
+                        href="{{ route('intercambio', $elem->id_libro) }}"
+                        variant="btn-primary w-100 mb-2"
+                    >
+                        Solicitar intercambio
+                    </x-button>
+                @endcannot
+
+                {{-- Botones Editar / Borrar solo para el propietario --}}
+                @can('update', $elem)
+                    <div class="d-flex gap-2 mb-2">
+
+                        {{-- Editar --}}
+                        <x-button
+                            href="{{ route('libros.edit', $elem->id_libro) }}"
+                            variant="btn-outline-secondary btn-sm w-50"
+                        >
+                            Editar
+                        </x-button>
+
+                        {{-- Borrar --}}
+                        <form method="POST" action="{{ route('libros.destroy', $elem->id_libro) }}" class="w-50">
+                            @csrf
+                            @method('DELETE')
+
+                            <x-button 
+                                type="button"
+                                class="btn-borrar btn btn-outline-danger btn-sm w-100"
+                                onclick="abrirModal('modal-pregunta-{{ $elem->id_libro }}')"
+                            >
+                                Borrar
+                            </x-button>
+
+                        </form>
+                        <x-modal-pregunta
+                            id="modal-pregunta-{{ $elem->id_libro }}"
+                            titulo="Confirmar borrado"
+                            mensaje="¿Seguro que quieres eliminar este libro?"
+                            textoCancelar="Cancelar"
+                            textoAceptar="Sí, borrar"
+                            accionAceptar="{{ route('libros.destroy', $elem->id_libro) }}"
+                        />
+
+
+                    </div>
+                @endcan
 
                 {{-- Slot para botones extra --}}
                 {{ $slot }}
