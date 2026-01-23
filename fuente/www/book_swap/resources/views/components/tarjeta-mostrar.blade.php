@@ -99,9 +99,9 @@
                         {{-- Editar --}}
                         <x-button
                             href="{{ route('libros.edit', $elem->id_libro) }}"
-                            variant="btn-outline-secondary btn-sm w-50"
+                            variant="btn-outline-edit  btn-sm w-50"
                         >
-                            Editar
+                           <i class="bi bi-pen fs-6 me-2"></i> Editar
                         </x-button>
 
                         {{-- Borrar --}}
@@ -111,10 +111,10 @@
 
                             <x-button 
                                 type="button"
-                                class="btn-borrar btn btn-outline-danger btn-sm w-100"
+                                variant="btn-outline-danger btn-sm w-100"
                                 onclick="abrirModal('modal-pregunta-{{ $elem->id_libro }}')"
                             >
-                                Borrar
+                                <i class="bi bi-trash3 fs-6 me-2"></i> Borrar
                             </x-button>
 
                         </form>

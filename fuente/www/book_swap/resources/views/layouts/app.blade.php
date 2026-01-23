@@ -23,11 +23,13 @@
 <body>
 
   
-<x-toast />
+
 <div class="page-wrapper">
 
     {{-- Header --}}
     @yield('header')
+
+    <x-toast />
 
     <main>
         @yield('main')
@@ -41,6 +43,7 @@
 {{-- Scripts globales --}}
 @stack('scripts')
 @livewireScripts
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
 
 <script>
 function abrirModal(id) {

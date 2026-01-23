@@ -9,7 +9,7 @@
 
         <a href="{{ route('libros.index') }}">
             <i class="bi bi-book"></i>
-            <span>Libros</span>
+            <span>Catálogo</span>
         </a>
 
         <a href="{{ route('libros.create') }}">

@@ -18,7 +18,7 @@
         <h2 class="text-3xl font-bold text-gray-800">
             Hola, {{ Auth:: user()->nombre_usuario_comun }}
         </h2>
-        <p class="text-gray-600 mt-2">Aquí tienes las novedades en libros y eventos.</p>
+        <p class="text-gray-600 mt-2">Explora las últimas novedades en libros y eventos.</p>
     </div>
     <br><br>
     {{-- Sección de Novedades en Libros --}}

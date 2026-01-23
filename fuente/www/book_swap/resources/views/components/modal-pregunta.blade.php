@@ -20,7 +20,7 @@
             {{-- Cancelar --}}
             <button 
                 type="button" 
-                class="btn-cancelar" 
+                class="btn-secondary" 
                 onclick="cerrarModal('{{ $id }}')"
             >
                 {{ $textoCancelar ?? 'Cancelar' }}
@@ -33,7 +33,7 @@
                 @csrf
                 @method('DELETE')
 
-                <button type="submit" class="btn-salir">
+                <button type="submit" class="btn-danger">
                     {{ $textoAceptar ?? 'Aceptar' }}
                 </button>
             </form>

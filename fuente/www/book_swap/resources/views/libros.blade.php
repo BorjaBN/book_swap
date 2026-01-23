@@ -14,7 +14,11 @@
 
 <div class="container py-4">
 
-    <h2 class="fw-bold mb-4">Catálogo de Libros</h2>
+    <div class="mb-8">
+        <h2 class="text-xl fw-bold mb-4">Catálogo de Libros</h2>
+        <p class="text-gray-600 mt-2">Explora y busca libros para intercambiar con otros lectores. Cada intercambio es una nueva aventura.</p>
+    </div>
+    
 
     @livewire('catalogo-libros')
 
