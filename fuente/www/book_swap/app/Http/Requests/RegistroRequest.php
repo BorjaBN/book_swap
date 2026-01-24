@@ -52,8 +52,8 @@ class RegistroRequest extends FormRequest
             'email.email' => 'Debe introducir un correo electrónico válido.',
             'email.unique' => 'Este correo ya está registrado.',
 
-            'clave.required' => 'La contraseña es obligatoria.',
-            'clave.min' => 'La contraseña debe tener al menos 6 caracteres.',
+            'password.required' => 'La contraseña es obligatoria.',
+            'password.min' => 'La contraseña debe tener al menos 6 caracteres.',
 
             'telefono.required' => 'El teléfono es obligatorio.',
             'ciudad.required' => 'La ciudad es obligatoria.',

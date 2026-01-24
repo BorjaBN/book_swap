@@ -16,19 +16,23 @@ class LibroController extends Controller
      * - Ordena los libros de más recientes a más antiguos.
      * - Divide el resultado en páginas de 12 libros.
      * - Saca los libros por la vista
+     * 
+     * @param  \App\Models\Libro  $libro
+     * @return \Illuminate\View\View
      */ 
     public function index()
     {
-        
         $libros = Libro::with('propietario')
             ->latest()
-            ->paginate(12); 
+            ->paginate(12);
 
         return view('libros', compact('libros'));
     }
 
     /**
      * Muestra el formulario para crear un libro (crea el libro)
+     * 
+     * @return \Illuminate\View\View
      */ 
     public function create()
     {
@@ -41,22 +45,16 @@ class LibroController extends Controller
      * - Valida que los datos de entrada sean correctos.
      * - Obtiene al usuario autenticado que está creando el libro.
      * - Guarda la iamgen en el servidor.
+     * 
+     * @param  \App\Http\Requests\LibroRequest  $request
+     * @return \Illuminate\Http\RedirectResponse
      */
     public function store(Request $request)
     {
-        $validated = $request->validate([
-            'titulo_libro' => 'required|max:150',
-            'autor_libro' => 'required|max:150',
-            'ISBN' => 'required|max:20|unique:libro,ISBN',
-            'estado_libro' => 'required|in:nuevo,seminuevo,usado',
-            'genero_libro' => 'nullable|string|max:150',
-            'fecha_publicacion_libro' => 'nullable|date',
-            'imagen_libro' => 'required|image|mimes:jpg,jpeg,png,webp|max:2048',
-        ]);
+        $validated = $request->validated();
 
         $user = Auth::guard('web')->user();
 
-        // Guarda la imagen y obtiene la ruta relativa (libros/xxxxxx.jpg)
         $rutaImagen = $request->file('imagen_libro')->store('libros', 'public');
 
         $validated['imagen_libro'] = $rutaImagen;
@@ -75,13 +73,13 @@ class LibroController extends Controller
      * - Recibe un libro.
      * - Carga la relación con el propietario.
      * - Envía el libro a la vista.
+     * 
+     * @param  \App\Models\Libro  $libro
+     * @return \Illuminate\View\View
      */
     public function show(Libro $libro)
     {
-        
-        $libro->load('propietario');
-
-        return view('libros.show', compact('libro'));
+        return redirect()->route('libros.index');
     }
 
     /**
@@ -90,16 +88,16 @@ class LibroController extends Controller
      * - Obtiene el usuario autenticado también.
      * - Comprueba que el libro pertenece al usuario.
      * - Muestra la vista de edición (el formulario).
+     * 
+     * @param  \App\Models\Libro  $libro
+     * @return \Illuminate\View\View
      */ 
     public function edit(Libro $libro)
     {
-        $user = Auth::guard('web')->user();
 
-        if ($libro->id_usuario_comun !== $user->id_usuario_comun) {
-            abort(403, 'No puedes editar este libro');
-        }
+        $this->authorize('update', $libro);
 
-        return view('libros.edit', compact('libro'));
+        return view('formulario-editar-libro', compact('libro'));
     }
 
     /**
@@ -109,24 +107,16 @@ class LibroController extends Controller
      * - Obtiene al usuario autenticado.
      * - Si se cambia la imagen, la guarda en el servidor.
      * - Crea el libro en la base de datos.
+     * 
+     * @param  \App\Http\Requests\LibroRequest  $request
+     * @param  \App\Models\Libro                $libro
+     * @return \Illuminate\Http\RedirectResponse
      */  
     public function update(Request $request, Libro $libro)
     {
-        $user = Auth::guard('web')->user();
- 
-        if ($libro->id_usuario_comun !== $user->id_usuario_comun) {
-            abort(403, 'No puedes editar este libro');
-        }
- 
-        $validated = $request->validate([
-            'titulo_libro' => 'required|max:150',
-            'autor_libro' => 'required|max:150',
-            'ISBN' => 'required|max:20|unique:libro,ISBN,' . $libro->id_libro . ',id_libro',
-            'estado_libro' => 'required|in:nuevo,seminuevo,usado',
-            'genero_libro' => 'nullable|string|max:150',
-            'fecha_publicacion_libro' => 'nullable|date',
-            'imagen_libro' => 'nullable|image|mimes:jpg,jpeg,png,webp|max:2048',
-        ]);
+        $this->authorize('update', $libro);
+
+        $validated = $request->validated();
 
         if ($request->hasFile('imagen_libro')) {
 
@@ -151,24 +141,23 @@ class LibroController extends Controller
      * - Comprueba que el libro pertenece al usuario.
      * - Elimina la imagen del servidor.
      * - Elimina el libro de la base de datos.
+     * 
+     * @param  \App\Models\Libro  $libro
+     * @return \Illuminate\Http\RedirectResponse
      */
     public function destroy(Libro $libro)
     {
-        $user = Auth::guard('web')->user();
- 
-        if ($libro->id_usuario_comun !== $user->id_usuario_comun) {
-            abort(403, 'No puedes eliminar este libro');
-        }
+        $this->authorize('delete', $libro);
 
         if ($libro->imagen_libro && Storage::disk('public')->exists($libro->imagen_libro)) {
-            Storage::disk('public')->delete($libro->imagen_libro); 
+            Storage::disk('public')->delete($libro->imagen_libro);
         }
 
         $libro->delete();
 
         return redirect()
             ->route('libros.index')
-            ->with('success', 'Libro eliminado corréctamente.');
+            ->with('success', 'Libro eliminado correctamente.');
     }
 
    
