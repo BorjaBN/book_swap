@@ -9,6 +9,7 @@ use Illuminate\Support\Facades\Storage;
 
 class LibroController extends Controller
 {
+
     /**
      * Muestra un listado paginado de libros publicados.
      *

@@ -4,64 +4,53 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class LibroRequest extends FormRequest
+class EventoRequest extends FormRequest
 {
     public function authorize()
     {
-        return true; 
+        return true;
     }
 
     public function rules()
     {
         // Detectar si estamos editando (update)
-        $libro = $this->route('libro'); // null en alta, Libro en edición
-        $libroId = $libro->id_libro ?? null;
+        // En rutas tipo eventos/{evento}, Laravel inyecta el modelo
+        $evento = $this->route('evento'); // null en alta, EventoCultural en edición
+        $eventoId = $evento->id_evento ?? null;
 
         return [
-            'titulo_libro' => 'required|max:150',
-            'autor_libro' => 'required|max:150',
+            'nombre_evento' => 'required|max:150',
 
-            // ISBN único excepto para el propio libro en edición
-            'ISBN' => 'required|max:20|unique:libro,ISBN,' . $libroId . ',id_libro',
+            // En edición no exigimos que la fecha sea >= hoy (puede estar ya pasada)
+            'fecha_evento' => $eventoId
+                ? 'required|date'
+                : 'required|date|after_or_equal:today',
 
-            'estado_libro' => 'required|in:nuevo,seminuevo,usado',
-            'genero_libro' => 'nullable|string|max:150',
-            'fecha_publicacion_libro' => 'nullable|date',
+            'descripcion_evento' => 'required|max:300',
+            'ubicacion_evento' => 'required|max:150',
 
-            // Imagen obligatoria solo en alta
-            'imagen_libro' => $libroId
-                ? 'nullable|image|mimes:jpg,jpeg,png,webp|max:2048'
-                : 'required|image|mimes:jpg,jpeg,png,webp|max:2048',
+            'tipo_evento' => 'required|in:encuentro con autor/a,club de lectura,feria del libro',
         ];
     }
-
 
     public function messages()
     {
         return [
-            'titulo_libro.required' => 'El título del libro es obligatorio.',
-            'titulo_libro.max' => 'El título no puede superar los 150 caracteres.',
+            'nombre_evento.required' => 'El nombre del evento es obligatorio.',
+            'nombre_evento.max' => 'El nombre no puede superar los 150 caracteres.',
 
-            'autor_libro.required' => 'El autor del libro es obligatorio.',
-            'autor_libro.max' => 'El nombre del autor no puede superar los 150 caracteres.',
+            'fecha_evento.required' => 'La fecha del evento es obligatoria.',
+            'fecha_evento.date' => 'La fecha no es válida.',
+            'fecha_evento.after_or_equal' => 'La fecha debe ser hoy o posterior.',
 
-            'ISBN.required' => 'El ISBN es obligatorio.',
-            'ISBN.max' => 'El ISBN no puede superar los 20 caracteres.',
-            'ISBN.unique' => 'Este ISBN ya está registrado en la base de datos.',
+            'descripcion_evento.required' => 'La descripción es obligatoria.',
+            'descripcion_evento.max' => 'La descripción no puede superar los 300 caracteres.',
 
-            'estado_libro.required' => 'Debes seleccionar el estado del libro.',
-            'estado_libro.in' => 'El estado seleccionado no es válido.',
+            'ubicacion_evento.required' => 'La ubicación es obligatoria.',
+            'ubicacion_evento.max' => 'La ubicación no puede superar los 150 caracteres.',
 
-            'genero_libro.string' => 'El género debe ser un texto válido.',
-            'genero_libro.max' => 'El género no puede superar los 150 caracteres.',
-
-            'fecha_publicacion_libro.date' => 'La fecha de publicación no es válida.',
-
-            'imagen_libro.required' => 'La imagen del libro es obligatoria.',
-            'imagen_libro.image' => 'El archivo debe ser una imagen.',
-            'imagen_libro.mimes' => 'La imagen debe ser de tipo JPG, JPEG, PNG o WEBP.',
-            'imagen_libro.max' => 'La imagen no puede superar los 2 MB.',
+            'tipo_evento.required' => 'Debes seleccionar un tipo de evento.',
+            'tipo_evento.in' => 'El tipo de evento seleccionado no es válido.',
         ];
     }
-
 }

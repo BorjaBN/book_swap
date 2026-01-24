@@ -24,7 +24,7 @@
     </x-button>
 
 
-    <x-tarjeta-formulario titulo="Registrar nuevo libro">
+    <x-base-formulario titulo="Registrar nuevo libro">
         <form 
             action="{{ route('libros.store') }}" 
             method="POST" 
@@ -102,7 +102,7 @@
 
         </form>
 
-    </x-tarjeta-formulario>
+    </x-base-formulario>
 
 @endsection
 

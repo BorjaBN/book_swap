@@ -4,7 +4,7 @@ namespace App\View\Components;
 
 use Illuminate\View\Component;
 
-class ModalConfirm extends Component
+class ModalPregunta extends Component
 {
     public $id;
     public $titulo;
@@ -27,6 +27,6 @@ class ModalConfirm extends Component
 
     public function render()
     {
-        return view('components.modal-confirm');
+        return view('components.modal-pregunta');
     }
 }

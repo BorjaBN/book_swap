@@ -424,6 +424,14 @@ i {
     color: #3f4e2c;
 }
 
+/* Para eventos: que el contenido suba arriba del cuadrado */
+.tarjeta-evento .tarjeta-front {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start; /* ← EL TEXTO SUBE ARRIBA */
+}
+
+
 /* =========================================================
    BUSCADOR - ALINEACIÓN PERFECTA
 ========================================================= */
@@ -547,3 +555,5 @@ i {
     background: #dc3545;
     color: white;
 }
+
+

@@ -23,7 +23,7 @@
         <i class="bi bi-arrow-left"></i>
     </x-button>
 
-    <x-tarjeta-formulario titulo="Editar libro">
+    <x-base-formulario titulo="Editar libro">
         <form 
             action="{{ route('libros.update', $libro->id_libro) }}" 
             method="POST" 
@@ -95,7 +95,7 @@
             </x-button>
 
         </form>
-    </x-tarjeta-formulario>
+    </x-base-formulario>
 
 @endsection
 

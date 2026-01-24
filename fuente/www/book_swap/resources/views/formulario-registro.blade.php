@@ -13,7 +13,7 @@
 
 @section('main')
 
-    <x-tarjeta-formulario :titulo="$titulo">
+    <x-base-formulario :titulo="$titulo">
 
         <form action="{{ route('registrar', ['tipo' => $tipo]) }}" method="POST">
             @csrf
@@ -53,7 +53,7 @@
 
         </form>
 
-    </x-tarjeta-formulario>
+    </x-base-formulario>
 
 
 @endsection

@@ -13,7 +13,7 @@
 
 @section('main')
 
-    <x-tarjeta-formulario titulo="Iniciar sesión">
+    <x-base-formulario titulo="Iniciar sesión">
 
         <form action="{{ route('iniciarSesion') }}" method="POST">
             @csrf
@@ -41,7 +41,7 @@
 
         </form>
 
-    </x-tarjeta-formulario>
+    </x-base-formulario>
 
 @endsection
 

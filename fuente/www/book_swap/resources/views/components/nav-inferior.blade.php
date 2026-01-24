@@ -30,7 +30,7 @@
 
     {{-- Entidad cultural --}}
     @auth('entidad')
-        <a href="{{ route('inicio.entidad') }}">
+        <a href="{{ route('entidad.inicio') }}">
             <i class="bi bi-house-door-fill"></i>
             <span>Inicio</span>
         </a>
@@ -40,7 +40,7 @@
             <span>Añadir</span>
         </a>
 
-        <a href="{{ route('entidad.eventos.index') }}">
+        <a href="{{ route('prueba.eventos') }}">
             <i class="bi bi-person-circle"></i>
             <span>Perfil</span>
         </a>

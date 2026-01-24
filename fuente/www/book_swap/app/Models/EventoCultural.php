@@ -4,8 +4,10 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
+
 class EventoCultural extends Model
 {
+
     protected $table = 'evento_cultural';
     protected $primaryKey = 'id_evento';
     

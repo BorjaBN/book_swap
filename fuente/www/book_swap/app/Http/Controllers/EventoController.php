@@ -3,12 +3,12 @@
 namespace App\Http\Controllers;
 
 use App\Models\EventoCultural;
-use App\Models\EntidadCultural;
-use Illuminate\Http\Request;
+use Illuminate\Http\EventoRequest;
 use Illuminate\Support\Facades\Auth;
 
 class EventoController extends Controller
 {
+
     
     /**
      * Muestra todos los eventos publicados, con su propietario, ordenados por fecha, y los muestra en un listado paginado
@@ -25,7 +25,7 @@ class EventoController extends Controller
             ->orderBy('fecha_evento')
             ->paginate(9);
 
-        return view('eventos.index', compact('eventos'));
+        return view('eventos', compact('eventos'));
     }
 
     /**
@@ -33,7 +33,7 @@ class EventoController extends Controller
      */
     public function create()
     {
-        return view('eventos.create');
+        return view('formulario-alta-evento');
     }
 
     /**
@@ -43,23 +43,15 @@ class EventoController extends Controller
      * - Obtiene al entidad cultural autenticada que está creando el evento.
      * - Crea el evento asociandolo a la entidad.
      */
-    public function store(Request $request)
+    public function store(EventoRequest $request)
     {
-        $validated = $request->validate([
-            'nombre_evento' => 'required|max:150',
-            'fecha_evento' => 'required|date|after_or_equal:today',
-            'descripcion_evento' => 'required',
-            'ubicacion_evento' => 'required|max:150',
-            'tipo_evento' => 'required|in:encuentro con autor/a,club de lectura,feria del libro',
-        ]);
-
+        $validated = $request->validated(); 
         $entidad = Auth::guard('entidad')->user();
-
         $entidad->eventos()->create($validated);
 
-        return redirect()
-            ->route('eventos.index')
-            ->with('success', '¡Evento publicado exitosamente!');
+        return redirect() 
+            ->route('entidad.inicio') 
+            ->with('success', 'Evento publicado correctamente.');
     }
 
     /**
@@ -84,14 +76,10 @@ class EventoController extends Controller
      */
     public function edit(EventoCultural $evento)
     {
-        $entidad = Auth::guard('entidad')->user();
-
-        if ($evento->id_entidad_cultural !== $entidad->id_entidad_cultural) {
-            abort(403, 'No puedes editar este evento');
-        }
-
+    
         return view('eventos.edit', compact('evento'));
     }
+
 
     /**
      * ACTUALIZAR el evento
@@ -101,15 +89,11 @@ class EventoController extends Controller
      * - Valida que los datos sean correctos.
      * - Actualiza el evento en la base de datos.
      */
-    public function update(Request $request, EventoCultural $evento)
+    public function update(EventoRequest $request, EventoCultural $evento)
     {
-        $entidad = Auth::guard('entidad')->user();
+        
 
-        if ($evento->id_entidad_cultural !== $entidad->id_entidad_cultural) {
-            abort(403, 'No puedes editar este evento');
-        }
-
-        $validated = $request->validate([ 
+        $validated = $request->validate([
             'nombre_evento' => 'required|max:150',
             'fecha_evento' => 'required|date',
             'descripcion_evento' => 'required',
@@ -121,8 +105,9 @@ class EventoController extends Controller
 
         return redirect()
             ->route('eventos.show', $evento)
-            ->with('success', 'Evento actualizado');
+            ->with('success', 'Evento actualizado correctamente');
     }
+
 
     /**
      * ELIMINAR el evento
@@ -132,16 +117,13 @@ class EventoController extends Controller
      */
     public function destroy(EventoCultural $evento)
     {
-        $entidad = Auth::guard('entidad')->user();
-
-        if ($evento->id_entidad_cultural !== $entidad->id_entidad_cultural) {
-            abort(403, 'No puedes eliminar este evento');
-        }
+        
 
         $evento->delete();
 
         return redirect()
             ->route('eventos.index')
-            ->with('success', 'Evento eliminado');
+            ->with('success', 'Evento eliminado correctamente');
     }
+
 }

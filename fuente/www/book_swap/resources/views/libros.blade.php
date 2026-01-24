@@ -15,8 +15,10 @@
 <div class="container py-4">
 
     <div class="mb-8">
-        <h2 class="text-xl fw-bold mb-4">Catálogo de Libros</h2>
-        <p class="text-gray-600 mt-2">Explora y busca libros para intercambiar con otros lectores. Cada intercambio es una nueva aventura.</p>
+        <h2 class="text-xl fw-bold mb-4">Catálogo de libros</h2>
+        <p class="text mt-2">Explora libros para intercambiar con otros lectores. Cada intercambio es una nueva aventura.</p>
+        <p class="text mt-2">¿Buscas algo concreto? Puedes buscar por el título del libro en nuestro catálogo, seguro que tenemos lo que estás buscando.</p>
+        <div class="col">
     </div>
     
 

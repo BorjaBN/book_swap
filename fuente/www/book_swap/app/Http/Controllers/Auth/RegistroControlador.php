@@ -32,8 +32,6 @@ class RegistroControlador extends Controller
     // Procesar el registro
     public function registrar(RegistroRequest $peticion)
     {
-        // Ya viene validado automáticamente
-
         if ($peticion->tipo_usuario === 'comun') {
 
             $user = UsuarioComun::create([
@@ -46,25 +44,26 @@ class RegistroControlador extends Controller
             ]);
 
             Auth::guard('web')->login($user);
+
+            return redirect()->route('inicio');
         }
 
-        else {
+        // ENTIDAD CULTURAL
+        $entidad = EntidadCultural::create([
+            'nombre_entidad_cultural' => $peticion->nombre_entidad,
+            'email_entidad_cultural' => $peticion->email,
+            'password' => Hash::make($peticion->password),
+            'telefono_entidad_cultural' => $peticion->telefono,
+            'ciudad_entidad_cultural' => $peticion->ciudad,
+            'nif_entidad_cultural' => $peticion->nif,
+            'direccion_entidad_cultural' => $peticion->direccion,
+            'web_entidad_cultural' => $peticion->web,
+        ]);
 
-            $entidad = EntidadCultural::create([
-                'nombre_entidad_cultural' => $peticion->nombre_entidad,
-                'email_entidad_cultural' => $peticion->email,
-                'password' => Hash::make($peticion->password),
-                'telefono_entidad_cultural' => $peticion->telefono,
-                'ciudad_entidad_cultural' => $peticion->ciudad,
-                'nif_entidad_cultural' => $peticion->nif,
-                'direccion_entidad_cultural' => $peticion->direccion,
-                'web_entidad_cultural' => $peticion->web,
-            ]);
+        Auth::guard('entidad')->login($entidad);
 
-            Auth::guard('entidad')->login($entidad);
-        }
-
-        return redirect('inicio');
+        return redirect()->route('entidad.inicio');
     }
+
 
 }
