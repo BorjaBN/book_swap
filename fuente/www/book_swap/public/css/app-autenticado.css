@@ -154,10 +154,11 @@ a[class*="btn-"] {
 }
 
 .btn-secondary:hover {
-  background-color: #cdd8c2;
-  border-color: #3f4e2c;
+  background-color: #dcd5cc; /* beige un poco más oscuro */
+  border-color: #c7b8a8;
   transform: translateY(-2px);
 }
+
 
 /* Botón ghost verde */
 .btn-primary-ghost {
@@ -190,6 +191,82 @@ a[class*="btn-"] {
   background-color: rgba(137, 98, 117, 0.12);
   transform: translateY(-2px);
 }
+
+.btn-outline-danger {
+  background-color: transparent;
+  color: #C0392B; /* rojo elegante */
+  border: 2px solid #C0392B;
+  padding: 10px 20px;
+  border-radius: 8px;
+  font-weight: 600;
+  transition: 
+    color .2s ease,
+    background-color .2s ease,
+    border-color .2s ease,
+    transform .2s ease;
+}
+
+.btn-outline-danger:hover {
+  background-color: #C0392B;
+  color: #fff;
+  border-color: #C0392B;
+  transform: translateY(-1px);
+}
+
+.btn-outline-danger:active {
+  transform: translateY(0);
+  background-color: #A93226; /* tono más oscuro para el click */
+  border-color: #A93226;
+}
+
+.btn-outline-edit {
+  background-color: transparent;
+  color: #3f4e2c; /* tu verde oscuro */
+  border: 2px solid #3f4e2c;
+  padding: 10px 20px;
+  border-radius: 8px;
+  font-weight: 600;
+  transition:
+    color .2s ease,
+    background-color .2s ease,
+    border-color .2s ease,
+    transform .2s ease;
+}
+
+.btn-outline-edit:hover {
+  background-color: #3f4e2c;
+  color: #fff;
+  border-color: #3f4e2c;
+  transform: translateY(-1px);
+}
+
+.btn-outline-edit:active {
+  transform: translateY(0);
+  background-color: #2f3c21; /* tono más oscuro */
+  border-color: #2f3c21;
+}
+
+.btn-danger {
+  background-color: #C0392B; /* rojo elegante */
+  color: #fff;
+  border: 1px solid #C0392B;
+  padding: 10px 20px;
+  border-radius: 8px;
+  font-weight: 600;
+  transition: background-color .2s ease, transform .2s ease;
+}
+
+.btn-danger:hover {
+  background-color: #A93226; /* más oscuro */
+  border-color: #A93226;
+  transform: translateY(-2px);
+}
+
+.btn-danger:active {
+  transform: translateY(0);
+}
+
+
 
 /* =========================================================
    BOTTOM NAV (INTACTO)
@@ -347,6 +424,14 @@ i {
     color: #3f4e2c;
 }
 
+/* Para eventos: que el contenido suba arriba del cuadrado */
+.tarjeta-evento .tarjeta-front {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start; /* ← EL TEXTO SUBE ARRIBA */
+}
+
+
 /* =========================================================
    BUSCADOR - ALINEACIÓN PERFECTA
 ========================================================= */
@@ -423,3 +508,51 @@ i {
       height: 450px;
   }
 }
+
+.modal-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.6);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 9999;
+}
+
+.modal-overlay.hidden {
+    display: none;
+}
+
+.modal-content {
+    background: white;
+    padding: 2rem;
+    border-radius: 10px;
+    width: 90%;
+    max-width: 400px;
+    text-align: center;
+}
+
+.modal-buttons {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 1.5rem;
+}
+
+.btn-cancelar,
+.btn-salir {
+    padding: 0.5rem 1rem;
+    border-radius: 6px;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.btn-cancelar {
+    background: #6c757d;
+    color: white;
+}
+
+.btn-salir {
+    background: #dc3545;
+    color: white;
+}
+

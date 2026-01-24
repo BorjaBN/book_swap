@@ -13,18 +13,19 @@
 
 @section('main')
 <div class="container py-4">
+
     {{-- Saludo personalizado --}}
-    <div class="mb-8">
-        <h2 class="text-3xl font-bold text-gray-800">
-            Hola, {{ Auth:: user()->nombre_usuario_comun }}
+    <div class="mb-5">
+        <h2 class="fs-2 fw-bold">
+            Hola, {{ Auth::user()->nombre_usuario_comun }}
         </h2>
-        <p class="text-gray-600 mt-2">Aquí tienes las novedades en libros y eventos.</p>
+        <p>Explora las últimas novedades en libros y eventos.</p>
     </div>
-    <br><br>
+
+    <hr class="my-2">
     {{-- Sección de Novedades en Libros --}}
-    <section class="mb-12">
-        <h3 class="text-2xl font-bold text-gray-800 mb-4">Novedades en Libros</h3>
-        
+    <section class="mb-5">
+        <h3 class="fs-4 fw-bold mb-4">Novedades en Libros</h3>
         
         @if($libros->count() > 0)
             <div class="row row-cols-1 row-cols-sm-2 row-cols-lg-2 row-cols-xl-3 g-4">
@@ -34,40 +35,48 @@
                             :elem="$libro"
                             tipo="libro"
                             :dobleTarjeta="true"
+                            :mostrarImagen="true"
                         />
                     </div>
                 @endforeach
             </div>
         @else
-            <div class="bg-gray-50 rounded-lg p-8 text-center">
-                <p class="text-gray-500">Aún no hay libros publicados.</p>
+            <div class="p-5 text-center">
+                <p class="text-muted fst-italic p-2">Aún no hay libros publicados.</p>
             </div>
         @endif
-        
     </section>
+
+    <hr class="my-2">
 
     {{-- Sección de Novedades en Eventos --}}
     <section>
-        <h3 class="text-2xl font-bold text-gray-800 mb-4">Novedades en Eventos</h3>
+        <h3 class="fs-4 fw-bold mb-4">Novedades en Eventos</h3>
         
         @if($eventos->count() > 0)
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4">
                 @foreach($eventos as $evento)
-                    <x-tarjeta-mostrar :elem="$evento" tipo="evento" : dobleTarjeta="false" />
+                    <div class="col">
+                        <x-tarjeta-mostrar 
+                            :elem="$evento" 
+                            tipo="evento" 
+                            :dobleTarjeta="false"
+                            :mostrarImagen="false" 
+                        />
+                    </div>
                 @endforeach
             </div>
         @else
-            <div class="bg-gray-50 rounded-lg p-8 text-center">
-                <p class="text-gray-500">Aún no hay eventos publicados.</p>
+            <div class="p-5 text-center">
+                <p class="text-muted fst-italic p-2">Aún no hay eventos publicados.</p>
             </div>
         @endif
     </section>
 
 </div>
+
 <x-nav-inferior />
 @endsection
-
-
 
 @section('footer')
     <x-footer />

@@ -46,6 +46,8 @@ class RegistroControlador extends Controller
             ]);
 
             Auth::guard('web')->login($user);
+
+            return redirect()->route('inicio');
         }
 
         else {
@@ -62,9 +64,10 @@ class RegistroControlador extends Controller
             ]);
 
             Auth::guard('entidad')->login($entidad);
+            return redirect()->route('entidad.inicio');
         }
 
-        return redirect('inicio');
+        
     }
 
 }

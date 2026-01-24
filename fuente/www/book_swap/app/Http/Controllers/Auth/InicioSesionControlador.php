@@ -35,7 +35,10 @@ class InicioSesionControlador extends Controller
 
             if (Auth::guard($guard)->attempt($credenciales)) {
                 $peticion->session()->regenerate();
-                return redirect()->intended('inicio');
+                
+                return $guard === 'web'
+                    ? redirect()->route('inicio')
+                    : redirect()->route('entidad.inicio');
             }
         }
 

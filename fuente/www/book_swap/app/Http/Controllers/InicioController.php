@@ -8,27 +8,24 @@ use App\Models\Libro;
 
 class InicioController extends Controller
 {
-    public function index()
+
+    public function inicioUComun()
     {
+        $eventos = EventoCultural::latest()->take(3)->get();
+        $libros = Libro::latest()->take(3)->get();
 
-        // Usuario común
-        if (Auth::guard('web')->check()) {
-            $eventos = EventoCultural::latest()->take(3)->get();
-            $libros = Libro::latest()->take(3)->get();
-
-            return view('inicio', compact('libros', 'eventos'));
-        }
-
-        // Entidad cultural
-        if (Auth::guard('entidad')->check()) {
-            $eventos = EventoCultural::where('id_entidad_cultural', Auth::id())
-                ->latest()
-                ->take(3)
-                ->get();
-
-            return view('inicio', compact('eventos'));
-        }
-    
+        return view('inicio-u-comun', compact('libros', 'eventos'));
     }
+
+    public function inicioEEntidad()
+    {
+        $eventos = EventoCultural::where('id_entidad_cultural', Auth::id())
+            ->latest()
+            ->take(3)
+            ->get();
+
+        return view('inicio-e-cultural', compact('eventos'));
+    }
+
 
 }

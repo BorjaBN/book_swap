@@ -128,3 +128,5 @@ class PerfilEntidadController extends Controller
             ->with('success', 'Tu cuenta ha sido eliminada correctamente.');
     }
 }
+
+

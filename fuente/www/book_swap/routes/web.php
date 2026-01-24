@@ -1,22 +1,20 @@
 <?php
 
-use App\Http\Controllers\Auth\InicioSesionControlador;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\Auth\InicioSesionControlador;
 use App\Http\Controllers\Auth\RegistroControlador;
 use App\Http\Controllers\InicioController;
 use App\Http\Controllers\LibroController;
-
+use App\Http\Controllers\EventoController;
 
 //------------------------------------
-// RUTAS PÚBLICAS (NO AUTENTICADOS)
+// RUTAS PÚBLICAS
 //------------------------------------
 
-// Pantalla de bienvenida
 Route::get('/', function () {
     return view('bienvenida');
 })->name('bienvenida');
 
-// Ruta que Laravel usa por defecto para redirigir cuando falla auth
 Route::get('/login', function () {
     return redirect()->route('formularioInicioSesion');
 })->name('login');
@@ -50,44 +48,32 @@ Route::post('/inicioSesion/entrar', [InicioSesionControlador::class, 'iniciarSes
 
 Route::middleware('auth:web')->group(function () {
 
-    // Inicio del usuario común
-    Route::get('/inicio', [InicioController::class, 'index'])
+    Route::get('/inicio', [InicioController::class, 'inicioUComun'])
         ->name('inicio');
 
-    Route::get('/libros', [LibroController::class, 'index'])->name('libros.index');
+    Route::resource('libros', LibroController::class);
 
-    Route::get('/libros/formularioAlta', [LibroController::class, 'create'])->name('formularioAltaLibro');
-
-    Route::post('/libros/formularioAlta/darAlta', [LibroController::class, 'store'])->name('darAltaLibro');
-
-    Route::get('/eventos/comun', function () {
-        return 'Listado de eventos (dummy)';
-    })->name('eventos.index');
-
-    Route::get('/perfil', function () {
-        return 'Perfil (dummy)';
-    })->name('comun.index');
+    // Eventos públicos (solo ver)
+    Route::resource('eventos', EventoController::class)
+        ->only(['index', 'show']);
 });
 
 //------------------------------------
 // ENTIDAD CULTURAL (auth:entidad)
 //------------------------------------
 
-Route::middleware('auth:entidad')->group(function () {
+Route::middleware('auth:entidad')
+    ->prefix('entidad')
+    ->name('entidad.')
+    ->group(function () {
 
-    // Inicio de entidad cultural
-    Route::get('/inicio-entidad', function () {
-        return view('inicio-e-cultural');
-    })->name('inicio.entidad');
+        Route::get('/inicio', [InicioController::class, 'inicioEEntidad'])
+            ->name('inicio');
 
-    Route::get('/eventos/crear', function () {
-        return 'Crear evento (dummy)';
-    })->name('entidad.eventos.create');
-
-    Route::get('/eventos', function () {
-        return 'Perfil entidad / eventos (dummy)';
-    })->name('eventos.index');
-});
+        // Eventos privados de la entidad (CRUD completo excepto index/show)
+        Route::resource('eventos', EventoController::class)
+            ->except(['index', 'show']);
+    });
 
 //------------------------------------
 // CIERRE DE SESIÓN
@@ -97,6 +83,16 @@ Route::post('/cierreSesion', [InicioSesionControlador::class, 'cerrarSesion'])
     ->name('cerrarSesion');
 
 
-    Route::get('/prueba', function () {
-    return 'Ruta de prueba funcionando correctamente';
+    Route::get('/prueba-eventos', function () {
+    return 'Ruta dummy de prueba funcionando correctamente';
+})->name('prueba.eventos');
+
+
+    Route::get('/intercambio', function () {
+    return 'Ruta dummy de prueba funcionando correctamente';
 })->name('intercambio');
+
+
+    Route::get('/prueba.eventos', function () {
+    return 'Ruta dummy de prueba funcionando correctamente';
+})->name('comun.index');

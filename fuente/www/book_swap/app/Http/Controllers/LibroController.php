@@ -77,7 +77,7 @@ class LibroController extends Controller
      * @param  \App\Models\Libro  $libro
      * @return \Illuminate\View\View
      */
-    public function show(Libro $libro)
+    public function show()
     {
         return redirect()->route('libros.index');
     }
@@ -112,7 +112,7 @@ class LibroController extends Controller
      * @param  \App\Models\Libro                $libro
      * @return \Illuminate\Http\RedirectResponse
      */  
-    public function update(Request $request, Libro $libro)
+    public function update(LibroRequest $request, Libro $libro)
     {
         $this->authorize('update', $libro);
 
