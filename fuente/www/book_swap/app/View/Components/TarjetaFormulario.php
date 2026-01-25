@@ -21,6 +21,6 @@ class TarjetaFormulario extends Component
      */
     public function render(): View|Closure|string
     {
-        return view('components.tarjeta-formulario'); //components.base-formulario
+        return view('components.base-formulario');
     }
 }

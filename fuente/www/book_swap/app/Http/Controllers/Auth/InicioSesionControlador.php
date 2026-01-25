@@ -33,13 +33,13 @@ class InicioSesionControlador extends Controller
                 'password' => $password,
             ];
 
+            
             if (Auth::guard($guard)->attempt($credenciales)) {
-                $peticion->session()->regenerate();
-                
                 return $guard === 'web'
                     ? redirect()->route('inicio')
                     : redirect()->route('entidad.inicio');
             }
+
         }
 
         return back()

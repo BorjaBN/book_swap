@@ -70,6 +70,8 @@ Route::middleware('auth:entidad')
         Route::get('/inicio', [InicioController::class, 'inicioEEntidad'])
             ->name('inicio');
 
+       
+
         // Eventos privados de la entidad (CRUD completo excepto index/show)
         Route::resource('eventos', EventoController::class)
             ->except(['index', 'show']);

@@ -1,11 +1,12 @@
-<?php
+<?php 
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers; 
 
-use App\Models\Libro;
-use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\Storage;
+use App\Models\Libro; 
+use Illuminate\Http\Request; 
+use Illuminate\Support\Facades\Auth; 
+use Illuminate\Support\Facades\Storage; 
+use App\Http\Requests\LibroRequest;
 
 class LibroController extends Controller
 {
@@ -49,7 +50,7 @@ class LibroController extends Controller
      * @param  \App\Http\Requests\LibroRequest  $request
      * @return \Illuminate\Http\RedirectResponse
      */
-    public function store(Request $request)
+    public function store(LibroRequest $request)
     {
         $validated = $request->validated();
 
@@ -68,7 +69,7 @@ class LibroController extends Controller
     }
 
 
-    /**
+    /** NO SE USA Y PARA AHORRAR CAMBIOS SE DEJA ASÍ
      * VER detalle de un libro
      * - Recibe un libro.
      * - Carga la relación con el propietario.

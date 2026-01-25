@@ -4,7 +4,7 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class StoreEventoRequest extends FormRequest
+class EventoRequest extends FormRequest
 {
     public function authorize()
     {
@@ -14,14 +14,20 @@ class StoreEventoRequest extends FormRequest
 
     public function rules()
     {
+        $evento = $this->route('evento'); // null en alta, objeto en edición
+
         return [
-            'nombre_evento' => 'required|max:150',
-            'fecha_evento' => 'required|date|after_or_equal:today',
-            'descripcion_evento' => 'required|max:300',
-            'ubicacion_evento' => 'required|max:150',
-            'tipo_evento' => 'required|in:encuentro con autor/a,club de lectura,feria del libro',
+            'nombre_evento' => $evento ? 'nullable|max:150' : 'required|max:150',
+            'fecha_evento' => $evento ? 'nullable|date' : 'required|date|after_or_equal:today',
+            'descripcion_evento' => $evento ? 'nullable|max:300' : 'required|max:300',
+            'ubicacion_evento' => $evento ? 'nullable|max:150' : 'required|max:150',
+            'tipo_evento' => $evento
+                ? 'nullable|in:encuentro con autor/a,club de lectura,feria del libro'
+                : 'required|in:encuentro con autor/a,club de lectura,feria del libro',
         ];
     }
+
+    
 
     public function messages()
     {

@@ -20,19 +20,24 @@
             {{-- Cancelar --}}
             <button 
                 type="button" 
-                class="btn-cancelar" 
+                class="btn-secondary" 
                 onclick="cerrarModal('{{ $id }}')"
             >
                 {{ $textoCancelar ?? 'Cancelar' }}
             </button>
 
             {{-- Aceptar --}}
-            <a 
-                href="{{ $accionAceptar }}" 
-                class="btn-salir"
-            >
-                {{ $textoAceptar ?? 'Aceptar' }}
-            </a>
+            <form id="form-delete-{{ $id }}" 
+                action="{{ $accionAceptar }}" 
+                method="POST">
+                @csrf
+                @method('DELETE')
+
+                <button type="submit" class="btn-danger">
+                    {{ $textoAceptar ?? 'Aceptar' }}
+                </button>
+            </form>
+
 
         </div>
 
