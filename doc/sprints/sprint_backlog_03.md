@@ -45,3 +45,6 @@
 *   Redacción del documento de arquitectura tecnológica: TERMINADO
 *   Rediseño del modelo E-R y diccionario de datos: TERMINADO
 *   Creación de la base de datos en PhpMyAdmin con datos de prueba: TERMINADO
+*   Creación de manual de usuario: TERMINADO
+*   Creación de manual de instalación: TERMINADO
+*   Creación de manual de programador: TERMINADO
