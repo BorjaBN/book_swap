@@ -43,12 +43,7 @@ El servidor queda preparado para ejecutar contenedores y recibir código mediant
 
 Para permitir despliegues mediante `git push`:
 
-1. Crear un repositorio bare, por ejemplo:
-   ```
-   /var/repo/bookswap.git
-   ```
-
-2. Configurar un hook `post-receive` que:
+1. Configurar un hook `post-receive` que:
    - Actualice el código en el directorio del proyecto.
    - Instale dependencias.
    - Ejecute migraciones.
