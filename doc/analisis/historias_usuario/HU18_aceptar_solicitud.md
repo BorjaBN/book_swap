@@ -14,4 +14,6 @@ Criterios de aceptación:
 
     Al solicitar el intercambio se restan  los créditos de la cartera de créditos asociada al usuario.
 
+    Cuando la solicitud es aceptada, el usuario emisor de la solicitud recibe la mitad de los creditos del coste del intercambio, como recompensa.
+
     Si no tiene créditos suficientes se notifica al usuario que no es posible realizar el intercambio.
