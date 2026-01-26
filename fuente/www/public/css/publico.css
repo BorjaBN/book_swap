@@ -1,0 +1,67 @@
+/* =========================================================
+   FONDO
+========================================================= */
+body {
+  background: url('/img/bg_libros.jpg') center/cover no-repeat fixed;
+  background-color: #FFF4EE;
+}
+
+/* =========================================================
+   HERO
+========================================================= */
+.hero {
+  padding: 100px 20px 40px;
+  display: flex;
+  justify-content: center;
+  text-align: center;
+}
+
+.hero-content {
+  background: rgba(255, 255, 255, 0.92);
+  border-radius: 14px;
+  padding: 32px 26px;
+  max-width: 650px;
+  width: 100%;
+  box-shadow: 0 6px 18px rgba(0,0,0,0.15);
+  backdrop-filter: blur(4px);
+}
+
+.hero-title {
+  font-size: 2.1rem;
+  margin-bottom: 15px;
+}
+
+.hero-subtitle {
+  font-size: 1.05rem;
+  color: #505e3f;
+  margin-bottom: 22px;
+}
+
+.hero .logo {
+  width: 100px;
+  opacity: 0.9;
+}
+
+/* =========================================================
+   BOTONES
+========================================================= */
+
+#botonesInicio {
+    display: flex;
+    gap: 12px;
+    justify-content: center;
+    align-items: center;
+}
+
+@media (max-width: 376px) {
+    #botonesInicio {
+        flex-direction: column;
+    }
+
+
+    .hero { padding: 70px 16px 28px; }
+    .hero-content { padding: 22px 18px; }
+    .hero-title { font-size: 1.6rem; }
+    .hero-subtitle { font-size: 0.95rem; }
+    .hero .logo { width: 80px; }
+}
