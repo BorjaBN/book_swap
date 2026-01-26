@@ -2,27 +2,32 @@
 
 Este product backlog recoge los requerimientos funcionales clave para el desarrollo de BookSwap.
 
-1.  Registro de usuarios comunes / entidades culturales
-2.  Inicio/cierre de sesión
-3.  Edición del perfil de usuario
-4.  Eliminación del perfil de usuario
-5.  Consulta de datos de usuario
-6.  Consulta del muro de valoraciones
-7.  Consulta de solicitudes
-8.  Alta de libros
-9.  Edición de datos del libro
-10. Eliminación de libros
-11. Consulta de ficha de un libro 
-12. Consulta del catálogo completo
-13. Búsqueda dentro del catálogo 
-14. Envío de solicitudes de intercambio 
-15. Recepción de solicitudes de intercambio 
-16. Aceptación/rechazo de solicitudes de intercambio 
-17. Recepción de créditos 
-18. Gasto de créditos 
-19. Consulta de créditos
-20. Publicación o recepción de valoraciones 
-21. Creación de evento cultural 
-22. Edición de datos del evento cultural 
-23. Eliminación de evento cultural 
-24. Consulta de eventos culturales 
+1.  Registro de usuarios comunes
+2.  Registro de entidades culturales
+3.  Inicio de sesion
+4.  Cierre de sesion
+5.  Consulta de datos como usuario comun
+6.  Consulta de datos como entidad cultural
+7.  Edición de datos como usuario comun
+8.  Edición de datos como entidad cultural
+9.  Eliminacion de perfil
+10. Alta de libro.
+11. Edición de datos de libro
+12. Eliminación de registro de libro
+13. Consulta de libros propios
+14. Consulta las ficha de libros
+15. Consulta de catálogo completo
+16. Búsqueda en catálogo
+17. Solicitar intercambio
+18. Aceptar solicitud de intercambio
+19. Rechazar solicitud de intercambio
+20. Gasto de créditos en intercambio
+21. Consulta de créditos
+22. Consulta historial de intercambios
+23. Creación de evento cultural
+24. Consulta del listado de eventos culturales
+25. Consulta de eventos propios como entidad cultural
+26. Edición de los datos de eventos culturales
+27. Búsqueda en el listado de eventos culturales
+28. Eliminación de datos de un evento cultural
+29. Recibir notificaciones
