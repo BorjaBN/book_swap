@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::create('evento_cultural', function (Blueprint $table) {
             $table->id('id_evento');
             $table->string('nombre_evento', 150);
-            $table->date('fecha_evento');
+            $table->dateTime('fecha_evento');
             $table->text('descripcion_evento');
             $table->string('ubicacion_evento', 150);
             $table->enum('tipo_evento', ['encuentro con autor/a', 'club de lectura', 'feria del libro']);

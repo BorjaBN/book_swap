@@ -19,6 +19,8 @@ return new class extends Migration
             $table->string('password', 255);
             $table->string('telefono_usuario_comun', 100);
             $table->string('ciudad_usuario_comun', 100);
+            $table->timestamp('ultima_revision_intercambios')->nullable();
+            $table->date('ultima_asignacion_creditos')->nullable();
 
             $table->timestamps();
         });
