@@ -68,18 +68,6 @@
                 
             />
 
-            {{-- Tipo de evento --}}
-            <x-select 
-                label="Tipo de evento"
-                name="tipo_evento"
-                :options="[
-                    'encuentro con autor/a' => 'Encuentro con autor/a',
-                    'club de lectura' => 'Club de lectura',
-                    'feria del libro' => 'Feria del libro'
-                ]"
-                :selected="old('tipo_evento', $evento->tipo_evento)"
-                
-            />
             <x-select 
                 label="Tipo de evento"
                 name="tipo_evento"
