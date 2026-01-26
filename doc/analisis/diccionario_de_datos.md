@@ -5,11 +5,6 @@ En el siguiente documento se trata de documentar los metadatos más ligados al a
 
 ### A) Tabla de Usuario_comun:
 
-#### Información general
-- **Nombre de la tabla:** `usuario_comun`
-- **Descripción:** Almacena los datos principales de los usuarios comunes del sistema.
-- **Clave primaria:** `id_usuario_comun`
-
 #### Campos
 
 | Campo                         | Tipo                | Longitud | Nulo | Default        | Clave   | Descripción                                      |
@@ -26,28 +21,11 @@ En el siguiente documento se trata de documentar los metadatos más ligados al a
 | created_at                  | TIMESTAMP           | —        | SÍ   | NULL           | —       | Fecha de creación del registro.                  |
 | updated_at                  | TIMESTAMP           | —        | SÍ   | NULL           | —       | Fecha de última actualización del registro.      |
 
-#### Relaciones
-No se definen claves foráneas en esta tabla.
 
-#### Índices
-- **PRIMARY KEY:** `id_usuario_comun`
-- **UNIQUE:** `email_usuario_comun`
-
-#### Notas técnicas
-- La contraseña se almacena en formato hash.
-- Los campos de fecha permiten controlar procesos automáticos como asignación de créditos o revisión de intercambios.
-
-
-
-
+---
 
 
 ### B) Tabla de Cartera_Creditos:
-
-#### Información general
-- **Nombre de la tabla:** `cartera_creditos`
-- **Descripción:** Gestiona el saldo total de créditos asociado a cada usuario común.
-- **Clave primaria:** `id_cartera`
 
 #### Campos
 
@@ -59,66 +37,86 @@ No se definen claves foráneas en esta tabla.
 | created_at        | TIMESTAMP           | —        | SÍ   | NULL           | —     | Fecha de creación del registro.                         |
 | updated_at        | TIMESTAMP           | —        | SÍ   | NULL           | —     | Fecha de última actualización del registro.             |
 
-#### Relaciones
 
-| Tipo | Campo origen       | Tabla destino   | Campo destino       | Acción ON DELETE |
-|------|--------------------|------------------|----------------------|------------------|
-| FK   | id_usuario_comun   | usuario_comun    | id_usuario_comun     | CASCADE          |
-
-#### Índices
-- **PRIMARY KEY:** `id_cartera`
-- **FOREIGN KEY:** `id_usuario_comun` → `usuario_comun(id_usuario_comun)`
-
-#### Notas técnicas
-- La relación con `usuario_comun` es opcional (`nullable`), permitiendo carteras no asignadas inicialmente.
-- La eliminación en cascada garantiza que al borrar un usuario se elimine automáticamente su cartera.
+---
 
 
+### C) Tabla de Entidad_Cultural:
 
-### D) Tabla de Libro:
+#### Campos
 
-| Atributo                 | Tipo     | Tamaño | Clave | Descripción                                                        |
-|--------------------------|----------|--------|-------|--------------------------------------------------------------------|
-| id_libro                 | INT      | -      | PK    | Identificador único del libro                                      |
-| titulo_libro             | VARCHAR  | 100    | -     | Título del libro                                                   |
-| autor_libro              | VARCHAR  | 100    | -     | Autor del libro                                                    |
-| ISBN                     | VARCHAR  | 255    | -     | ISBN del libro                                                     |
-| estado_libro             | VARCHAR  | 100    | -     | Estado en el que se encuentra el libro                             |
-| genero_libro             | VARCHAR  | 100    | -     | Género literario para clasificar al libro                          |
-| fecha_publicacion_libro  | DATE     | -      | -     | Fecha en la que se publicó el libro                                |
-| id_user_comun            | INT      | -      | FK    | Identificador único del usuario común que lo registró              |
-
-
-### E) Tabla de Evento_cultural:
-
-| Atributo            | Tipo     | Tamaño | Clave | Descripción                                                                         |
-|---------------------|----------|--------|-------|-------------------------------------------------------------------------------------|
-| id_evento           | INT      | -      | PK    | Identificador único del evento                                                      |
-| nombre_evento       | VARCHAR  | 150    | -     | Nombre del evento                                                                   |
-| fecha_evento        | DATE     | -      | -     | Fecha de realización del evento                                                     |
-| descripcion_evento  | TEXT     | -      | -     | Descripción del evento                                                              |
-| ubicacion_evento    | VARCHAR  | 150    | -     | Lugar donde se va a realizar el evento                                              |
-| tipo_evento         | ENUM     | -      | -     | Tipo de evento  ('encuentro con el autor', 'club de lectura', 'feria del libro')    |
-| estado_evento       | VARCHAR  | 50     | -     | Estado actual del evento (pendiente, aceptado, rechazado)                           |
-| id_entidad_cultural | INT      | -      | FK    | Identificador único de la entidad que lo organiza                                   |
-| id_administrador    | INT      | -      | FK    | Identificador único del administrador que lo modera                                 |
+| Campo                       | Tipo            | Longitud | Nulo | Default        | Clave  | Descripción                                      |
+|-----------------------------|-----------------|----------|------|----------------|--------|--------------------------------------------------|
+| id_entidad_cultural        | BIGINT UNSIGNED | —        | NO   | AUTO_INCREMENT | PK     | Identificador único de la entidad cultural.      |
+| nombre_entidad_cultural    | VARCHAR         | 100      | NO   | —              | —      | Nombre de la entidad cultural.                   |
+| email_entidad_cultural     | VARCHAR         | 100      | NO   | —              | UNIQUE | Correo electrónico de la entidad.                |
+| password                   | VARCHAR         | 255      | NO   | —              | —      | Contraseña hasheada de acceso.                   |
+| telefono_entidad_cultural  | VARCHAR         | 100      | NO   | —              | —      | Teléfono de contacto.                            |
+| ciudad_entidad_cultural    | VARCHAR         | 100      | NO   | —              | —      | Ciudad donde se ubica la entidad.                |
+| direccion_entidad_cultural | VARCHAR         | 255      | NO   | —              | —      | Dirección física completa.                       |
+| web_entidad_cultural       | VARCHAR         | 255      | SÍ   | NULL           | —      | Página web oficial de la entidad.                |
+| created_at                 | TIMESTAMP       | —        | SÍ   | NULL           | —      | Fecha de creación del registro.                  |
+| updated_at                 | TIMESTAMP       | —        | SÍ   | NULL           | —      | Fecha de última actualización del registro.      |
 
 
-### F) Tabla de Cartera_creditos:
-
-| Atributo       | Tipo     | Tamaño | Clave | Descripción                                                        |
-|----------------|----------|--------|-------|--------------------------------------------------------------------|
-| id_cartera     | INT      | -      | PK    | Identificador único de la cartera                                  |
-| saldo_total    | DECIMAL  | 10.2   | -     | Saldo total disponible                                             |
-| id_user_comun  | INT      | -      | FK    | Identificador único del usuario común dueño de la cartera          |
+---
 
 
-### G) Tabla de Movimiento_creditos:
+### D) Tabla de Evento_Cultural:
 
-| Atributo          | Tipo     | Tamaño | Clave | Descripción                                                  |
-|-------------------|----------|--------|-------|--------------------------------------------------------------|
-| id_movimiento     | INT      | -      | PK    | Identificador único del movimiento de crédito                |
-| cantidad          | DECIMAL  | 10.2   | -     | Cantidad de créditos                                         |
-| tipo_movimiento   | ENUM     | -      | -     | Tipo de movimiento (ganado, gastado, otorgado)               |
-| fecha_movimiento  | DATE     | -      | -     | Fecha del ingreso o retirada de los créditos                 |
-| id_cartera        | INT      | -      | FK    | Identificador único de la cartera asociada                   |
+#### Campos
+
+| Campo              | Tipo            | Longitud | Nulo | Default        | Clave | Descripción                                                |
+|--------------------|-----------------|----------|------|----------------|-------|------------------------------------------------------------|
+| id_evento          | BIGINT UNSIGNED | —        | NO   | AUTO_INCREMENT | PK    | Identificador único del evento.                           |
+| nombre_evento      | VARCHAR         | 150      | NO   | —              | —     | Nombre del evento cultural.                               |
+| fecha_evento       | DATETIME        | —        | NO   | —              | —     | Fecha y hora de realización del evento.                   |
+| descripcion_evento | TEXT            | —        | NO   | —              | —     | Descripción detallada del evento.                         |
+| ubicacion_evento   | VARCHAR         | 150      | NO   | —              | —     | Lugar donde se llevará a cabo el evento.                  |
+| tipo_evento        | ENUM            | —        | NO   | —              | —     | Tipo de evento: *encuentro con autor/a*, *club de lectura*, *feria del libro*. |
+| id_entidad_cultural| BIGINT UNSIGNED | —        | SÍ   | NULL           | FK    | Entidad cultural organizadora del evento.                 |
+| created_at         | TIMESTAMP       | —        | SÍ   | NULL           | —     | Fecha de creación del registro.                           |
+| updated_at         | TIMESTAMP       | —        | SÍ   | NULL           | —     | Fecha de última actualización del registro.               |
+
+
+---
+
+
+### C) Tabla de Libro:
+
+#### Campos
+
+| Campo                     | Tipo            | Longitud | Nulo | Default        | Clave | Descripción                                                         |
+|---------------------------|-----------------|----------|------|----------------|-------|---------------------------------------------------------------------|
+| id_libro                  | BIGINT UNSIGNED | —        | NO   | AUTO_INCREMENT | PK    | Identificador único del libro.                                     |
+| titulo_libro              | VARCHAR         | 150      | NO   | —              | —     | Título del libro.                                                   |
+| autor_libro               | VARCHAR         | 150      | NO   | —              | —     | Autor o autora del libro.                                           |
+| ISBN                      | VARCHAR         | 20       | NO   | —              | UNIQUE| Código ISBN del libro.                                              |
+| estado_libro              | ENUM            | —        | NO   | —              | —     | Estado físico del libro: *nuevo*, *seminuevo*, *usado*.             |
+| genero_libro              | VARCHAR         | 150      | SÍ   | NULL           | —     | Género literario del libro.                                         |
+| fecha_publicacion_libro   | DATE            | —        | NO   | —              | —     | Fecha de publicación del libro.                                     |
+| estado_intercambio        | VARCHAR         | —        | NO   | 'libre'        | —     | Estado del libro dentro del sistema de intercambio.                 |
+| imagen_libro              | VARCHAR         | —        | NO   | —              | —     | Ruta del archivo de la imagen del libro.                   |
+| id_usuario_comun          | BIGINT UNSIGNED | —        | NO   | —              | FK    | Usuario propietario del libro.                                      |
+| created_at                | TIMESTAMP       | —        | SÍ   | NULL           | —     | Fecha de creación del registro.                                     |
+| updated_at                | TIMESTAMP       | —        | SÍ   | NULL           | —     | Fecha de última actualización del registro.                         |
+
+
+---
+
+
+### C) Tabla de Intercambios:
+
+#### Campos
+
+| Campo              | Tipo            | Longitud | Nulo | Default        | Clave | Descripción                                                                 |
+|--------------------|-----------------|----------|------|----------------|-------|-----------------------------------------------------------------------------|
+| id                 | BIGINT UNSIGNED | —        | NO   | AUTO_INCREMENT | PK    | Identificador único del intercambio.                                       |
+| libro_id           | BIGINT UNSIGNED | —        | NO   | —              | FK    | Libro solicitado por el usuario solicitante.                               |
+| solicitante_id     | BIGINT UNSIGNED | —        | NO   | —              | FK    | Usuario que solicita el intercambio.                                       |
+| propietario_id     | BIGINT UNSIGNED | —        | NO   | —              | FK    | Usuario propietario del libro solicitado.                                  |
+| estado             | ENUM            | —        | NO   | 'pendiente'    | —     | Estado del intercambio: *pendiente*, *aceptado*, *rechazado*.              |
+| libro_ofrecido_id  | BIGINT UNSIGNED | —        | SÍ   | NULL           | FK    | Libro ofrecido por el solicitante como parte del intercambio (opcional).   |
+| created_at         | TIMESTAMP       | —        | SÍ   | NULL           | —     | Fecha de creación del registro.                                            |
+| updated_at         | TIMESTAMP       | —        | SÍ   | NULL           | —     | Fecha de última actualización del registro.                                |
+
