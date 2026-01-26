@@ -1,0 +1,38 @@
+/* =========================================================
+   ESPACIO PARA BOTTOM NAV
+========================================================= */
+body {
+  padding-bottom: 70px;
+}
+
+/* =========================================================
+   BOTTOM NAV
+========================================================= */
+.bottom-nav {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  background: #ffffff;
+  border-top: 1px solid #ddd;
+  display: flex;
+  justify-content: space-around;
+  padding: 8px 0;
+  z-index: 999;
+}
+
+.bottom-nav a {
+  text-decoration: none;
+  color: #3F4E2C;
+  font-weight: 600;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.8rem;
+}
+
+.bottom-nav a i {
+  font-size: 1.4rem;
+  margin-bottom: 3px;
+}

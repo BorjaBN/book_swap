@@ -1,0 +1,525 @@
+/* =========================================================
+   RESET Y TIPOGRAFÍA
+========================================================= */
+html, body {
+  margin: 0;
+  padding: 0;
+  font-family: 'Open Sans', sans-serif;
+  background-color: #FFF4EE;
+  color: #3f4e2c;
+  height: auto;
+}
+
+@media (max-width: 576px) {
+  html { font-size: 14px; }
+}
+
+body {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.page-wrapper { flex: 1; }
+
+h1, h2, h3, h4, h5 {
+  font-family: 'Playfair Display', serif;
+  font-weight: 700;
+  color: #3f4e2c;
+}
+
+/* =========================================================
+   HEADER
+========================================================= */
+header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 15px 20px;
+  background-color: #F5EDE7;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+  z-index: 10; 
+}
+
+.logo-header {
+  max-width: 90px;
+  height: auto;
+}
+
+@media (max-width: 576px) {
+  header { padding: 10px 14px; }
+  .logo-header { max-width: 70px; }
+}
+
+/* =========================================================
+   FORM CARD
+========================================================= */
+.formulario-tarjeta {
+  background: rgba(255, 255, 255, 0.95);
+  border-radius: 14px;
+  padding: 28px 22px;
+  max-width: 500px;
+  width: 100%;
+  margin: 20px auto;
+  box-shadow: 0 6px 18px rgba(0,0,0,0.15);
+  backdrop-filter: blur(4px);
+}
+
+@media (max-width: 576px) {
+  .formulario-tarjeta {
+    max-width: 360px;   
+    width: 90%;       
+    padding: 18px 16px; 
+    border-radius: 12px;
+  }
+}
+
+
+/* =========================================================
+   INPUTS
+========================================================= */
+.form-control {
+  width: 100%;
+  padding: 10px 12px;
+  border-radius: 8px;
+  border: 1px solid #c7b8a8;
+  background: #fff;
+  font-size: 15px;
+  transition: all 0.2s ease;
+}
+
+.form-control:focus {
+  border-color: #3f4e2c;
+  box-shadow: 0 0 0 3px rgba(63, 78, 44, 0.25);
+  outline: none;
+}
+
+/* =========================================================
+   BOTONES
+========================================================= */
+a.btn,
+a[class*="btn-"] {
+  position: relative;
+  z-index: 300;
+}
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  padding: 10px 18px;
+  border-radius: 8px;
+  font-weight: 600;
+  font-size: 0.95rem;
+  cursor: pointer;
+  border: 1px solid transparent;
+  transition: background-color .2s ease, transform .2s ease, color .2s ease, border-color .2s ease;
+  text-decoration: none;
+}
+
+.btn-primary {
+  background-color: #3f4e2c;
+  color: #FFF4EE;
+  border-color: #3f4e2c;
+}
+
+.btn-primary:hover {
+  background-color: #4f6240;
+  transform: translateY(-2px);
+}
+
+.btn-secondary {
+  background-color: #e6e0d8;
+  color: #3f4e2c;
+  border-color: #c7b8a8;
+}
+
+.btn-secondary:hover {
+  background-color: #dcd5cc;
+  border-color: #c7b8a8;
+  transform: translateY(-2px);
+}
+
+.btn-primary-ghost {
+  background-color: transparent;
+  color: #3f4e2c;
+  border: none;
+}
+
+.btn-primary-ghost:hover {
+  background-color: rgba(63, 78, 44, 0.1);
+  transform: translateY(-2px);
+}
+
+.btn-tertiary-ghost {
+  background-color: transparent;
+  color: #896275;
+  border: none;
+}
+
+.btn-tertiary-ghost:hover {
+  background-color: rgba(137, 98, 117, 0.12);
+  transform: translateY(-2px);
+}
+
+.btn-outline-danger {
+  background-color: transparent;
+  color: #C0392B;
+  border: 2px solid #C0392B;
+}
+
+.btn-outline-edit {
+  background-color: transparent;
+  color: #3f4e2c;
+  border: 2px solid #3f4e2c;
+}
+
+.btn-danger {
+  background-color: #C0392B;
+  color: #fff;
+  border: 1px solid #C0392B;
+}
+
+.btn-header {
+  background-color: transparent;
+  color:#3f4e2c;
+}
+
+
+/* =========================================================
+   FOOTER
+========================================================= */
+footer {
+  background-color: #F5EDE7;
+  padding: 20px;
+  text-align: center;
+  font-size: 14px;
+  color: #505e3f;
+  backdrop-filter: blur(4px);
+  margin-top: auto;
+}
+
+footer nav {
+  display: flex;
+  justify-content: center;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+footer a {
+  color: #3f4e2c;
+  text-decoration: none;
+}
+
+footer a:hover {
+  text-decoration: underline;
+}
+
+/* =========================================================
+   BADGES
+========================================================= */
+.badge-morado {
+  background-color: #7A3B69 !important;
+  color: #ffffff !important;
+}
+
+.badge-morado-claro {
+  background-color: #b474a3 !important;
+}
+
+i {
+  font-size: 1.8rem;
+}
+
+/* =========================================================
+   TARJETAS
+========================================================= */
+.tarjeta-wrapper {
+  width: 100%;
+  aspect-ratio: 1 / 1.5;
+  max-width: 450px;
+  margin-left: auto;
+  margin-right: auto;
+  position: relative;
+  perspective: 1000px;
+}
+
+@media (min-width: 992px) {
+  .tarjeta-wrapper { max-width: 380px; }
+}
+
+@media (min-width: 1200px) {
+  .tarjeta-wrapper { max-width: 420px; }
+}
+
+.tarjeta-inner {
+  width: 100%;
+  height: 100%;
+  position: relative;
+  transition: transform .6s;
+  transform-style: preserve-3d;
+}
+
+.tarjeta-inner.flipped { transform: rotateY(180deg); }
+
+.tarjeta-front,
+.tarjeta-back {
+  position: absolute;
+  inset: 0;
+  backface-visibility: hidden;
+  border-radius: .5rem;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+
+.tarjeta-back { transform: rotateY(180deg); }
+
+.tarjeta-img-wrapper {
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  position: relative;
+  border-radius: .5rem;
+}
+
+.tarjeta-img {
+  width: 100%;
+  height: 100%;
+  max-height: 380px; 
+  object-fit: cover;
+}
+
+@media (max-width: 576px) {
+  .tarjeta-img {
+    max-height: 260px;
+  }
+}
+
+
+
+.placeholder {
+  background: linear-gradient(135deg, #6c757d, #495057);
+  height: 100%;
+  border-radius: .5rem;
+}
+
+.titulo-usuario {
+  font-family: 'Open Sans', sans-serif;
+  font-weight: 600;
+  color: #3f4e2c;
+}
+
+.titulo-libro {
+  font-family: 'Playfair Display', serif;
+  font-weight: 700;
+  color: #3f4e2c;
+}
+
+.row.g-4 > .col {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 1.5rem;
+}
+
+.tarjeta-busqueda {
+  width: 100%;
+  height: auto;
+  min-height: 0;
+}
+
+/* =========================================================
+   BUSCADOR
+========================================================= */
+.d-flex .flex-grow-1 > div {
+  margin-bottom: 0 !important;
+}
+
+.d-flex .form-control {
+  height: 44px;
+}
+
+.d-flex .btn {
+  height: 44px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 100px;
+}
+
+@media (max-width: 576px) {
+  .d-flex.busqueda-responsive {
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .d-flex.busqueda-responsive .btn {
+    width: 100%;
+    min-width: 0;
+  }
+
+  .d-flex.busqueda-responsive .form-control {
+    width: 100%;
+  }
+}
+
+/* =========================================================
+   MODAL
+========================================================= */
+.modal-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.6);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 9999;
+}
+
+.modal-overlay.hidden {
+  display: none;
+}
+
+.modal-content {
+  background: white;
+  padding: 1.8rem 1.4rem;
+  border-radius: 10px;
+  width: 90%;
+  max-width: 400px;
+  text-align: center;
+  box-sizing: border-box;
+}
+
+.modal-buttons {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 1.5rem;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.btn-cancelar,
+.btn-salir {
+  padding: 0.5rem 1rem;
+  border-radius: 6px;
+  text-decoration: none;
+  cursor: pointer;
+  border: none;
+}
+
+.btn-cancelar {
+  background: #6c757d;
+  color: white;
+}
+
+.btn-salir {
+  background: #dc3545;
+  color: white;
+}
+
+@media (max-width: 576px) {
+  .modal-buttons {
+    flex-direction: column;
+  }
+
+  .btn-cancelar,
+  .btn-salir {
+    width: 100%;
+  }
+}
+
+/* =========================================================
+   PERFIL
+========================================================= */
+.perfil-card {
+  background: white;
+  border-radius: 15px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.info-item {
+  padding: 0.75rem 0;
+  border-bottom: 1px solid #E8E8E8;
+}
+
+.info-item:last-child {
+  border-bottom: none;
+}
+
+.info-label {
+  font-weight: 600;
+  margin-bottom: 0.25rem;
+  font-size: 0.9rem;
+}
+
+.info-value {
+  color: #3f4e2c;
+  font-size: 1rem;
+}
+
+.seccion-libros {
+  margin-top: 3rem;
+}
+
+.empty-state {
+  text-align: center;
+  padding: 3rem;
+  color: #95A5A6;
+}
+
+.empty-state i {
+  font-size: 3.2rem;
+  margin-bottom: 1rem;
+  opacity: 0.5;
+}
+
+@media (max-width: 576px) {
+  .perfil-btn-eliminar {
+    margin-bottom: 1rem;
+  }
+}
+
+/* =========================================================
+   PAGINACIÓN
+========================================================= */
+.pagination {
+  gap: 4px;
+}
+
+.pagination .page-link {
+  background-color: #ffffff;
+  color: #3f4e2c;
+  border: 1px solid #d8dfd2;
+  border-radius: 6px;
+  padding: 6px 10px;
+  font-size: 0.9rem;
+  transition: all 0.2s ease;
+}
+
+.pagination .page-link:hover {
+  background-color: #f3f6f1;
+  color: #2f3a22;
+  border-color: #c7d0c1;
+}
+
+.pagination .page-item.active .page-link {
+  background-color: #3f4e2c;
+  border-color: #3f4e2c;
+  color: #ffffff;
+  font-weight: 500;
+}
+
+.pagination .page-item.disabled .page-link {
+  background-color: #f7f7f7;
+  color: #b5b5b5;
+  border-color: #e5e5e5;
+}
+
+.pagination .page-link[aria-hidden="true"],
+.pagination .page-link[rel="next"],
+.pagination .page-link[rel="prev"] {
+  font-size: 0.9rem;
+}
