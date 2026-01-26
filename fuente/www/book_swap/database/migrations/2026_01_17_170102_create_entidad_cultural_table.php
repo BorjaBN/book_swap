@@ -18,12 +18,9 @@ return new class extends Migration
             $table->string('password', 255);
             $table->string('telefono_entidad_cultural', 100);
             $table->string('ciudad_entidad_cultural', 100);
-
-            $table->string('nif_entidad_cultural', 20)->unique(); 
             $table->string('direccion_entidad_cultural', 255); 
             $table->string('web_entidad_cultural', 255)->nullable();
-
-            $table->rememberToken();
+            
             $table->timestamps();
         });
     }

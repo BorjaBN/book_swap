@@ -5,39 +5,43 @@
     <div class="modal-content">
 
         {{-- Título --}}
-        @if(isset($titulo))
+        @isset($titulo)
             <h3>{{ $titulo }}</h3>
-        @endif
+        @endisset
 
         {{-- Mensaje --}}
-        @if(isset($mensaje))
+        @isset($mensaje)
             <p>{{ $mensaje }}</p>
-        @endif
+        @endisset
 
         {{-- Botones --}}
         <div class="modal-buttons">
 
-            {{-- Cancelar --}}
-            <button 
-                type="button" 
-                class="btn-secondary" 
+            {{-- Botón Cancelar (usa tu componente x-button) --}}
+            <x-button
+                type="button"
+                variant="btn-secondary"
                 onclick="cerrarModal('{{ $id }}')"
             >
                 {{ $textoCancelar ?? 'Cancelar' }}
-            </button>
+            </x-button>
 
-            {{-- Aceptar --}}
-            <form id="form-delete-{{ $id }}" 
+            {{-- Botón Aceptar (usa tu componente x-button dentro del form) --}}
+            <form 
+                id="form-delete-{{ $id }}" 
                 action="{{ $accionAceptar }}" 
-                method="POST">
+                method="POST"
+            >
                 @csrf
                 @method('DELETE')
 
-                <button type="submit" class="btn-danger">
+                <x-button
+                    type="submit"
+                    variant="btn-danger"
+                >
                     {{ $textoAceptar ?? 'Aceptar' }}
-                </button>
+                </x-button>
             </form>
-
 
         </div>
 

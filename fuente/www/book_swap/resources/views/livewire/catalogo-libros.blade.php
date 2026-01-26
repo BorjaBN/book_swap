@@ -20,8 +20,14 @@
                 />
             </div>
         @empty
-            <p class="text-muted fst-italic p-2">No se encuentra ningún libro.</p>
+        <div class="empty-state d-flex flex-column justify-content-center align-items-center py-5">
+            <i class="bi bi-book"></i>
+            <h3>No se encuentraron resultados</h3>
+        </div>
         @endforelse
+    </div>
+    <div class="mt-4 d-flex justify-content-center"> 
+      {{ $libros->onEachSide(1)->links('pagination::bootstrap-4') }}
     </div>
 
 </div>

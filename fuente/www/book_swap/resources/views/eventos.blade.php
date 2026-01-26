@@ -7,7 +7,7 @@
 @endpush
 
 @section('header')
-    <x-header />
+    <x-header mostrarPerfil="true"/>
 @endsection
 
 @section('main')

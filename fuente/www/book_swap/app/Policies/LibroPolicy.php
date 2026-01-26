@@ -35,6 +35,16 @@ class LibroPolicy
      */
     public function delete(UsuarioComun $user, Libro $libro): bool
     {
-        return $libro->id_usuario_comun === $user->id_usuario_comun;
+       
+        if ($libro->id_usuario_comun !== $user->id_usuario_comun) {
+            return false;
+        }
+
+        $estaEnIntercambio =
+            $libro->intercambiosSolicitados()->exists() ||
+            $libro->intercambiosOfrecidos()->exists();
+
+        return ! $estaEnIntercambio;
     }
+
 }

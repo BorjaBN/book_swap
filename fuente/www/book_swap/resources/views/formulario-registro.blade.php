@@ -13,6 +13,14 @@
 
 @section('main')
 
+{{-- Botón volver --}}
+    <x-button 
+        href="{{url()->previous()}}"
+        variant="btn-secondary m-3 d-inline-flex align-items-center gap-2"
+    >
+        <i class="bi bi-arrow-left"></i>
+    </x-button>
+
     <x-base-formulario :titulo="$titulo">
 
         <form action="{{ route('registrar', ['tipo' => $tipo]) }}" method="POST">
@@ -34,7 +42,6 @@
             @if($tipo === 'entidad')
                 {{-- Campos entidad --}}
                 <x-input label="Nombre entidad" name="nombre_entidad" required />
-                <x-input label="NIF" name="nif" required />
                 <x-input label="Teléfono" name="telefono" required />
                 <x-input label="Sitio web" name="web" type="url" />
                 <x-input label="Correo electrónico" name="email" type="email" required />

@@ -8,12 +8,18 @@
 @endpush
 
 @section('header')
- <x-header :mostrarBienvenida="false" :mostrarCreditos="false" :mostrarCerrarSesion="false"/>
+ <x-header  :mostrarCreditos="false" :mostrarCerrarSesion="false"/>
 @endsection
 
 @section('main')
 
-
+{{-- Botón volver --}}
+    <x-button 
+        href="{{route('bienvenida')}}"
+        variant="btn-secondary m-3 d-inline-flex align-items-center gap-2"
+    >
+        <i class="bi bi-arrow-left"></i>
+    </x-button>
 
     <x-hero
         titulo="Usuario Común"

@@ -21,10 +21,12 @@ class LibroController extends Controller
     public function index()
     {
         $libros = Libro::with('propietario')
+            ->where('estado', 'libre')
             ->latest()
             ->paginate(12);
 
-        return view('libros', compact('libros'));
+
+        return view('catalogo', compact('libros'));
     }
 
     /**
@@ -122,8 +124,8 @@ class LibroController extends Controller
         $libro->update($validated);
 
         return redirect()
-            ->route('libros.index')
-            ->with('success', 'Libro actualizado correctamente.');
+            ->route('usuarioComun.show', auth('web')->user()->id_usuario_comun) 
+            ->with('success', 'Libro creado correctamente.');
     }
 
     /**
@@ -146,7 +148,7 @@ class LibroController extends Controller
         $libro->delete();
 
         return redirect()
-            ->route('libros.index')
+            ->route('usuarioComun.show', auth('web')->user()->id_usuario_comun) 
             ->with('success', 'Libro eliminado correctamente.');
     }
 }

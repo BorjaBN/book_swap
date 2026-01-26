@@ -10,7 +10,7 @@
     <x-header 
         :mostrarBienvenida="false" 
         :mostrarCreditos="false" 
-        :mostrarCerrarSesion="true"
+        :mostrarCerrarSesion="false"
     />
 @endsection
 
@@ -18,7 +18,7 @@
 
     {{-- Botón volver --}}
     <x-button 
-        href="{{ route('entidad.inicio') }}"
+        href="{{url()->previous()}}"
         variant="btn-secondary m-3 d-inline-flex align-items-center gap-2"
     >
         <i class="bi bi-arrow-left"></i>

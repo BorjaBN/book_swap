@@ -28,9 +28,22 @@
 
 {{-- FOOTER --}}
 <div class="mt-2">
-    <h6 class="fw-bold titulo-libro text-truncate">{{ $elem->titulo_libro }}</h6>
-    <small class="text-muted">Autor: {{ $elem->autor_libro }}</small>
+    <h5 class="fw-bold titulo-libro text-truncate">{{ $elem->titulo_libro }}</h5>
+    <small class="text-muted"> <i class="bi bi-person me-1"></i> Autor: {{ $elem->autor_libro }}</small>
+    <div>
+        @if(isset($elem->estado_libro))
+            <span class="badge badge-estado badge-morado">
+                {{ ucfirst($elem->estado_libro) }}
+            </span>
+        @endif
 
+        @if(isset($elem->genero_libro))
+            <span class="badge badge-estado badge-morado-claro ms-1">
+                {{ $elem->genero_libro }}
+            </span>
+        @endif
+
+        </div>
     <x-button 
         type="button"
         variant="btn-tertiary-ghost w-100 mt-2"

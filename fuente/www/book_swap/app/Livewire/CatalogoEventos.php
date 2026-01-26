@@ -3,12 +3,20 @@
 namespace App\Livewire;
 
 use Livewire\Component;
+use Livewire\WithPagination;
 use App\Models\EventoCultural;
 
 class CatalogoEventos extends Component
 {
-    public $busqueda = '';
+
     public $tipo = '';
+
+    protected $paginationTheme = 'bootstrap';
+
+    public function updatingBusqueda()
+    {
+        $this->resetPage();
+    }
 
     public function render()
     {
@@ -17,7 +25,8 @@ class CatalogoEventos extends Component
                 $query->where('tipo_evento', $this->tipo);
             })
             ->orderBy('fecha_evento', 'asc')
-            ->get();
+            ->latest()
+            ->paginate(12);
 
         return view('livewire.catalogo-eventos', [
             'eventos' => $eventos

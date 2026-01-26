@@ -13,6 +13,14 @@
 
 @section('main')
 
+{{-- Botón volver --}}
+    <x-button 
+        href="{{url()->previous()}}"
+        variant="btn-secondary m-3 d-inline-flex align-items-center gap-2"
+    >
+        <i class="bi bi-arrow-left"></i>
+    </x-button>
+
     <x-base-formulario titulo="Iniciar sesión">
 
         <form action="{{ route('iniciarSesion') }}" method="POST">

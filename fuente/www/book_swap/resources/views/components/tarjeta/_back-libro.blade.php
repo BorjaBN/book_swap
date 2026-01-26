@@ -4,6 +4,8 @@
 <div class="small"><strong>ISBN:</strong> {{ $elem->ISBN }}</div>
 <div class="small"><strong>Estado:</strong> {{ ucfirst($elem->estado_libro) }}</div>
 <div class="small"><strong>Género:</strong> {{ $elem->genero_libro }}</div>
+<div class="small"><strong>Fecha de publicación: </strong>{{ $elem->fecha_publicacion_libro->format('d/m/Y') }}</div>
+
 
 <div class="small mb-3">
     <strong>Propietario:</strong>
@@ -20,24 +22,35 @@
 <div>
     {{-- Botón adicional: Solicitar intercambio --}}
     @cannot('update', $elem)
-        <x-button 
-            href="{{ route('intercambio', $elem->id_libro) }}"
-            variant="btn-primary w-100 mb-2"
-        >
-            Solicitar intercambio
-        </x-button>
+        <form method="GET" action="{{ route('intercambios.formulario', $elem->id_libro) }}">
+            @csrf
+            <x-button 
+                type="submit"
+                variant="btn-primary w-100 mb-2"
+            >
+                Solicitar intercambio (50 créditos)
+            </x-button>
+        </form>
+
     @endcannot
 
     {{-- Botones Editar / Borrar solo para el propietario --}}
-    @can('update', $elem)
+{{-- Botones Editar / Borrar solo para el propietario --}}
+@can('update', $elem)
+
+    @if($elem->estaPendienteDeIntercambio())
+        <div class="alert alert-warning py-1 px-2 mb-2 text-center" style="font-size: 0.85rem;">
+            Está pendiente de intercambio
+        </div>
+    @else
         <div class="d-flex gap-2 mb-2">
 
             {{-- Editar --}}
             <x-button
                 href="{{ route('libros.edit', $elem->id_libro) }}"
-                variant="btn-outline-edit  btn-sm w-50"
+                variant="btn-outline-edit btn-sm w-50"
             >
-               <i class="bi bi-pen fs-6 me-2"></i> Editar
+                <i class="bi bi-pen fs-6 me-2"></i> Editar
             </x-button>
 
             {{-- Borrar --}}
@@ -63,7 +76,10 @@
                 accionAceptar="{{ route('libros.destroy', $elem->id_libro) }}"
             />
         </div>
-    @endcan
+    @endif
+
+@endcan
+
 
     {{-- Slot para botones extra --}}
     {{ $slot ?? '' }}

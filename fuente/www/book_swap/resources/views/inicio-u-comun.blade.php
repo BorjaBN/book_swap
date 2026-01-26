@@ -8,11 +8,12 @@
 @endpush
 
 @section('header')
-    <x-header/>
+    <x-header :mostrarPerfil="true"/>
 @endsection
 
 @section('main')
 <div class="container py-4">
+
 
     {{-- Saludo personalizado --}}
     <div class="mb-5">
@@ -41,9 +42,11 @@
                 @endforeach
             </div>
         @else
-            <div class="p-5 text-center">
-                <p class="text-muted fst-italic p-2">Aún no hay libros publicados.</p>
-            </div>
+        <div class="empty-state">
+            <i class="bi bi-book"></i>
+            <h3>No se han publicado libros aún</h3>
+            <p>Comienza a compartir tus libros con la comunidad BookSwap.</p>
+        </div>
         @endif
     </section>
 
@@ -67,9 +70,11 @@
                 @endforeach
             </div>
         @else
-            <div class="p-5 text-center">
-                <p class="text-muted fst-italic p-2">Aún no hay eventos publicados.</p>
-            </div>
+        <div class="empty-state">
+            <i class="bi bi-calendar-event"></i>
+            <h3>No hay eventos disponibles</h3>
+            <p>Pronto llegará el momento perfecto.</p>
+        </div>
         @endif
     </section>
 

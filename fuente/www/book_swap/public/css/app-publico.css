@@ -57,6 +57,18 @@ header {
 }
 
 /* =========================================================
+   BADGES Y PERFIL ICONO
+========================================================= */
+.badge-morado {
+  background-color: #7A3B69 !important;
+  color: #ffffff !important;
+}
+
+.badge-morado-claro {
+  background-color: #b474a3 !important;
+}
+
+/* =========================================================
    HERO
 ========================================================= */
 .hero {

@@ -19,6 +19,8 @@ return new class extends Migration
             $table->enum('estado_libro', ['nuevo', 'seminuevo', 'usado']);
             $table->string('genero_libro', 150)->nullable();
             $table->date('fecha_publicacion_libro');
+            $table->string('estado_intercambio')->default('libre');
+
             
             $table->string('imagen_libro');
             

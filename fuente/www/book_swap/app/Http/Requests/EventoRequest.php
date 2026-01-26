@@ -4,7 +4,7 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class StoreEventoRequest extends FormRequest
+class EventoRequest extends FormRequest
 {
     public function authorize()
     {

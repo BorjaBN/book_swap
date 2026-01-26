@@ -22,10 +22,22 @@
             <span>Eventos</span>
         </a>
 
-        <a href="{{ route('comun.index') }}">
-            <i class="bi bi-person-circle"></i>
-            <span>Perfil</span>
-        </a>
+        <a href="{{ route('intercambios.misSolicitudes') }}" class="nav-item position-relative">
+        <i class="bi bi-bell fs-4"></i>
+
+        @if($solicitudesPendientes > 0)
+            <span 
+                class="badge bg-danger rounded-pill position-absolute"
+                style="top: -4px; right: -6px;"
+            >
+                {{ $solicitudesPendientes }}
+            </span>
+        @endif
+
+        <span>Solicitudes</span>
+    </a>
+
+
     @endauth
 
     {{-- Entidad cultural --}}
@@ -40,7 +52,7 @@
             <span>Añadir</span>
         </a>
 
-        <a href="{{ route('prueba.eventos') }}">
+        <a href="{{ route('entidad.perfil.show', auth('entidad')->user()->id_entidad_cultural) }}">
             <i class="bi bi-person-circle"></i>
             <span>Perfil</span>
         </a>

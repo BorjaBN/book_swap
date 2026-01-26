@@ -50,6 +50,29 @@ class UsuarioComun extends Authenticatable
     }
 
 
+    public function tieneCreditos(int $cantidad = 50): bool
+    {
+        return $this->cartera && $this->cartera->saldo_total >= $cantidad;
+    }
+
+    public function restarCreditos(int $cantidad = 50): void
+    {
+        $this->cartera->decrement('saldo_total', $cantidad);
+    }
+
+    public function sumarCreditos(int $cantidad = 50): void
+    {
+        $this->cartera->increment('saldo_total', $cantidad);
+    }
+
+    public function librosLibres()
+    {
+        return $this->hasMany(Libro::class, 'id_usuario_comun')
+            ->where('estado', 'libre');
+    }
+
+
+
     // Cuando se crea un usuario crea una cartera de creditos nuevita
     protected static function boot()
     {

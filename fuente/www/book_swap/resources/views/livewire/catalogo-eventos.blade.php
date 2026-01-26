@@ -25,8 +25,14 @@
                 />
             </div>
         @empty
-            <p class="text-muted fst-italic p-2">No se encuentra ningún evento</p>
+        <div class="empty-state">
+            <i class="bi bi-calendar-event"></i>
+            <h3>No se encuentraron resultados</h3>
+        </div>
         @endforelse
+    </div>
+     <div class="mt-4 d-flex justify-content-center"> 
+      {{ $eventos->onEachSide(1)->links('pagination::bootstrap-4') }}
     </div>
 
 </div>

@@ -18,6 +18,7 @@ class Libro extends Model
         'fecha_publicacion_libro',
         'imagen_libro',
         'id_usuario_comun',
+        'estado_intercambio'
     ];
     
     protected $casts = [
@@ -35,5 +36,23 @@ class Libro extends Model
     {
         return $this->hasMany(MovimientoCredito::class, 'id_libro', 'id_libro');
     }
+
+    public function intercambiosSolicitados()
+    {
+        return $this->hasMany(Intercambio::class, 'libro_id', 'id_libro');
+    }
+
+    public function intercambiosOfrecidos()
+    {
+        return $this->hasMany(Intercambio::class, 'libro_ofrecido_id', 'id_libro');
+    }
+
+    public function estaPendienteDeIntercambio(): bool
+    {
+        return $this->intercambiosSolicitados()->where('estado', 'pendiente')->exists()
+            || $this->intercambiosOfrecidos()->where('estado', 'pendiente')->exists();
+    }
+
+
 }
 

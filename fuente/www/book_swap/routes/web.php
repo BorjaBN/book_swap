@@ -6,6 +6,9 @@ use App\Http\Controllers\Auth\RegistroControlador;
 use App\Http\Controllers\InicioController;
 use App\Http\Controllers\LibroController;
 use App\Http\Controllers\EventoController;
+use App\Http\Controllers\UsuarioComunController;
+use App\Http\Controllers\EntidadCulturalController;
+use App\Http\Controllers\IntercambioController;
 
 //------------------------------------
 // RUTAS PÚBLICAS
@@ -45,7 +48,6 @@ Route::post('/inicioSesion/entrar', [InicioSesionControlador::class, 'iniciarSes
 //------------------------------------
 // USUARIO COMÚN (auth:web)
 //------------------------------------
-
 Route::middleware('auth:web')->group(function () {
 
     Route::get('/inicio', [InicioController::class, 'inicioUComun'])
@@ -53,10 +55,30 @@ Route::middleware('auth:web')->group(function () {
 
     Route::resource('libros', LibroController::class);
 
-    // Eventos públicos (solo ver)
+    Route::resource('usuarioComun', UsuarioComunController::class);
+
     Route::resource('eventos', EventoController::class)
         ->only(['index', 'show']);
+
+    // FORMULARIO DE SOLICITUD
+    Route::get('/libros/{libro}/solicitar', [IntercambioController::class, 'mostrarFormulario'])
+        ->name('intercambios.formulario');
+
+    // ENVIAR SOLICITUD
+    Route::post('/libros/{libro}/intercambios', [IntercambioController::class, 'solicitar'])
+        ->name('intercambios.solicitar');
+
+    Route::post('/intercambios/{intercambio}/aceptar', [IntercambioController::class, 'aceptar'])
+        ->name('intercambios.aceptar');
+
+    Route::post('/intercambios/{intercambio}/rechazar', [IntercambioController::class, 'rechazar'])
+        ->name('intercambios.rechazar');
+
+    Route::get('/mis-solicitudes', [IntercambioController::class, 'misSolicitudes'])
+        ->name('intercambios.misSolicitudes');
 });
+
+
 
 //------------------------------------
 // ENTIDAD CULTURAL (auth:entidad)
@@ -70,10 +92,14 @@ Route::middleware('auth:entidad')
         Route::get('/inicio', [InicioController::class, 'inicioEEntidad'])
             ->name('inicio');
 
-        // Eventos privados de la entidad (CRUD completo excepto index/show)
+        // Perfil de la entidad
+        Route::resource('perfil', EntidadCulturalController::class);
+
+        // Eventos privados (CRUD completo)
         Route::resource('eventos', EventoController::class)
             ->except(['index', 'show']);
     });
+
 
 //------------------------------------
 // CIERRE DE SESIÓN
@@ -95,4 +121,4 @@ Route::post('/cierreSesion', [InicioSesionControlador::class, 'cerrarSesion'])
 
     Route::get('/prueba.eventos', function () {
     return 'Ruta dummy de prueba funcionando correctamente';
-})->name('comun.index');
+})->name('prueba');

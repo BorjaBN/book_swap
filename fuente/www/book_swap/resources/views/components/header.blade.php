@@ -2,6 +2,7 @@
     'mostrarBienvenida' => false,
     'mostrarCreditos' => true,
     'mostrarCerrarSesion' => true,
+    'mostrarPerfil' => false,
 ])
 <header class="d-flex align-items-center justify-content-between p-3">
     
@@ -13,22 +14,39 @@
         {{-- ========== USUARIO AUTENTICADO ========== --}}
         <div class="user-info d-flex align-items-center gap-3">
             
+
+            {{-- Icono Perfil --}}
+            @if($mostrarPerfil)
+
+                @auth('web')
+                    <x-button 
+                        href="{{ route('usuarioComun.show', auth('web')->user()->id_usuario_comun) }}" 
+                        variant="btn-header"
+                    >
+                        <i class="bi bi-person-circle fs-4 me-1"></i> Perfil
+                    </x-button>
+                @endauth
+
+            @endif
+
+
             {{-- Créditos --}}
             @if($mostrarCreditos)
                 <div class="creditos-container d-flex align-items-center gap-2">
-                    <i class="bi bi-wallet2"></i>
+                    <i class="bi bi-piggy-bank"></i>
                     <strong>
                         <span class="creditos-valor">{{Auth::user()->cartera->saldo_total ??  0  }}</span>
-                        <span class="creditos-texto">créditos</span>
                     </strong>
                 </div>
             @endif
+
+
 
             {{-- Botón Cerrar Sesión --}}
             @if($mostrarCerrarSesion)
                 <form action="{{ route('cerrarSesion') }}" method="POST">
                     @csrf
-                    <x-button type="submit" variant="btn-logout">
+                    <x-button type="submit" variant="btn-header">
                         <i class="bi bi-box-arrow-right"></i>
                     </x-button>
                 </form>
