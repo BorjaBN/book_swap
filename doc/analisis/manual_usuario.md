@@ -67,7 +67,7 @@ BookSwap cuenta con dos tipos de perfiles:
 
 ### 1.3. Sistema de créditos
 
-BookSwap utiliza un sistema de créditos para facilitar los intercambios. Los créditos son la moneda virtual de la plataforma que te permite solicitar libros de otros usuarios. Recibes créditos diariamente por estar activo en la plataforma y los utilizas cuando realizas intercambios.
+BookSwap utiliza un sistema de créditos para facilitar los intercambios. Los créditos son la moneda virtual de la plataforma que te permite solicitar libros de otros usuarios. Recibes 500 créditos al registrarte y también recuperas una parte de tus créditos cuando tus intercambios son aceptados.
 
 ---
 
@@ -230,6 +230,8 @@ Para modificar la información de un libro que has publicado:
 6. Actualiza las fotografías si lo deseas
 7. Guarda los cambios
 
+**Nota:** No podrás editar libros que tengan solicitudes de intercambio pendientes.
+
 ### 4.5. Eliminar un libro
 
 Para eliminar un libro de tu biblioteca:
@@ -321,6 +323,7 @@ Para aprobar una solicitud de intercambio de uno de tus libros:
 
 **Después de aceptar:**
 - El libro desaparecerá del catálogo y perfil
+- Recibirás la mitad de los créditos que el solicitante gastó en la solicitud
 - Deberás contactar al solicitante para acordar:
   - Método de entrega (en persona, envío postal, punto de encuentro)
   - Fecha y hora (si es en persona)
