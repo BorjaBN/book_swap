@@ -37,7 +37,6 @@ BookSwap utiliza una combinación tipográfica que refuerza su identidad editori
 
 ![Fuente Open Sans](img/GE-playfairdisplay.png) 
 ![Fuente Open Sans](img/GE-opensans.png)
-![Fuente Open Sans](img/GE-opensans.png)
 
 ## Logo
 
