@@ -3,7 +3,7 @@
 @section('titulo', 'Eventos')
 
 @push('estilos')
-    <link rel="stylesheet" href="{{ asset('css/publico.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/app.css') }}">
 @endpush
 
 @section('header')
