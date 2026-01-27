@@ -25,6 +25,7 @@ Este documento describe la arquitectura tecnológica utilizada en el desarrollo 
 | **CSS**        | CSS3 y algunos módulos de nivel 4|
 |**Bootstrap**   | v5.3             |
 | **JS**         | ECMAScript 6     |
+| **Doxygen**    | 1.16.1           |
 
 
 
