@@ -1,0 +1,5 @@
+var searchData=
+[
+  ['delete_0',['delete',['../class_app_1_1_policies_1_1_evento_cultural_policy.html#abdb8dfd45470ac684aaa7649d85393ed',1,'App\\Policies\\EventoCulturalPolicy\\delete()'],['../class_app_1_1_policies_1_1_libro_policy.html#a1c5f658c070ada649af75bf4fe51b2ef',1,'App\\Policies\\LibroPolicy\\delete()']]],
+  ['destroy_1',['destroy',['../class_app_1_1_http_1_1_controllers_1_1_entidad_cultural_controller.html#a8ce29203c8d4e3c18bb807bb79cf5bce',1,'App\\Http\\Controllers\\EntidadCulturalController\\destroy()'],['../class_app_1_1_http_1_1_controllers_1_1_evento_controller.html#aa29d6dea2b28f50fb1646821520823e0',1,'App\\Http\\Controllers\\EventoController\\destroy()'],['../class_app_1_1_http_1_1_controllers_1_1_libro_controller.html#accb8845af8408e6b43f9a6e7fa25aab7',1,'App\\Http\\Controllers\\LibroController\\destroy()'],['../class_app_1_1_http_1_1_controllers_1_1_usuario_comun_controller.html#a04e0d56a8af4891fabd612e0b3a30475',1,'App\\Http\\Controllers\\UsuarioComunController\\destroy()']]]
+];
