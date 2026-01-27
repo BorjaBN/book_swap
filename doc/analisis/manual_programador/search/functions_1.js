@@ -1,5 +1,0 @@
-var searchData=
-[
-  ['aceptar_0',['aceptar',['../class_app_1_1_http_1_1_controllers_1_1_intercambio_controller.html#a894b04b73f9781b631beee0341a849db',1,'App\\Http\\Controllers\\IntercambioController\\aceptar()'],['../class_app_1_1_models_1_1_intercambio.html#a8af236cab9331abccaf984d592fa3bec',1,'App\\Models\\Intercambio\\aceptar()']]],
-  ['authorize_1',['authorize',['../class_app_1_1_http_1_1_requests_1_1_editar_usuario_request.html#a5f8d95907449f98aa87660e8964089cc',1,'App\\Http\\Requests\\EditarUsuarioRequest\\authorize()'],['../class_app_1_1_http_1_1_requests_1_1_evento_request.html#ae7a971e5d2478ff0cc63937bc6e1a7d0',1,'App\\Http\\Requests\\EventoRequest\\authorize()'],['../class_app_1_1_http_1_1_requests_1_1_inicio_sesion_request.html#a178c1865470221fc0ac2897f1e9d1900',1,'App\\Http\\Requests\\InicioSesionRequest\\authorize()'],['../class_app_1_1_http_1_1_requests_1_1_libro_request.html#a245c1a70eb4599745ede27dd638cbbb1',1,'App\\Http\\Requests\\LibroRequest\\authorize()'],['../class_app_1_1_http_1_1_requests_1_1_registro_request.html#a1abf0cc0ef36346bc05685cac742add7',1,'App\\Http\\Requests\\RegistroRequest\\authorize()']]]
-];
